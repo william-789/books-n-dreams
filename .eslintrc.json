@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true, // global variables on browser
+    "node": true, // node global variables and rules
+    "es6": true // ES6 features
+  },
+  "extends": "eslint:recommended", // use recommended rules
+  "parserOptions": {},
+  "rules": {
+    // if you want to enable an extra rule or disable a unnecessary one
+    // "rule-name": off
+  }
+}
