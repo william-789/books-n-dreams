@@ -12,3 +12,18 @@ $titleSize: 40px; // UTILIZAR REM?
 $subtitleSize: 30px; // UTILIZAR REM?
 $listTitles: 25px; //UTILIZAR REM?
 $paragraphSize: 18px; // UTILIZAR REM?
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  background-color: $backgroundColor;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-decoration: none;
+}
+
+
+@import "pages/navbar/NavBar";
