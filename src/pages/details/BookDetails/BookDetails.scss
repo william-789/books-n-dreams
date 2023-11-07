@@ -13,16 +13,30 @@ $subtitleSize: 30px; // UTILIZAR REM?
 $listTitles: 25px; //UTILIZAR REM?
 $paragraphSize: 18px; // UTILIZAR REM?
 
-* {
-  box-sizing: border-box;
-}
+.Container {
+  flex-flow: column;
 
-body, html {
-  background-color: $backgroundColor;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  text-decoration: none;
-}
+  .Header {
+    display: flex;
+    margin: auto;
+    padding: 25px;
+    border-bottom: 2px #705D56;
+  }
+  .BookDetails{
 
-@import "pages/navbar/NavBar";
+    .Subtitles{
+      position: relative;
+      padding-left: 30px;
+    }
+    .Subtitles::before{
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background-color: $orange;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
