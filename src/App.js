@@ -45,7 +45,6 @@ function App() {
         <Route path={"/edit-personal"} component={EditPersonalInfo}/>
         <Route path={"/edit-payment"} component={EditPaymentInfo}/>
       </Switch>
-      <NavBar/>
     </div>
   </BrowserRouter>
 }
