@@ -1,8 +1,7 @@
 .NavBar {
-  width: 8%;
+  width: 7%;
   background-color: $backgroundAccent;
   height: 100vh;
-  position: relative;
 
   .menuBar {
     display: flex;
@@ -11,13 +10,17 @@
     height: 100%;
 
     .logo {
-      width: 40%;
+      width: 60%;
+      margin: auto;
+      display: flex;
       margin-top: 2.5rem;
-      position: absolute;
-      left: 30%;
 
       &:hover {
         transform: scale(1.2);
+      }
+
+      @media (max-width: 768px) {
+        margin: auto;
       }
     }
 
@@ -26,7 +29,7 @@
       flex-direction: column;
       justify-content: space-evenly;
       height: 100vh;
-      margin: 9rem 0;
+      margin: 7.5rem 0 10rem 0;
 
       .round {
         background-color: $backgroundColor;
@@ -35,13 +38,20 @@
 
         &:hover {
           transform: scale(1.2);
+        }
 
+        @media (max-width: 768px) {
+          background-color: $backgroundAccent;
         }
       }
 
       .menuItem {
         width: 1.5rem;
         height: 1.5rem;
+
+        @media (max-width: 768px) {
+          flex: 1;
+        }
       }
 
       a {
@@ -52,9 +62,42 @@
 
           .round {
             background-color: $brown;
+
+            @media (max-width: 768px) {
+              background-color: $backgroundAccent;
+            }
+          }
+
+          @media (max-width: 768px) {
+            color: $orange;
           }
         }
       }
+
+      @media (max-width: 768px) {
+        flex-direction: row;
+        height: fit-content;
+        margin: 0;
+        width: 60%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    width: 9%;
+
+    @media (max-width: 768px) {
+      height: 75px;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
     }
   }
 }
