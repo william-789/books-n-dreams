@@ -46,7 +46,6 @@ function App() {
         <Route path={"/edit-payment"} component={EditPaymentInfo}/>
         <Redirect to={"/homePage"}/>
       </Switch>
-      {/* <NavBar/> */}
     </div>
   </BrowserRouter>
 }
