@@ -1,5 +1,5 @@
 import "./App.scss";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import LogIn from "./pages/login_register/LogIn";
 import Register from "./pages/login_register/Register";
 import Home from "./pages/home/Home";
@@ -44,6 +44,7 @@ function App() {
         <Route path={"/checkout"} component={Checkout}/>
         <Route path={"/edit-personal"} component={EditPersonalInfo}/>
         <Route path={"/edit-payment"} component={EditPaymentInfo}/>
+        <Redirect to={"/homePage"}/>
       </Switch>
     </div>
   </BrowserRouter>
