@@ -35,4 +35,20 @@ body, html {
   text-decoration: none;
 }
 
+.App {
+  display: flex;
+
+  .content {
+    flex-grow: 1;
+    height: 100vh;
+    overflow: auto;
+  }
+
+  @media(max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+}
+
 @import "pages/navbar/NavBar";
+@import "pages/details/BookshopDetails/BookshopDetails";
+@import "pages/favorite/favorite";

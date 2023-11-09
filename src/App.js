@@ -5,7 +5,7 @@ import Register from "./pages/login_register/Register";
 import Home from "./pages/home/Home";
 import AuthorDetails from "./pages/details/AuthorDetails";
 import BookDetails from "./pages/details/BookDetails/BookDetails";
-import BookshopDetails from "./pages/details/BookshopDetails";
+import BookshopDetails from "./pages/details/BookshopDetails/BookshopDetails";
 import MerchDetails from "./pages/details/MerchDetails";
 import GeneralSearch from "./pages/search/GeneralSearch";
 import AuthorSearch from "./pages/search/AuthorSearch";
@@ -24,13 +24,14 @@ import NavBar from "./pages/navbar/NavBar";
 function App() {
   return <BrowserRouter>
     <div className="App">
+      <NavBar/>
       <Switch>
         <Route path={"/logIn"} component={LogIn}/>
         <Route path={"/register"} component={Register}/>
         <Route path={"/homePage"} component={Home}/>
         <Route path={"/author/:id"} component={AuthorDetails}/>
         <Route path={"/book/:id"} component={BookDetails}/>
-        <Route path={"/bookshop/:id"} component={BookshopDetails}/>
+        <Route path={"/bookstore/:id"} component={BookshopDetails}/>
         <Route path={"/merch/:id"} component={MerchDetails}/>
         <Route path={"/search"} component={GeneralSearch}/>
         <Route path={"/search-author"} component={AuthorSearch}/>
