@@ -4,7 +4,7 @@ import LogIn from "./pages/login_register/LogIn";
 import Register from "./pages/login_register/Register";
 import Home from "./pages/home/Home";
 import AuthorDetails from "./pages/details/AuthorDetails";
-import BookDetails from "./pages/details/BookDetails";
+import BookDetails from "./pages/details/BookDetails/BookDetails";
 import BookshopDetails from "./pages/details/BookshopDetails";
 import MerchDetails from "./pages/details/MerchDetails";
 import GeneralSearch from "./pages/search/GeneralSearch";

@@ -4,14 +4,24 @@ $backgroundColor: #F1F1F1;
 $orange: #FF7F51;
 $brown: #705D56;
 $backgroundAccent: #EBE6E4;
+$colourCloser: #4D9AD1;
+$colourCheaper: #62C33F;
 
 $headingFont: Raleway, sans-serif;
 $paragraphFont: Roboto, sans-serif;
+$priceFont: Raleway, sans-serif;
 
 $titleSize: 40px; // UTILIZAR REM?
+$titleSizeAPP: 22px; // UTILIZAR REM?
+
 $subtitleSize: 30px; // UTILIZAR REM?
+$subtitleSizeAPP: 18px; // UTILIZAR REM?
+
 $listTitles: 25px; //UTILIZAR REM?
+$listTitlesAPP: 20px; //UTILIZAR REM?
+
 $paragraphSize: 18px; // UTILIZAR REM?
+$paragraphSizeAPP: 15px; // UTILIZAR REM?
 
 * {
   box-sizing: border-box;
@@ -24,6 +34,5 @@ body, html {
   height: 100%;
   text-decoration: none;
 }
-
 
 @import "pages/navbar/NavBar";
