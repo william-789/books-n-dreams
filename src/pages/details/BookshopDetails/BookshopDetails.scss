@@ -1,0 +1,26 @@
+.BookshopDetails {
+
+  .header {
+    position: relative;
+
+    .banner {
+      height: 50vh;
+      background-position: center;
+    }
+
+    .favorite {
+      position: absolute;
+      right: 10%;
+      bottom: -8%;
+    }
+  }
+
+  .container {
+    margin: 0 10%;
+
+    h1 {
+      font-size: $titleSize;
+      color: $brown;
+    }
+  }
+}
