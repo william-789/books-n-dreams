@@ -1,10 +1,10 @@
 import "./App.scss";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import LogIn from "./pages/login_register/LogIn";
 import Register from "./pages/login_register/Register";
 import Home from "./pages/home/Home";
 import AuthorDetails from "./pages/details/AuthorDetails";
-import BookDetails from "./pages/details/BookDetails";
+import BookDetails from "./pages/details/BookDetails/BookDetails";
 import BookshopDetails from "./pages/details/BookshopDetails/BookshopDetails";
 import MerchDetails from "./pages/details/MerchDetails";
 import GeneralSearch from "./pages/search/GeneralSearch";
@@ -45,6 +45,7 @@ function App() {
         <Route path={"/checkout"} component={Checkout}/>
         <Route path={"/edit-personal"} component={EditPersonalInfo}/>
         <Route path={"/edit-payment"} component={EditPaymentInfo}/>
+        <Redirect to={"/homePage"}/>
       </Switch>
     </div>
   </BrowserRouter>
