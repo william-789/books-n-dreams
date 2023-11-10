@@ -4,14 +4,7 @@ import NavBar from '../navbar/NavBar';
 
 export default function Home(props) {
 
-    return <div className={"home"}>
-
-
-
-        <div className="container">
-            <NavBar/>
-
-            <div className="navBar-background"></div>
+    return <div className={"home content"}>
 
             <div className="wrapper">
 
@@ -39,8 +32,6 @@ export default function Home(props) {
 
                     </div>
 
-
-
                 </div>
 
                 <div className="banner-library">
@@ -60,16 +51,6 @@ export default function Home(props) {
                         mage as background of the DIV, with text in front.
                     </p>
                 </div>
-
-                <div className="footer">
-                    <p><strong>FOOTER</strong></p>
-                </div>
-
-
-
-
-
-
 
                 {/* LIBRARY BANNER
                 <div className="banner-library">
@@ -82,17 +63,9 @@ export default function Home(props) {
                 </div>
                 */}
 
-
-            </div>
-
         </div>
-
-
-
-
-
-
-
-
+        <div className="footer">
+            <p><strong>FOOTER</strong></p>
+        </div>
     </div>
 }
