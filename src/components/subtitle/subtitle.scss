@@ -6,10 +6,11 @@
   padding-left: 10px;
   border-left: 5px solid $orange;
   border-radius: 4px;
+  margin-bottom: 10px;
 
-  > h2{
+  > h2 {
     font-size: $subtitleSizeAPP;
-color: $brown;
+    color: $brown;
     margin-bottom: 6px;
     margin-top: 6px;
   }
