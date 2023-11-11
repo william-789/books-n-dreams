@@ -1,0 +1,17 @@
+@import "../../../App";
+
+.PrimaryButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 0.10;
+  border-radius: 50px;
+  background-color: $orange;
+
+  h1{
+    font-family: $headingFont;
+    color: white;
+    font-weight: 700;
+  }
+}

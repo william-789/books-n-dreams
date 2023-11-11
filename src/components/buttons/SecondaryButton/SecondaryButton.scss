@@ -1,0 +1,18 @@
+@import "../../../App";
+
+.SecondaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 0.20;
+  border-radius: 20px;
+  background-color: $orange;
+
+  h4 {
+    font-family: $headingFont;
+    color: white;
+    font-weight: 700;
+    font-size:0.85em;
+  }
+}

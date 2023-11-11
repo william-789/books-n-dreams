@@ -1,0 +1,20 @@
+@import "../../../App";
+
+.ThirdButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  aspect-ratio: 1 / 0.1;
+  border-radius: 50px;
+  background-color: $brown;
+
+  h4 {
+    font-family: $headingFont;
+    color: white;
+    font-weight: 600;
+    font-size:0.85em;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}

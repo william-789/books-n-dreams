@@ -1,6 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Josefin+Sans:wght@200;300;500;600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 @import "src/App";
 
-.WhereToBuy{
+.WhereToBuy {
+  display: flex;
+  align-items: center;
+  width: 100%;
 
+  .image {
+    background-color: $brown;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 110px;
+    aspect-ratio: 1 / 1;
+    border-radius: 100px;
+    margin-right: 20px;
+  }
+
+  .info {
+    color: $darkBlue;
+    font-family: $headingFont;
+    flex-direction: column;
+
+    h3 {
+      font-weight: 600;
+      font-size: $paragraphSizeAPP;
+      margin-top: 0px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-weight: 400;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    h4 {
+      font-weight: 800;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+  }
 }
