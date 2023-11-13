@@ -4,17 +4,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
-  aspect-ratio: 1 / 0.1;
+  max-width: 60%;
+  aspect-ratio: 1 / 0.3;
   border-radius: 50px;
   background-color: $brown;
 
   h4 {
+    padding: 0.2rem;
     font-family: $headingFont;
     color: white;
     font-weight: 600;
-    font-size:0.85em;
+    font-size:0.9rem;
     margin-top: 4px;
     margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 768px){
+  .ThirdButton{
+    > h4{
+      font-size:0.8rem;
+    }
   }
 }

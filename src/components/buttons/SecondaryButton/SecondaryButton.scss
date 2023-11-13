@@ -13,6 +13,14 @@
     font-family: $headingFont;
     color: white;
     font-weight: 700;
-    font-size:0.85em;
+    font-size:0.9em;
+  }
+}
+
+@media (max-width: 768px){
+  .SecondaryButton{
+    .h4{
+      font-size: 0.7rem;
+    }
   }
 }

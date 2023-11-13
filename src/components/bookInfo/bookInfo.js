@@ -1,18 +1,28 @@
-import "./BookInfo.scss"
-import ThirdButton from "../buttons/ThirdButton/ThirdButton";
+import "./bookInfo.scss";
+import Favorite from "../../pages/favorite/favorite";
+import Subtitle from "../subtitle/subtitle";
+import React from "react";
 
 export default function BookInfo(props) {
     return <div className={"BookInfo"}>
-        <div className={"image"}>
-            <img>{props.foto}</img>
+
+        <div className={"Capa"}>
+          <img src={props.foto}/>
+            <Favorite/>
         </div>
 
-        <div className={"info"}>
-            <h3>{props.nome}</h3>
-            <h3>{props.autor}</h3>
+        <div className={"Info"}>
+        <p>{props.tipo + ", " + props.genero}</p>
+        <h1>{props.nome}</h1>
+        <h2>de {props.autor}</h2>
+        <h3>{props.editora}</h3>
 
-            <ThirdButton text={"Desde 15,50€"}/>
+        <div className={"Sinopse"}>
+            <Subtitle text={"Sinopse"}/>
+            <p>{props.descricao}</p>
         </div>
 
     </div>
+
+</div>
 }
