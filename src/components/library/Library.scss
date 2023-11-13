@@ -1,0 +1,131 @@
+$backgroundColor: #F1F1F1;
+$orange: #FF7F51;
+$brown: #705D56;
+$backgroundAccent: #EBE6E4;
+$colourCloser: #4D9AD1;
+$colourCheaper: #62C33F;
+
+$headingFont: Raleway, sans-serif;
+$paragraphFont: Roboto, sans-serif;
+$priceFont: Raleway, sans-serif;
+
+$titleSize: 40px; // UTILIZAR REM?
+$titleSizeAPP: 22px; // UTILIZAR REM?
+
+$subtitleSize: 30px; // UTILIZAR REM?
+$subtitleSizeAPP: 18px; // UTILIZAR REM?
+
+$listTitles: 25px; //UTILIZAR REM?
+$listTitlesAPP: 20px; //UTILIZAR REM?
+
+$paragraphSize: 18px; // UTILIZAR REM?
+$paragraphSizeAPP: 15px; // UTILIZAR REM?
+
+
+
+.banner-library{
+  background-image: url("./bannerHomeLibrary.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width:  100%;
+  height: 340px;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  .library-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: white;
+    margin-top: 4rem;
+
+    .title{
+      font-family: $headingFont;
+      font-size: 1.5rem;
+      margin-bottom: 0rem;
+    }
+    .slogan{
+      font-size: 2rem;
+      margin-bottom: -12px;
+    }
+
+    .text{
+      margin-bottom: 1.8rem;
+      font-family: $paragraphFont;
+    }
+  }
+
+  .btn-mais-info{
+    background-color: #FF7F51;
+    font-family: $paragraphFont;
+    font-size: 0.8rem;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+  }
+
+}
+
+
+
+/*  - - -   MEDIA - - - */
+@media (max-width: 768px) {
+
+      .banner-library{
+        width:  100%;
+        height: 160px;
+        border-radius: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+
+        .library-text{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.8rem;
+          color: white;
+          margin-top: 0.32rem;
+
+          .title{
+            font-family: $headingFont;
+            font-size: 1rem;
+            margin-bottom: -0.2rem;
+          }
+          .slogan{
+            font-size: 1.5rem;
+            margin-bottom: -9px;
+          }
+
+          .text{
+            margin-bottom: 0.8rem;
+            font-family: $paragraphFont;
+            font-size: 0.7rem;
+          }
+        }
+
+        .btn-mais-info{
+          background-color: #FF7F51;
+          color: white;
+          padding: 0.4rem 0.7rem;
+          font-size: 0.7rem;
+          border-radius: 1rem;
+          border: none;
+          outline: none;
+
+        }
+
+      }
+
+  }
+
+
+

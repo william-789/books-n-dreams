@@ -1,6 +1,29 @@
+$backgroundColor: #F1F1F1;
+$orange: #FF7F51;
+$brown: #705D56;
+$backgroundAccent: #EBE6E4;
+$colourCloser: #4D9AD1;
+$colourCheaper: #62C33F;
+
+$headingFont: Raleway, sans-serif;
+$paragraphFont: Roboto, sans-serif;
+$priceFont: Raleway, sans-serif;
+
+$titleSize: 40px; // UTILIZAR REM?
+$titleSizeAPP: 22px; // UTILIZAR REM?
+
+$subtitleSize: 30px; // UTILIZAR REM?
+$subtitleSizeAPP: 18px; // UTILIZAR REM?
+
+$listTitles: 25px; //UTILIZAR REM?
+$listTitlesAPP: 20px; //UTILIZAR REM?
+
+$paragraphSize: 18px; // UTILIZAR REM?
+$paragraphSizeAPP: 15px; // UTILIZAR REM?
+
 
 .home {
-  background-color: #F1F1F1FF;      /* SUBSTITUIR POR VARIÁVEL */
+  background-color: $backgroundColor;
 }
 
 .content{
@@ -9,15 +32,22 @@
       display: flex;
       flex-flow: column;
       text-align: center;
-      width: 60%;
-      margin: 0 auto;
+      max-width: 770px;
+      height: 1700px;
+      margin: 1rem auto 1rem auto;
+
   }
 
   .logo-container {
     width:  100%;
     border-radius: 2rem;
-    margin-top: 1.2rem;
-    margin-bottom: 8rem;
+    margin-top: 0.7rem;
+    margin-bottom: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .logoBooksAndDreams{
       background-image: url("../../../public/assets/BooksAndDreamsTrim.svg");
@@ -25,7 +55,7 @@
       background-repeat: no-repeat;
       background-position: center;
 
-      align-self: start;
+     align-self: start;
 
       width:  70%;
       min-width: 300px;
@@ -37,33 +67,35 @@
       margin: 0;
       align-self: start;
       text-align: left;
-
+      color: $brown;
 
     }
 
   }
 
-
-
   .banner-christmas{
-    background-image: url("./bannerHomeChristmas.png");
-    background-size: cover;
+    background-image: url("./bannerHomeChristmas2.png");
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: left top;
     width:  100%;
+    height: 340px;
     border-radius: 2rem;
     margin-bottom: 1.5rem;
     text-align: center;
-
 
     .christmas-texto{
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 5%;
+      font-size: 0.8rem;
+      color: $brown;
+      margin-top: 1rem;
 
         .left{
           width: 50%;
+
         }
         .right{
           width: 50%;
@@ -71,47 +103,321 @@
           .btn-compre-agora{
               background-color: #FF7F51;
               color: white;
+              font-size: 0.8rem;
               padding: 0.5rem 1rem;
+              margin-right: -0.5rem;
               border-radius: 1rem;
               border: none;
               outline: none;
-
+            cursor: pointer;
           }
         }
-
     }
-
 
   }
 
+  .banner-books{
+    width:  100%;
+    height: 340px;
+    border-radius: 2rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+
+  /*
   .banner-library{
     background-image: url("./bannerHomeLibrary.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
     width:  100%;
+    height: 340px;
     border-radius: 2rem;
-    margin-bottom: 1.5rem;
-
+    margin-bottom: 2rem;
     text-align: center;
-  }
 
-  .footer {
+      .library-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        color: white;
+        margin-top: 4rem;
+
+        .title{
+          font-family: $headingFont;
+          font-size: 1.5rem;
+          margin-bottom: 0rem;
+        }
+        .slogan{
+          font-size: 2rem;
+          margin-bottom: -12px;
+        }
+
+        .text{
+          margin-bottom: 1.8rem;
+          font-family: $paragraphFont;
+        }
+      }
+
+      .btn-mais-info{
+        background-color: #FF7F51;
+        font-family: $paragraphFont;
+        font-size: 0.8rem;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        border: none;
+        outline: none;
+
+        cursor: pointer;
+      }
+
+  }
+*/
+
+  .banner-mission{
+    display: flex;
+    flex-direction: column;
+
     width:  100%;
-    background-color: #705D56;
-    p {
-      margin: 0;
+    height: 340px;
+    border-radius: 2rem;
+
+    margin-bottom: 1.5rem;
+    text-align: center;
+
+
+
+
+    .mission-text{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      font-size: 0.8rem;
+      color: $brown;
+
+
     }
+
+    .image-mission{
+      background-image: url("./banner_mission.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left top;
+
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+    }
+
   }
 
-  @media (max-width: 768px) {
+}
+
+
+
+/*  - - -   MEDIA - - - */
+@media (max-width: 768px) {
+
+  .content{
     .wrapper{
       width: 85%;
+      height: 1450px;
       margin: 0 auto;
+
+      .logo-container {
+        width: 100%;
+        border-radius: 2rem;
+        margin-top: 0.7rem;
+        margin-bottom: 2rem;
+
+        .logoBooksAndDreams{
+          background-image: url("../../../public/assets/BooksAndDreamsTrim.svg");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+
+          align-self: center;
+
+          width:  50%;
+          min-width: 200px;
+          height: 3rem;
+          margin: 0;
+        }
+
+        .textBooksAndDreams{
+          margin: 0;
+          align-self: start;
+          align-self: center;
+          font-size: 0.8rem;
+
+        }
+
+      }
+
+      .banner-christmas {
+        background-image: url("./bannerHomeChristmas2.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 160px;
+
+
+
+        .christmas-texto{
+          font-size: 0.7rem;
+          margin-top: 0.5rem;
+
+          .left{
+            width: 50%;
+          }
+          .right{
+            width: 50%;
+
+            .extra{
+              display: none;
+            }
+
+            .btn-compre-agora{
+              background-color: #FF7F51;
+              color: white;
+              padding: 0.4rem 0.7rem;
+              font-size: 0.7rem;
+              border-radius: 1rem;
+              border: none;
+              outline: none;
+
+
+            }
+          }
+        }
+      }
+
+      .banner-books{
+        width: 100%;
+        min-height: 595px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin-bottom: 2.1rem;
+      }
+
+      /*
+      .banner-library{
+        width:  100%;
+        height: 160px;
+        border-radius: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+
+        .library-text{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.8rem;
+          color: white;
+          margin-top: 0.32rem;
+
+          .title{
+            font-family: $headingFont;
+            font-size: 1rem;
+            margin-bottom: -0.2rem;
+          }
+          .slogan{
+            font-size: 1.5rem;
+            margin-bottom: -9px;
+          }
+
+          .text{
+            margin-bottom: 0.8rem;
+            font-family: $paragraphFont;
+            font-size: 0.7rem;
+          }
+        }
+
+        .btn-mais-info{
+          background-color: #FF7F51;
+          color: white;
+          padding: 0.4rem 0.7rem;
+          font-size: 0.7rem;
+          border-radius: 1rem;
+          border: none;
+          outline: none;
+
+        }
+
+      }
+    */
+      .banner-mission{
+        display: flex;
+        flex-direction: column;
+
+        width:  100%;
+        height: 240px;
+        border-radius: 2rem;
+
+        margin-bottom: 1.5rem;
+        text-align: center;
+
+
+        .mission-text{
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+
+          font-size: 0.8rem;
+          color: $brown;
+
+        }
+
+        .image-mission{
+          background-image: url("./banner_mission.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: left top;
+
+          width: 100%;
+          height: 300px;
+          object-fit: contain;
+        }
+
+      }
+
+
     }
+
   }
+
+  .footer{
+    display: none;
+  }
+
 }
+
+@media (max-width: 1000px) {
+
+  .footer {
+    display: none;
+  }
+
+}
+
+
+
+
+
+
+
+
 
 
 

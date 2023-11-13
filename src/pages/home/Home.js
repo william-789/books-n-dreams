@@ -1,10 +1,14 @@
 import React from "react";
 import './Home.scss';
-import NavBar from '../navbar/NavBar';
+import {Link} from "react-router-dom";
+import Footer from "../../components/footer/Footer";
+import Books from "../../components/books/Books";
+import SubTitles from '../../components/subtitle/subtitle'
+import Library from "../../components/library/Library";
 
 export default function Home(props) {
 
-    return <div className={"home content"}>
+        return <div className={"home content"}>
 
             <div className="wrapper">
 
@@ -12,8 +16,6 @@ export default function Home(props) {
                     <div className="logoBooksAndDreams"></div>
                     <p className="textBooksAndDreams">Uma aplicação, mil livrarias, infinitas histórias</p>
                 </div>
-
-                {/* CHRISTMAS BANNER          */}
                 <div className="banner-christmas">
 
                     <div className="christmas-texto">
@@ -22,50 +24,40 @@ export default function Home(props) {
                             <p>A <strong>BOOKS AND DREAMS</strong><br/>
                                 deseja-te um Feliz Natal!</p>
 
-                            <p>
+                            <p className={"extra"}>
                                 Acompanha o teu Natal com os melhores<br/>
                                 livros natalícios que temos para te oferecer.
                             </p>
 
-                            <button className="btn-compre-agora">Compre Agora!</button>
+                            <Link to={"/search-book"}>
+                                <div className={"box"} id={"compre-agora"}>
+                                    <button className="btn-compre-agora"><strong>Compre Agora!</strong></button>
+                                </div>
+                            </Link>
+
                         </div>
 
                     </div>
 
                 </div>
+                <SubTitles text={"As nossas sugestões para ti"}/>
+                <Books/>
+                <Library/>
+                <SubTitles text={"A nossa missão"}/>
+                <div className="banner-mission">
+                    <div className={"mission-text"}>
+                        <p>Facilidade e <br/> Praticalidade na Compra</p>
+                        <p>Promoção de <br/>Experiências Únicas</p>
+                        <p>Manutenção Cultural</p>
+                        <p>Incentivo à Interação e <br/>Sentido de Comunidade</p>
+                    </div>
 
-                <div className="banner-library">
-                    <h1>Titulo2</h1>
-                    <p>
-                        IMAGE BACKGROUND RESPONSIVE IMAGE
-                        IMAGE ON DIV BOX METHOD 2
-                        mage as background of the DIV, with text in front.
-                    </p>
+                    <div className={"image-mission"}></div>
                 </div>
 
-                <div className="banner-library">
-                    <h1>Titulo2</h1>
-                    <p>
-                        IMAGE BACKGROUND RESPONSIVE IMAGE
-                        IMAGE ON DIV BOX METHOD 2
-                        mage as background of the DIV, with text in front.
-                    </p>
-                </div>
-
-                {/* LIBRARY BANNER
-                <div className="banner-library">
-                    <h1>Titulo2</h1>
-                    <p>
-                        IMAGE BACKGROUND RESPONSIVE IMAGE
-                        IMAGE ON DIV BOX METHOD 2
-                        mage as background of the DIV, with text in front.
-                    </p>
-                </div>
-                */}
+            </div>
+            <Footer/>
 
         </div>
-        <div className="footer">
-            <p><strong>FOOTER</strong></p>
-        </div>
-    </div>
+
 }
