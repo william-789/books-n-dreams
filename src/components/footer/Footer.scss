@@ -1,0 +1,168 @@
+$backgroundColor: #F1F1F1;
+$orange: #FF7F51;
+$brown: #705D56;
+$backgroundAccent: #EBE6E4;
+$colourCloser: #4D9AD1;
+$colourCheaper: #62C33F;
+
+$headingFont: Raleway, sans-serif;
+$paragraphFont: Roboto, sans-serif;
+$priceFont: Raleway, sans-serif;
+
+$titleSize: 40px; // UTILIZAR REM?
+$titleSizeAPP: 22px; // UTILIZAR REM?
+
+$subtitleSize: 30px; // UTILIZAR REM?
+$subtitleSizeAPP: 18px; // UTILIZAR REM?
+
+$listTitles: 25px; //UTILIZAR REM?
+$listTitlesAPP: 20px; //UTILIZAR REM?
+
+$paragraphSize: 18px; // UTILIZAR REM?
+$paragraphSizeAPP: 15px; // UTILIZAR REM?
+
+
+
+
+
+.footer {
+  width: 100%;
+  height: 480px;
+  background-color: #705D56;
+  border: 1px solid yellow;
+
+  .columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    max-width: 840px;
+    margin: 4rem auto 2rem auto;
+
+
+
+    .col {
+      h1 {
+        font-family: $headingFont;
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      p {
+        font-family: $paragraphFont;
+        color: white;
+        font-size: 0.8rem;
+      }
+
+    }
+
+  }
+
+  .social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 840px;
+    margin: auto auto 2rem auto;
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 150px;
+      height: 42px;
+
+      margin-left: 4rem;
+
+      .social_icon {
+        color: $backgroundColor;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .download {
+      width: 220px;
+      margin-right: 4rem;
+      h2 {
+        font-family: $headingFont;
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 0;
+      }
+
+      .stores {
+        width: 100%;
+        height: 55px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .card {
+          width: 100px;
+          height: 35px;
+          border-radius: 1px;
+          align-self: center;
+
+          &.googlePlay {
+            background-image: url("./footer_goolgePlay.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+          }
+
+          &.appStore {
+            background-image: url("./footer_appStore.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+          }
+
+
+        }
+
+
+      }
+
+
+    }
+  }
+
+  .line {
+    background: $backgroundColor;
+    opacity: 0.3;
+    width: 80%;
+    border: none;
+    height: 1px;
+    margin-bottom: 2rem;
+  }
+
+  .copy {
+    text-align: center;
+    font-family: $paragraphFont;
+    color: white;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+
+
+
+
+/* MEDIA */
+
+  @media (max-width: 768px) {
+
+    .footer{
+      display: none;
+    }
+
+  }
+}
+
+
+
+

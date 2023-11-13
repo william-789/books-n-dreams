@@ -1,0 +1,118 @@
+
+$backgroundColor: #F1F1F1;
+$orange: #FF7F51;
+$brown: #705D56;
+$backgroundAccent: #EBE6E4;
+
+$headingFont: Raleway, sans-serif;
+$paragraphFont: Roboto, sans-serif;
+
+$titleSize: 40px;
+$subtitleSize: 30px;
+$listTitles: 25px;
+$paragraphSize: 18px;
+
+
+.Livro{
+  max-width: 170px;
+  max-height: 310px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  margin-bottom: 10px;
+
+    .livro-image {
+      min-width: 150px;
+      height: 240px;
+      background-image: url("IreneVallejo.jpg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 6px;
+      align-self: center;
+    }
+
+    .title{
+      font-family: $headingFont;
+      color: $brown;
+      text-align: start;
+      font-size: 0.75rem;
+      margin: 5px 0 0 0;
+    }
+
+    .nome{
+      text-align: start;
+      font-size: 0.7rem;
+      color: $brown;
+      margin: 5px 0 5px 0;
+    }
+
+    .btn-desde{
+      background-color: $brown;
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 1rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+}
+
+
+/*  - - -   MEDIA - - - */
+@media (max-width: 768px) {
+
+  .Livro{
+    max-width: 180px;
+    max-height: 290px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+
+
+    .livro-image {
+      min-width: 157px;
+      height: 230px;
+      background-image: url("IreneVallejo.jpg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 6px;
+    }
+
+    .title{
+      font-family: $headingFont;
+      color: $brown;
+      text-align: start;
+      font-size: 0.7rem;
+    }
+
+    .nome{
+      font-family: $paragraphFont;
+      color: $brown;
+      margin: 0 0 5px 0;
+      text-align: start;
+      font-size: 0.7rem;
+    }
+
+    .btn-desde{
+      background-color: $brown;
+      color: white;
+      padding: 0.2rem 0.5rem;
+      margin: 0 0 5px 0;
+      border-radius: 1rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 0.6rem;
+    }
+  }
+}
+
+
+
+
