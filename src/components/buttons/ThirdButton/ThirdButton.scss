@@ -9,21 +9,26 @@
   border-radius: 50px;
   background-color: $brown;
 
-  h4 {
+  .button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $brown;
     padding: 0.2rem;
     font-family: $headingFont;
     color: white;
     font-weight: 600;
-    font-size:0.9rem;
+    font-size: 0.9rem;
     margin-top: 4px;
     margin-bottom: 4px;
+    white-space: nowrap;
   }
 }
 
-@media (max-width: 768px){
-  .ThirdButton{
-    > h4{
-      font-size:0.8rem;
+@media (max-width: 768px) {
+  .ThirdButton {
+    > h4 {
+      font-size: 0.8rem;
     }
   }
 }

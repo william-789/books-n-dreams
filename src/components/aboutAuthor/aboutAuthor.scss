@@ -4,14 +4,16 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  width: 90%;
+  margin-bottom: 4rem;
+  width: 100%;
   flex-direction: column;
 
   .ContentWrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
+    margin-top: 3rem;
+
 
     .Image {
       background-color: $brown;
@@ -22,22 +24,25 @@
       aspect-ratio: 1 / 1;
       border-radius: 200px;
       margin-right: 4rem;
+      margin-bottom: 3rem;
+
     }
 
     .Info {
       width: 100%;
       font-family: $paragraphFont;
+      color: $brown;
 
       > h2 {
         font-weight: 700;
         color: $brown;
       }
 
-      > p {
+     /*  > p {
         font-weight: 400;
         color: $darkBlue;
         line-height: 1.6rem;
-      }
+      }*/
     }
   }
 }

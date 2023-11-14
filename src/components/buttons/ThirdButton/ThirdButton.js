@@ -3,6 +3,6 @@ import "./ThirdButton.scss"
 
 export default function ThirdButton(props) {
     return <div className={"ThirdButton"}>
-        <h4>{props.text}</h4>
+        <button className="button"> {props.text}</button>
     </div>
 }

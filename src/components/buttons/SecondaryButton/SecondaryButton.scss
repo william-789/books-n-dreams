@@ -6,21 +6,28 @@
   justify-content: center;
   width: 100%;
   aspect-ratio: 1 / 0.20;
-  border-radius: 20px;
+  margin-top: 1rem;
+  border-radius: 40px;
   background-color: $orange;
 
-  h4 {
+  .button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $orange;
     font-family: $headingFont;
     color: white;
     font-weight: 700;
-    font-size:0.9em;
+    font-size: 0.9em;
+    white-space: nowrap;
   }
 }
 
-@media (max-width: 768px){
-  .SecondaryButton{
-    .h4{
-      font-size: 0.7rem;
+@media (max-width: 768px) {
+  .SecondaryButton {
+    button {
+      margin-bottom: 2px;
+      font-size: 0.8rem;
     }
   }
 }
