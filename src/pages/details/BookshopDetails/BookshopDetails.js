@@ -3,7 +3,7 @@ import React, {useContext, useEffect, useState} from "react";
 import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
-import Favorite from "../../favorite/favorite";
+import Favorite from "../../../components/favorite/favorite";
 import Subtitle from "../../../components/subtitle/subtitle";
 
 export default function BookshopDetails(props) {
@@ -46,6 +46,11 @@ export default function BookshopDetails(props) {
             <div className={"information"}>
 
                 <div className={"left"}>
+                    <Subtitle text={"Descrição"}/>
+                    <p>{bookstoreInfo.description}</p>
+                </div>
+
+                <div className={"right"}>
                     <Subtitle text={"Morada"}/>
                     <p>{bookstoreInfo.morada}, {bookstoreInfo.codigo_postal} {bookstoreInfo.localidade}</p>
 
@@ -54,11 +59,6 @@ export default function BookshopDetails(props) {
 
                     <Subtitle text={"Hora de Funcionamento"}/>
                     <p>{bookstoreInfo.horario.replaceAll(",", "\n")}</p>
-                </div>
-
-                <div className={"right"}>
-                    <Subtitle text={"Descrição"}/>
-                    <p>{bookstoreInfo.description}</p>
                 </div>
 
             </div>
