@@ -1,28 +1,38 @@
 import {useParams} from "react-router-dom";
 import React, {useContext, useEffect, useState} from "react";
-import axiosBooks from "../../../util/axiosBooks";
-import NavBar from "../../navbar/NavBar";
+import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
 import Favorite from "../../favorite/favorite";
+import Subtitle from "../../../components/subtitle/subtitle";
 
 export default function BookshopDetails(props) {
     const {id} = useParams();
-    const [details, setDetails] = useState(null)
+    const [details, setDetails] = useState(null);
 
     useEffect(() => {
         axiosBooks.get(`/store/${id}`)
-            .then(r => setDetails(r))
+            .then(r => setDetails(r.data))
             .catch(e => console.log("Error", e))
-    })
+    },[])
 
-    console.log(details)
+    if(!details) {
+        return null
+    }
+
+    let bookstoreInfo = details.bookstore.info
+    let bookstorePhoto = details.bookstore.fotos.filter(l => {
+        return l.particularidade === null
+    })
+    let special = details.bookstore.fotos.find(l => {
+        return l.particularidade !== null
+    })
 
     return <div className={"BookshopDetails content"}>
 
         <div className={"header"}>
             <div className={"banner"}
-                 style={{backgroundImage: `url(https://media.cntraveler.com/photos/5edf98c162bb344a7a7bab53/16:9/w_1920,c_limit/SistersUptownBooks-NYC-WTJ2W3.jpg)`}}/>
+                 style={{backgroundImage: `url(${baseImageLink + bookstoreInfo.capa})`}}/>
 
             <div className={"favorite"}>
                 <Favorite/>
@@ -31,40 +41,44 @@ export default function BookshopDetails(props) {
 
         <div className={"container"}>
 
-
-            <h1>Centésima Página</h1>
+            <h1>{bookstoreInfo.nome}</h1>
 
             <div className={"information"}>
+
                 <div className={"left"}>
-                    <h2>Morada</h2>
-                    <p></p>
+                    <Subtitle text={"Morada"}/>
+                    <p>{bookstoreInfo.morada}, {bookstoreInfo.codigo_postal} {bookstoreInfo.localidade}</p>
 
-                    <h2>Contactos</h2>
-                    <p></p>
+                    <Subtitle text={"Contactos"}/>
+                    <p>{bookstoreInfo.contacto}</p>
 
-                    <h2>Horário de Funcionamento</h2>
-                    <p></p>
-
+                    <Subtitle text={"Hora de Funcionamento"}/>
+                    <p>{bookstoreInfo.horario.replaceAll(",", "\n")}</p>
                 </div>
 
                 <div className={"right"}>
-                    <h2>Descrição</h2>
-                    <p></p>
-
+                    <Subtitle text={"Descrição"}/>
+                    <p>{bookstoreInfo.description}</p>
                 </div>
 
             </div>
 
-            <h2>Fotografias</h2>
+            <Subtitle text={"Fotografias"}/>
             <div className={"photos"}>
+                {bookstorePhoto.map(l => {
+                    console.log("path", l.path);
+                    return <img src={baseImageLink + l.path} className={"photo"}/>
+                })}
             </div>
 
-            <h2>Fotografias</h2>
-            <h2>Fotografias</h2>
-            <h2>Fotografias</h2>
-            <h2>Fotografias</h2>
-            <h2>Fotografias</h2>
-            <h2>Fotografias</h2>
+            <Subtitle text={special.particularidade}/>
+
+            <div className={"information"}>
+                <img src={baseImageLink + special.path} className={"specialPhoto"}/>
+                <p className={"text"}>{special.descricao}</p>
+            </div>
+
+            <Subtitle text={"Livros Disponíveis"}></Subtitle>
 
         </div>
     </div>

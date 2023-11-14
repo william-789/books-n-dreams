@@ -5,7 +5,8 @@
 
     .banner {
       height: 50vh;
-      background-position: center;
+      width: 100%;
+      object-fit: cover;
     }
 
     .favorite {
@@ -21,6 +22,51 @@
     h1 {
       font-size: $titleSize;
       color: $brown;
+
+      @media(max-width: 768px) {
+        font-size: $titleSizeAPP;
+      }
+    }
+
+    .information {
+      display: flex;
+      margin-bottom: 4rem;
+
+      .left {
+        width: 40%;
+        margin-right: 10%;
+      }
+
+      .right {
+        max-width: 50%;
+      }
+    }
+
+    .photos {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+
+      .photo {
+        width: 32%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 15%;
+      }
+    }
+
+    .specialPhoto {
+      width: 33%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 15%;
+      margin-right: 4rem;
+    }
+
+    .text {
+      display: flex;
+      align-items: center;
     }
   }
 }
