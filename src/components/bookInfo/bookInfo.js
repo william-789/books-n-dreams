@@ -2,7 +2,7 @@ import "./bookInfo.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight as arrow } from "@fortawesome/free-solid-svg-icons";
 
-import Favorite from "../../pages/favorite/favorite";
+import Favorite from "../../components/favorite/favorite";
 import Subtitle from "../subtitle/subtitle";
 import React from "react";
 

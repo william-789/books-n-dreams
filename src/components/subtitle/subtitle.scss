@@ -19,7 +19,7 @@
 @media (max-width: 768px){
   .Subtitles{
     > h2{
-      font-size: $subtitleSizeAPP;
+      font-size: 1.3rem; //$subtitleSizeAPP
     }
   }
 }

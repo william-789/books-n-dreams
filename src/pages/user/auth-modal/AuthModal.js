@@ -1,6 +1,6 @@
 import Modal from "../../../components/shared/Modal/Modal";
-import LoginForm from "../../../../../../copies/src/components/forms/login/LoginForm";
-import RegisterForm from "../../../../../../copies/src/components/forms/register/RegisterForm";
+import LoginForm from "../../../components/forms/login/LoginForm";
+import RegisterForm from "../../../components/forms/register/RegisterForm";
 import "./AuthModal.scss"
 import { useState } from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
