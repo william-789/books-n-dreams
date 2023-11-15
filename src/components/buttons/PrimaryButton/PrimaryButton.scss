@@ -1,6 +1,6 @@
 @import "../../../App";
 
-.PrimaryButton{
+.PrimaryButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,9 +9,14 @@
   border-radius: 50px;
   background-color: $orange;
 
-  h1{
+  .button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $orange;
     font-family: $headingFont;
     color: white;
+    font-size: 4rem;
     font-weight: 700;
   }
 }

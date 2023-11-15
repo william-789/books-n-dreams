@@ -1,0 +1,19 @@
+@import "src/App";
+
+.BookList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .BookPrice {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      width: calc(25% - 10px);
+    }
+  }
+}

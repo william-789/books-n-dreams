@@ -12,17 +12,20 @@ $colourCheaper: #62C33F;
 $headingFont: Raleway, sans-serif;
 $paragraphFont: Roboto, sans-serif;
 
-$titleSize: 40px; // UTILIZAR REM?
-$titleSizeAPP: 1.5em; // UTILIZAR REM?
+$titleSize: 2rem; // UTILIZAR REM?
+$titleSizeAPP: 1.5rem; // UTILIZAR REM?
 
-$subtitleSize: 30px; // UTILIZAR REM?
-$subtitleSizeAPP: 1.2em; // UTILIZAR REM?
+$subtitleSize: 1.8rem; // UTILIZAR REM?
+$subtitleSizeAPP: 1.3rem; // UTILIZAR REM?
 
-$listTitles: 25px; //UTILIZAR REM?
-$listTitlesAPP: 20px; //UTILIZAR REM?
+$listTitles: 1.4rem; //UTILIZAR REM?
+$listTitlesAPP: 1.2rem; //UTILIZAR REM?
 
-$paragraphSize: 18px; // UTILIZAR REM?
-$paragraphSizeAPP: 1em; // UTILIZAR REM?
+$paragraphSize: 1.2rem; // UTILIZAR REM?
+$paragraphSizeAPP: 1rem; // UTILIZAR REM?
+
+$libraryDetails: 1.6rem;
+$libraryDetailsAPP: 0.9rem;
 
 * {
   box-sizing: border-box;
@@ -39,10 +42,23 @@ body, html {
 .App {
   display: flex;
   height: 100vh;
+
   .content {
     flex-grow: 1;
     height: 100%;
     overflow: auto;
+  }
+
+  p {
+    font-family: $paragraphFont;
+    font-size: $paragraphSize;
+    font-weight: 200;
+    line-height: 30px;
+    margin: 0;
+
+    @media(max-width: 768px) {
+      font-size: $paragraphSizeAPP;
+    }
   }
 
   @media(max-width: 768px) {
@@ -52,4 +68,6 @@ body, html {
 
 @import "pages/navbar/NavBar";
 @import "pages/details/BookshopDetails/BookshopDetails";
-@import "pages/favorite/favorite";
+@import "components/favorite/favorite";
+@import "components/subtitle/subtitle";
+@import "pages/home/Home";
