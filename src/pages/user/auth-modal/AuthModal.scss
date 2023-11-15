@@ -1,0 +1,39 @@
+#auth {
+  .onCloseContainer {
+    width: 100%;
+    text-align: right;
+    > svg {
+      cursor: pointer;
+      background-color: #FFF;
+      padding: 5px 7px;
+      border-radius: 50%;
+    }
+  }
+
+  .auth-content {
+    .tab-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .tab-option {
+        padding: 20px 5px;
+        width: 45%;
+        min-width: 86px;
+        text-align: center;
+        background-color: #F5F5F5;
+        color: #705D56;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 30px;
+
+        &.active {
+          background-color: #705D56;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

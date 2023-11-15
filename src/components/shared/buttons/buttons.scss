@@ -1,0 +1,13 @@
+button[data-action="submit"], .submit {
+  width: 50%;
+  min-width: 120px;
+  //max-width: ; // set later
+  background-color: $orange;
+  border: none;
+  padding: 20px 5px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+}
