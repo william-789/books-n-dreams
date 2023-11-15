@@ -12,17 +12,20 @@ $colourCheaper: #62C33F;
 $headingFont: Raleway, sans-serif;
 $paragraphFont: Roboto, sans-serif;
 
-$titleSize: 2.5rem;
-$titleSizeAPP: 1.8em;
+$titleSize: 2rem; // UTILIZAR REM?
+$titleSizeAPP: 1.5rem; // UTILIZAR REM?
 
-$subtitleSize: 30px; // UTILIZAR REM?
-$subtitleSizeAPP: 1.2em;
+$subtitleSize: 1.8rem; // UTILIZAR REM?
+$subtitleSizeAPP: 1.3rem; // UTILIZAR REM?
 
-$listTitles: 25px; //UTILIZAR REM?
-$listTitlesAPP: 20px; //UTILIZAR REM?
+$listTitles: 1.4rem; //UTILIZAR REM?
+$listTitlesAPP: 1.2rem; //UTILIZAR REM?
 
-$paragraphSize: 1.2rem;
-$paragraphSizeAPP: 1em;
+$paragraphSize: 1.2rem; // UTILIZAR REM?
+$paragraphSizeAPP: 1rem; // UTILIZAR REM?
+
+$libraryDetails: 1.6rem;
+$libraryDetailsAPP: 0.9rem;
 
 * {
   box-sizing: border-box;

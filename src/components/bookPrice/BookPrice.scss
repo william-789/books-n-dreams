@@ -1,10 +1,11 @@
 @import "src/App";
 
-.BookInfo {
+.BookPrice {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  margin-bottom: 20px;
 
   .image {
     background-color: $brown;
@@ -13,7 +14,7 @@
     background-repeat: no-repeat;
     width: 100%;
     aspect-ratio: 0.8 / 1;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
   }
 
   .info {
@@ -27,10 +28,6 @@
       font-size: $paragraphSizeAPP;
       margin-top: 0px;
       margin-bottom: 10px;
-
-      :nth-child(2){
-      margin-bottom: 20px;
-    }
     }
 
   }

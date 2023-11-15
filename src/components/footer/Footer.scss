@@ -21,15 +21,11 @@ $listTitlesAPP: 20px; //UTILIZAR REM?
 $paragraphSize: 18px; // UTILIZAR REM?
 $paragraphSizeAPP: 15px; // UTILIZAR REM?
 
-
-
-
-
 .footer {
   width: 100%;
   height: 480px;
   background-color: #705D56;
-  border: 1px solid yellow;
+  border: 1px solid #705D56;
 
   .columns {
     display: flex;
@@ -39,8 +35,6 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
 
     max-width: 840px;
     margin: 4rem auto 2rem auto;
-
-
 
     .col {
       h1 {
@@ -120,14 +114,8 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
             background-repeat: no-repeat;
             background-position: left top;
           }
-
-
         }
-
-
       }
-
-
     }
   }
 
@@ -147,9 +135,6 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
     font-size: 0.8rem;
     margin-bottom: 2rem;
   }
-
-
-
 
 
 /* MEDIA */
