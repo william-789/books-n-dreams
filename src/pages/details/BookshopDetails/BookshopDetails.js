@@ -9,6 +9,7 @@ import Subtitle from "../../../components/subtitle/subtitle";
 export default function BookshopDetails(props) {
     const {id} = useParams();
     const [details, setDetails] = useState(null);
+    const [books, setBooks] = useState(null);
 
     useEffect(() => {
         axiosBooks.get(`/store/${id}`)
@@ -16,9 +17,21 @@ export default function BookshopDetails(props) {
             .catch(e => console.log("Error", e))
     },[])
 
+    useEffect(() => {
+        axiosBooks.get(`/book/all`)
+            .then(r => setBooks(r.data))
+            .catch(e => console.log("Error", e))
+    },[])
+
     if(!details) {
         return null
     }
+
+    if(!books) {
+        return null
+    }
+
+    console.log("books", books)
 
     let bookstoreInfo = details.bookstore.info
     let bookstorePhoto = details.bookstore.fotos.filter(l => {

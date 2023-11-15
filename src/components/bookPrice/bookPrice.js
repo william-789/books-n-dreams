@@ -11,7 +11,7 @@ export default function BookPrice(props) {
             <h3>{props.nome}</h3>
             <h3>{props.autor}</h3>
 
-            <ThirdButton text={"Desde 15,50€"}/>
+            <ThirdButton text={props.text}/>
         </div>
 
     </div>
