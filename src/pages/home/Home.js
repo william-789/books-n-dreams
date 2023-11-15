@@ -5,6 +5,7 @@ import Footer from "../../components/footer/Footer";
 import Books from "../../components/books/Books";
 import SubTitles from '../../components/subtitle/subtitle'
 import Library from "../../components/library/Library";
+import WrapList from "../../components/bookList/wrapList"
 
 export default function Home(props) {
 
@@ -41,7 +42,8 @@ export default function Home(props) {
 
                 </div>
                 <SubTitles text={"As nossas sugestões para ti"}/>
-                <Books/>
+                {/* <Books/>  */}
+                <WrapList/>
                 <Library/>
                 <SubTitles text={"A nossa missão"}/>
 
