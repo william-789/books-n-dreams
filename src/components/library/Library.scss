@@ -42,7 +42,7 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
     align-items: center;
     font-size: 0.8rem;
     color: white;
-    margin-top: 4rem;
+    margin-top: 2.2rem;
 
     .title{
       font-family: $headingFont;
@@ -83,10 +83,11 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
 
       .banner-library{
         width:  100%;
-        height: 160px;
+        height: 300px;
         border-radius: 2rem;
-        margin-bottom: 1.5rem;
+
         text-align: center;
+
 
         .library-text{
           display: flex;
@@ -95,27 +96,26 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
           align-items: center;
           font-size: 0.8rem;
           color: white;
-          margin-top: 0.32rem;
+          margin-top: 0rem;
 
           .title{
             line-height: 20px;
             font-family: $headingFont;
-            font-size: 1rem;
-            margin-top: 0.7rem;
-            margin-bottom: -0.7rem;
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
 
 
           }
           .slogan{
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: -9px;
           }
 
           .text{
             margin: 0;
-
+            margin-top: 0.1rem;
             font-family: $paragraphFont;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
 
           }
         }
