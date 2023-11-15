@@ -12,17 +12,22 @@ $subtitleSize: 30px;
 $listTitles: 25px;
 $paragraphSize: 18px;
 
+*{
+  box-sizing: border-box;
+  text-decoration: none;
+}
 
 .Livro{
-  max-width: 170px;
-  max-height: 310px;
+  max-width: 210px;
+  max-height: 305px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: start;
-
   margin-bottom: 10px;
 
     .livro-image {
+      display: block;
       min-width: 150px;
       height: 240px;
       background-image: url("IreneVallejo.jpg");
@@ -30,35 +35,47 @@ $paragraphSize: 18px;
       background-repeat: no-repeat;
       background-position: center;
       border-radius: 6px;
-      align-self: center;
+
     }
 
     .title{
       font-family: $headingFont;
       color: $brown;
-      text-align: start;
-      font-size: 0.75rem;
-      margin: 5px 0 0 0;
+      text-align: center;
+      font-size: 0.9rem;
+
     }
 
     .nome{
+      margin-top: -4px;
       text-align: start;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       color: $brown;
-      margin: 5px 0 5px 0;
     }
 
     .btn-desde{
       background-color: $brown;
       color: white;
-      font-size: 0.7rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 1rem;
+      font-size: 0.8rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 50px;
       border: none;
       outline: none;
       cursor: pointer;
-    }
+      display: block;
+      align-self: start;
+  }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /*  - - -   MEDIA - - - */
@@ -66,49 +83,52 @@ $paragraphSize: 18px;
 
   .Livro{
     max-width: 180px;
-    max-height: 290px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-
+    max-height: 300px;
+    margin-bottom: 16px;
 
     .livro-image {
-      min-width: 157px;
+      display: block;
+      min-width: 180px;
       height: 230px;
       background-image: url("IreneVallejo.jpg");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       border-radius: 6px;
+      margin-bottom: 10px;
+
     }
 
     .title{
       font-family: $headingFont;
       color: $brown;
       text-align: start;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      line-height: 10px;
     }
 
     .nome{
       font-family: $paragraphFont;
       color: $brown;
-      margin: 0 0 5px 0;
       text-align: start;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      line-height: 10px;
     }
 
     .btn-desde{
       background-color: $brown;
       color: white;
-      padding: 0.2rem 0.5rem;
-      margin: 0 0 5px 0;
+      padding: 0.4rem 0.7rem;
+
       border-radius: 1rem;
       border: none;
       outline: none;
       cursor: pointer;
-      font-size: 0.6rem;
+      font-size: 0.8rem;
+
+
     }
   }
 }
