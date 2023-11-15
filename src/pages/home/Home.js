@@ -44,6 +44,8 @@ export default function Home(props) {
                 <Books/>
                 <Library/>
                 <SubTitles text={"A nossa missão"}/>
+
+
                 <div className="banner-mission">
                     <div className={"mission-text"}>
                         <p>Facilidade e <br/> Praticalidade na Compra</p>
