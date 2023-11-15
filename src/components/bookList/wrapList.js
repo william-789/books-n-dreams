@@ -12,6 +12,7 @@ export default function WrapList(props) {
                     nome={book.nome}
                     autor={book.autor}
                     foto={book.foto}
+                    text={book.desde}
                 />
             ))}
         </div>
