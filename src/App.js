@@ -1,6 +1,7 @@
 import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ErrorProvider } from "./context/errorContext";
+import { UserProvider } from "./context/userContext";
 import LogIn from "./pages/login_register/LogIn";
 import Register from "./pages/login_register/Register";
 import Home from "./pages/home/Home";
@@ -25,6 +26,7 @@ import NavBar from "./pages/navbar/NavBar";
 function App() {
   return <BrowserRouter>
     <ErrorProvider>
+    <UserProvider>
     <div className="App">
       <NavBar/>
       <Switch>
@@ -50,6 +52,7 @@ function App() {
         <Redirect to={"/homePage"}/>
       </Switch>
     </div>
+    </UserProvider>
     </ErrorProvider>
   </BrowserRouter>
 }
