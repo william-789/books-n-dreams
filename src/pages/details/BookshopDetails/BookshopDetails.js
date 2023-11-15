@@ -1,42 +1,44 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import React, {useContext, useEffect, useState} from "react";
 import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHeart} from '@fortawesome/free-solid-svg-icons'
+import {faChevronRight} from '@fortawesome/free-solid-svg-icons'
+import {faChevronLeft} from '@fortawesome/free-solid-svg-icons'
 import Favorite from "../../../components/favorite/favorite";
 import Subtitle from "../../../components/subtitle/subtitle";
+import WrapList from "../../../components/bookList/wrapList";
+import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
+import SllideShow from "../../../components/slideShow/SlideShow";
 
 export default function BookshopDetails(props) {
     const {id} = useParams();
     const [details, setDetails] = useState(null);
     const [books, setBooks] = useState(null);
+    const [photos, setPhotos] = useState(null);
 
     useEffect(() => {
         axiosBooks.get(`/store/${id}`)
-            .then(r => setDetails(r.data))
+            .then(r => {
+                setDetails(r.data)
+                setPhotos(r.data.bookstore.fotos)
+            })
             .catch(e => console.log("Error", e))
-    },[])
 
-    useEffect(() => {
         axiosBooks.get(`/book/all`)
-            .then(r => setBooks(r.data))
+            .then(r => setBooks(r.data.books))
             .catch(e => console.log("Error", e))
-    },[])
+    }, [])
 
-    if(!details) {
-        return null
-    }
-
-    if(!books) {
+    if (!details || !books || !photos) {
         return null
     }
 
     console.log("books", books)
 
-    let bookstoreInfo = details.bookstore.info
-    let bookstorePhoto = details.bookstore.fotos.filter(l => {
-        return l.particularidade === null
-    })
+    const bookstoreInfo = details.bookstore.info
+    const bookstorePhoto = photos.filter(l => l.particularidade === null)
+    const photoList = bookstorePhoto.map(p => p.path)
+
     let special = details.bookstore.fotos.find(l => {
         return l.particularidade !== null
     })
@@ -65,33 +67,44 @@ export default function BookshopDetails(props) {
 
                 <div className={"right"}>
                     <Subtitle text={"Morada"}/>
-                    <p>{bookstoreInfo.morada}, {bookstoreInfo.codigo_postal} {bookstoreInfo.localidade}</p>
+                    <p>{bookstoreInfo.morada},</p>
+                    <p>{bookstoreInfo.codigo_postal} {bookstoreInfo.localidade}</p>
 
                     <Subtitle text={"Contactos"}/>
                     <p>{bookstoreInfo.contacto}</p>
 
                     <Subtitle text={"Hora de Funcionamento"}/>
-                    <p>{bookstoreInfo.horario.replaceAll(",", "\n")}</p>
+                    <p dangerouslySetInnerHTML={{__html: bookstoreInfo.horario.replaceAll(', ', '<br>')}}></p>
                 </div>
 
             </div>
 
             <Subtitle text={"Fotografias"}/>
-            <div className={"photos"}>
-                {bookstorePhoto.map(l => {
-                    console.log("path", l.path);
-                    return <img src={baseImageLink + l.path} className={"photo"}/>
-                })}
-            </div>
+
+            <SllideShow photos={photoList} size={3}/>
 
             <Subtitle text={special.particularidade}/>
 
             <div className={"information"}>
-                <img src={baseImageLink + special.path} className={"specialPhoto"}/>
+                <div className={"specialPhotoContainer"}>
+                    <img src={baseImageLink + special.path} className={"specialPhoto"}/>
+                </div>
                 <p className={"text"}>{special.descricao}</p>
             </div>
 
             <Subtitle text={"Livros Disponíveis"}></Subtitle>
+
+            <WrapList list={books}/>
+
+            <div className={"button"}>
+                <Link to={"/search"}>
+            <PrimaryButton text={"Ver mais"}/>
+            </Link>
+            </div>
+
+            <br/>
+            <br/>
+            <br/>
 
         </div>
     </div>

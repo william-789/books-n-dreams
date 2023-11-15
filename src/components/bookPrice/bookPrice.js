@@ -1,8 +1,10 @@
 import "./BookPrice.scss"
 import ThirdButton from "../buttons/ThirdButton/ThirdButton";
+import {Link} from "react-router-dom";
 
 export default function BookPrice(props) {
     return <div className={"BookPrice"}>
+        <Link to={`/book/${props.key}`} className={"link"}>
         <div className={"image"}>
             <img src={props.foto} alt={props.nome} />
         </div>
@@ -13,6 +15,7 @@ export default function BookPrice(props) {
 
             <ThirdButton text={props.text}/>
         </div>
+        </Link>
 
     </div>
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BookPrice from "../bookPrice/bookPrice";
 import "./wrapList.scss"
+import {Link} from "react-router-dom";
 
 export default function WrapList(props) {
 

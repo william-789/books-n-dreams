@@ -75,10 +75,9 @@ export default function BookDetails(props) {
             </div>
 
             <Subtitle text={"Mais livros de ..."}/>
-            <WrapList/>
+
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            <WrapList/>
 
             <Reviews/>
         </div>
