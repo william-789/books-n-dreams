@@ -1,0 +1,19 @@
+.Pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $brown;
+  font-size: $paragraphSizeAPP;
+  font-weight: bold;
+  > div {
+    cursor: pointer;
+    color: $orange;
+    margin: 5px;
+    font-size: 22px;
+    &.unactive {
+      pointer-events: none;
+      cursor: context-menu;
+    }
+  }
+}
