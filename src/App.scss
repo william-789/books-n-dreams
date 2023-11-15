@@ -53,8 +53,12 @@ body, html {
     font-family: $paragraphFont;
     font-size: $paragraphSize;
     font-weight: 200;
-   line-height: 30px;
+    line-height: 30px;
     margin: 0;
+
+    @media(max-width: 768px) {
+      font-size: $paragraphSizeAPP;
+    }
   }
 
   @media(max-width: 768px) {
@@ -64,4 +68,6 @@ body, html {
 
 @import "pages/navbar/NavBar";
 @import "pages/details/BookshopDetails/BookshopDetails";
-@import "pages/favorite/favorite";
+@import "components/favorite/favorite";
+@import "components/subtitle/subtitle";
+@import "pages/home/Home";
