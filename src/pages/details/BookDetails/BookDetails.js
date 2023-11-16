@@ -104,17 +104,11 @@ export default function BookDetails(props) {
                     />
                 </div>
             </div>
-            <Subtitle text={"Mais livros de ${author.nome}"}/>
-            <WrapList books={authorBooks}
-                      nome={author.nome}
-                      autor={author.autor}
-                      foto={author.foto}/>
+            <Subtitle text={`Mais livros de ${author.nome}`} />
+            <WrapList list={authorBooks} />
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            <WrapList books={genreBooks}
-                      nome={author.nome}
-                      autor={author.autor}
-                      foto={author.foto}/>
+            <WrapList list={genreBooks}/>
 
             <Reviews
                 nota={details.nota}

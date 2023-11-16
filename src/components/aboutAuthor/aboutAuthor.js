@@ -9,9 +9,8 @@ export default function AboutAuthor(props) {
             <Subtitle text={"Sobre o Autor"} />
 
             <div className={"ContentWrapper"}>
-                <div className={"Image"}>
-                    <img src={baseImageLink + props.foto}/>
-                </div>
+                <div className={"Image"}
+                     style={{backgroundImage: `url(${baseImageLink + props.foto})`}}/>
 
                 <div className={"Info"}>
                     <h2>{props.nome}</h2>
