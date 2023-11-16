@@ -1,20 +1,14 @@
 @import "../../../App";
 
 .ThirdButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 60%;
-  aspect-ratio: 1 / 0.3;
-  border-radius: 50px;
-  background-color: $brown;
 
   .button {
     border: none;
     outline: none;
     cursor: pointer;
     background-color: $brown;
-    padding: 0.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
     font-family: $headingFont;
     color: white;
     font-weight: 600;

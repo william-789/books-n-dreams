@@ -94,7 +94,7 @@ export default function BookshopDetails(props) {
 
             <Subtitle text={"Livros Disponíveis"}></Subtitle>
 
-            <WrapList list={books}/>
+            <WrapList list={books.slice(0, 4)}/>
 
             <div className={"button"}>
                 <Link to={"/search"}>
