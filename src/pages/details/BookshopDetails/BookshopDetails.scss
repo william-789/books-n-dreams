@@ -12,7 +12,7 @@
 
       @media(max-width: 768px) {
         height: 30vh;
-        width: 100vw;
+        width: 100%;
       }
     }
 
@@ -40,6 +40,7 @@
     }
 
     .information {
+      width: 100%;
       display: flex;
       margin-bottom: 4rem;
 
@@ -67,46 +68,44 @@
       }
     }
 
-    .photos {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 4rem;
+    .specialPhotoContainer {
+      width: 33%;
+      margin-right: 4rem;
 
-      .photo {
-        width: 32%;
+      .specialPhoto {
+        width: 100%;
+        border-radius: 15%;
         aspect-ratio: 1 / 1;
         object-fit: cover;
-        border-radius: 15%;
 
         @media(max-width: 768px) {
-          width: 48%;
-          margin-bottom: 15px;
+          aspect-ratio: 1 / 1;
+          width: 80%;
         }
       }
 
       @media(max-width: 768px) {
-        flex-wrap: wrap;
-        margin-bottom: 2rem;
-      }
-    }
-
-    .specialPhoto {
-      width: 33%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 15%;
-      margin-right: 4rem;
-
-      @media(max-width: 768px) {
-        width: 50%;
+        width: 100%;
         margin-bottom: 15px;
       }
     }
 
     .text {
       display: flex;
+      width: 66%;
       align-items: center;
+
+      @media(max-width: 768px) {
+        width: 100%;
+      }
+    }
+
+    .button {
+      display: flex;
+
+      button {
+        font-size: 1.2rem;
+      }
     }
   }
 }

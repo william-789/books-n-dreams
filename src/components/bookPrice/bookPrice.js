@@ -1,9 +1,11 @@
 import "./BookPrice.scss"
 import ThirdButton from "../buttons/ThirdButton/ThirdButton";
+import {Link} from "react-router-dom";
 import { baseImageLink } from "../../util/axiosBooks";
 
 export default function BookPrice(props) {
     return <div className={"BookPrice"}>
+        <Link to={`/book/${props.key}`} className={"link"}>
         <div className={"image"}>
             <img src={baseImageLink+props.foto} alt={props.nome} />
         </div>
@@ -14,6 +16,7 @@ export default function BookPrice(props) {
 
             <ThirdButton text={"Desde " + props.text+"€"}/>
         </div>
+        </Link>
 
     </div>
 }

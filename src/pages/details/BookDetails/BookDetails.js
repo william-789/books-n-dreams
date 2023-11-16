@@ -106,7 +106,6 @@ export default function BookDetails(props) {
                     />
                 </div>
             </div>
-
             <Subtitle text={"Mais livros de ${autor.nome}"}/>
             <WrapList books={authorBooks}/>
 
