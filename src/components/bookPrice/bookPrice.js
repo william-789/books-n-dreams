@@ -12,7 +12,7 @@ export default function BookPrice(props) {
 
         <div className={"info"}>
             <h3>{props.nome}</h3>
-            <h3>{props.autor}</h3>
+            <h4>{props.autor}</h4>
 
             <ThirdButton text={"Desde " + props.text+"€"}/>
         </div>

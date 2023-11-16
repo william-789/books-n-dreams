@@ -7,6 +7,42 @@ import {set} from "react-hook-form";
 
 export default function SllideShow(props) {
     const [idx, setIdx] = useState(0);
+    const [move, setMove] = useState(null);
+
+    const handleTouchStart = (e) => {
+        setMove({
+            startX: e.touches[0].clientX,
+            startY: e.touches[0].clientY,
+        });
+    };
+
+    const handleTouchMove = (e) => {
+        setMove({
+            ...move,
+            endX: e.touches[0].clientX,
+            endY: e.touches[0].clientY,
+        });
+    };
+
+    const handleTouchEnd = () => {
+        const {startX, startY, endX, endY} = move
+
+        if (startX && startY && endX && endY) {
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    previousPhoto()
+                } else {
+                    nextPhoto()
+                }
+            }
+        }
+
+        // Reset values
+        setMove(null);
+    };
 
     function nextPhoto() {
         if (idx === props.photos.length - 1) {
@@ -37,7 +73,10 @@ export default function SllideShow(props) {
     }
 
     return <div className={"SlideShow"}>
-        <div className={"photos"}>
+        <div className={"photos"}
+             onTouchStart={handleTouchStart}
+             onTouchMove={handleTouchMove}
+             onTouchEnd={handleTouchEnd}>
 
             <div className={"icon"} onClick={previousPhoto}>
                 <FontAwesomeIcon icon={faChevronLeft} className={"icon left"}/>

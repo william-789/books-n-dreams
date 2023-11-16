@@ -51,7 +51,7 @@ export default function Home(props) {
                 </div>
                 <SubTitles text={"As nossas sugestões para ti"}/>
                 {/* <Books/>  */}
-                <WrapList list={livros}/>
+                <WrapList list={livros.slice(0, 8)}/>
                 <Library/>
                 <SubTitles text={"A nossa missão"}/>
 
