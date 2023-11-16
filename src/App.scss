@@ -68,7 +68,10 @@ body, html {
 
 @import "pages/navbar/NavBar";
 @import "pages/details/BookshopDetails/BookshopDetails";
+@import "components/slideShow/SlideShow";
 @import "components/favorite/favorite";
 @import "components/subtitle/subtitle";
+@import "components/filter/Filter";
 @import "pages/home/Home";
-@import "components/slideShow/SlideShow";
+@import "pages/search/generalSearch/GeneralSearch";
+@import "pages/search/bookSearch/BookSearch";
