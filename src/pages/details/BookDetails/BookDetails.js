@@ -13,16 +13,54 @@ import WrapList from "../../../components/bookList/wrapList";
 import Reviews from "../../../components/reviews/reviews";
 
 export default function BookDetails(props) {
-    const {id} = useParams();
+    const {id, autor, genero} = useParams();
     const [details, setDetails] = useState(null)
+    const [store, setStore] = useState(null)
+    const [books, setBooks] = useState(null);
+    const [author, setAuthor] = useState(null);
+
+    const [authorBooks, setauthorBooks] = useState(null);
+    const [genreBooks, setGenreBooks] = useState(null);
+
+    useEffect(() => {
+        axiosBooks.get(`/store/${id}`)
+            .then(r => setStore(r.data.stores))
+            .catch(e => console.log("Error", e))
+    },[])
 
     useEffect(() => {
         axiosBooks.get(`/book/${id}`)
-            .then(r => setDetails(r))
+            .then(r => setDetails(r.data))
             .catch(e => console.log("Error", e))
-    })
+    }, []);
+
+    useEffect(() => {
+        axiosBooks.get(`/book/all`)
+            .then(r => setBooks(r.data.books))
+            .catch(e => console.log("Error", e))
+    }, [])
+
+    useEffect(() => {
+        axiosBooks.get(`/book/all`, {params:{autor:autor.id}})
+            .then(r => setauthorBooks(r.data.books))
+            .catch(e => console.log("Error", e))
+    }, [])
+
+    useEffect(() => {
+        axiosBooks.get(`/book/all`, {params:{genero:genero.id}})
+            .then(r => setGenreBooks(r.data.books))
+            .catch(e => console.log("Error", e))
+    }, [])
+
+    useEffect(() => {
+        axiosBooks.get(`/author/${id}`)
+            .then(r => setAuthor(r.data.author))
+            .catch(e => console.log("Error", e))
+    }, [])
 
     console.log(details);
+    console.log(books);
+    console.log(author);
 
     return <div className={"BookDetail_content"}>
 
@@ -33,51 +71,46 @@ export default function BookDetails(props) {
         <div className={"Container"}>
 
             <BookInfo
-                tipo={"Livro"}
-                genero={"Biográfico"}
-                nome={"Alguém Falou Sobre Nós"}
-                autor={"Irene Vallejo"}
-                editora={"Porto Editora"}
-                descricao={"A sociedade contemporânea vive imersa no imediatismo. Prioriza, sobretudo, o novo e o superficial e não tem tempo para ponderar ou olhar para trás. Felizmente, livros como este convidam-nos a fazer uma pausa para dar espaço às ideias, e dialogar com as vozes que antes levantaram as mesmas questões que nós. Nestas colunas semanais publicadas no jornal espanhol El Heraldo de Aragón, e das quais saem os luminosos ensaios aqui reunidos, Irene Vallejo reflete sobre as diferentes formas de como o presente está ligado à nossa história. A sua prosa límpida, a sua curiosidade inquieta e a paixão fervorosa com que olha para a sabedoria clássica são um lembrete bem-vindo de que a Antiguidade ainda está viva em nós hoje, e que a história não é um processo linear, mas um diálogo intemporal em constante desenvolvimento.Olhando para o passado, Irene Vallejo projeta um novo olhar sobre este mundo cada vez mais incerto, confuso e labiríntico, e fá-lo com uma voz precisa e lírica, que tem a rara qualidade de falar diretamente à experiência pessoal e à intimidade de cada leitor."}
+                tipo={details.tipo}
+                genero={details.genero}
+                nome={details.nome}
+                autor={details.autor}
+                editora={details.editora}
+                descricao={details.descricao}
             />
 
             <div className={"Multiple"}>
 
                 <div className={"ContainerLeft"}>
+
                     <Subtitle text={"Onde Comprar"}/>
                     <div className={"WhereToBuyList"}>
-                        <WhereToBuy
-                            nome={"Livraria Aqui Há Gato"}
-                            localidade={"Santarém"}
-                            distrito={"Santarém"}
-                            preco={"15,50€"}/>
+                        {store.map(s => {
+                          return  <WhereToBuy
+                              key={store.id}
+                              capa={store.capa}
+                              nome={store.nome}
+                              localidade={store.localidade}
+                              distrito={store.distrito}
+                              preco={store.preco} // verificar o preço para o item
+                          />
+                        })}
 
-                        <WhereToBuy
-                            nome={"Livraria Aqui Há Gato"}
-                            localidade={"Santarém"}
-                            distrito={"Santarém"}
-                            preco={"15,50€"}/>
-
-                        <WhereToBuy
-                            nome={"Livraria Aqui Há Gato"}
-                            localidade={"Santarém"}
-                            distrito={"Santarém"}
-                            preco={"15,50€"}/>
                     </div>
                 </div>
 
                 <div className={"ContainerRight"}>
                     <AboutAuthor
-                        nome={"Irene Vallejo"}
-                        biografia={"Irene Vallejo é apaixonada pela mitologia grega e romana desde tenra idade. Estudou Filologia Clássica, doutorando-se nas universidades de Saragoça e Florença. É escritora, colunista do El País e do Heraldo de Aragón, palestrante e promotora de educação e do conhecimento sobre o mundo clássico. Partilha com os outros, diariamente, a sua paixão pela Antiguidade, pelos livros e pela leitura. Em 2020, recebeu o Prémio Nacional de Literatura 2020 (Espanha) na categoria de ensaio com o livro O Infinito Num Junco."}
+                        nome={autor.nome}
+                        biografia={autor.biografia}
                     />
                 </div>
             </div>
-
-            <Subtitle text={"Mais livros de ..."}/>
-
+            <Subtitle text={"Mais livros de ${autor.nome}"}/>
+            <WrapList books={authorBooks}/>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
+            <WrapList books={genreBooks}/>
 
             <Reviews/>
         </div>

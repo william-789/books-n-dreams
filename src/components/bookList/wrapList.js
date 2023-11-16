@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BookPrice from "../bookPrice/bookPrice";
-import "./wrapList.scss"
-import {Link} from "react-router-dom";
+import "./wrapList.scss";
 
 export default function WrapList(props) {
+    const bookList = props.list || [];
 
-    return (
-        <div className={"WrapList"}>
-            {props.list.map((book) => (
+    return (<div className={"WrapList"}>
+            {bookList.map((book) => (
                 <BookPrice
                     key={book.id}
                     nome={book.nome}

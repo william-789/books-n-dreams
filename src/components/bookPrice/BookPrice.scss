@@ -20,7 +20,9 @@
     background-repeat: no-repeat;
     width: 100%;
     aspect-ratio: 0.8 / 1;
-    margin-bottom: 8px;
+    img {
+      width: 100%;
+    }
   }
 
   .info {
