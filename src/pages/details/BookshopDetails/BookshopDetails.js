@@ -9,6 +9,7 @@ import Subtitle from "../../../components/subtitle/subtitle";
 import WrapList from "../../../components/bookList/wrapList";
 import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 import SllideShow from "../../../components/slideShow/SlideShow";
+import Footer from "../../../components/footer/Footer";
 
 export default function BookshopDetails(props) {
     const {id} = useParams();
@@ -104,8 +105,8 @@ export default function BookshopDetails(props) {
 
             <br/>
             <br/>
-            <br/>
 
         </div>
+        <Footer/>
     </div>
 }

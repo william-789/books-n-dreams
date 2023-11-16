@@ -5,7 +5,7 @@ import { baseImageLink } from "../../util/axiosBooks";
 
 export default function BookPrice(props) {
     return <div className={"BookPrice"}>
-        <Link to={`/book/${props.key}`} className={"link"}>
+        <Link to={`/book/${props.id}`} className={"link"}>
         <div className={"image"}>
             <img src={baseImageLink+props.foto} alt={props.nome} />
         </div>
