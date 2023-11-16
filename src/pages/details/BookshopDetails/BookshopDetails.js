@@ -24,7 +24,7 @@ export default function BookshopDetails(props) {
             })
             .catch(e => console.log("Error", e))
 
-        axiosBooks.get(`/book/all`)
+        axiosBooks.get(`/book/all`, {params:{livraria: id}})
             .then(r => setBooks(r.data.books))
             .catch(e => console.log("Error", e))
     }, [])
