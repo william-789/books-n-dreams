@@ -2,22 +2,29 @@
 
 .BookInfo {
   display: flex;
-  width: 100%;
+  width: 98%;
   justify-content: space-between;
   margin-bottom: 4rem;
   margin-top: 6rem;
 
   .Capa {
-    background-color: $brown;
-    background-size: cover;
+    position: relative;
+    width: 95%;
+    aspect-ratio: 1/1;
     background-position: center;
     background-repeat: no-repeat;
-    width: 48%;
+    background-size: cover;
+
+    .Favorite {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
   }
 
   .Info {
     flex-direction: column;
-    width: 48%;
+    width: 98%;
     font-family: $headingFont;
     color: $brown;
 
@@ -37,7 +44,7 @@
       font-weight: 600;
     }
 
-    > h4{
+    > h4 {
       font-weight: 400;
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
@@ -45,30 +52,25 @@
   }
 
   .Sinopse {
-    /* > p {
-      font-family: $paragraphFont;
-      font-size: $paragraphSizeAPP;
-      color: $darkBlue;
-      line-height: 1.6rem;
-    } */
+    width: 100%;
   }
 
   @media (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 0;
 
-      .Capa{
-        width: 60%;
-      }
+    .Capa {
+      width: 60%;
+    }
 
-      .Info{
-        width: 100%;
-      }
+    .Info {
+      width: 100%;
+    }
 
-      .Sinopse{
-        width: 100%;
-      }
+    .Sinopse {
+      width: 100%;
+    }
   }
 }

@@ -8,7 +8,7 @@ export default function Book(props) {
     return <div className="Livro">
 
 
-        <Link to={"/book/:id"} >
+        <Link to={`/book/id`} >
             <div className="livro-image"></div>
         </Link>
 
