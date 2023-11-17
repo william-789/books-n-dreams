@@ -9,6 +9,7 @@ export default function WrapList(props) {
             {bookList.map((book) => (
                 <BookPrice
                     key={book.id}
+                    id={book.id}
                     nome={book.nome}
                     autor={book.autor}
                     foto={book.foto}

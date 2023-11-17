@@ -9,6 +9,7 @@ import Subtitle from "../../../components/subtitle/subtitle";
 import WrapList from "../../../components/bookList/wrapList";
 import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 import SllideShow from "../../../components/slideShow/SlideShow";
+import Footer from "../../../components/footer/Footer";
 
 export default function BookshopDetails(props) {
     const {id} = useParams();
@@ -24,7 +25,7 @@ export default function BookshopDetails(props) {
             })
             .catch(e => console.log("Error", e))
 
-        axiosBooks.get(`/book/all`)
+        axiosBooks.get(`/book/all`, {params:{livraria: id}})
             .then(r => setBooks(r.data.books))
             .catch(e => console.log("Error", e))
     }, [])
@@ -104,8 +105,8 @@ export default function BookshopDetails(props) {
 
             <br/>
             <br/>
-            <br/>
 
         </div>
+        <Footer/>
     </div>
 }
