@@ -1,5 +1,6 @@
 import "./BookDetails.scss"
 import "../../../components/subtitle/subtitle.scss"
+import "../../../components/bookInfo/bookInfo.scss"
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import axiosBooks from "../../../util/axiosBooks";
@@ -13,7 +14,7 @@ import WrapList from "../../../components/bookList/wrapList";
 import Reviews from "../../../components/reviews/reviews";
 
 export default function BookDetails(props) {
-    const { id } = useParams();
+    const {id} = useParams();
     const [details, setDetails] = useState(null)
     const [stores, setStores] = useState(null)
     const [author, setAuthor] = useState(null);
@@ -23,33 +24,42 @@ export default function BookDetails(props) {
 
     const getData = async () => {
         try {
-            await axiosBooks.get(`/book/${id}`).then(r=>setDetails(r.data.book));
+            await axiosBooks.get(`/book/${id}`).then(r => setDetails(r.data.book));
             console.log("book", details) // remover log quando estiver a funcionar
 
-            Promise.all([
-                axiosBooks.get(`book/available/${id}`).then(r=>setStores(r.data.available)), // replace by available
-                axiosBooks.get(`/author/${details.autor_id}`).then(r=>setAuthor(r.data.author)),
-                axiosBooks.get(`/book/all`, {params:{autor:details.autor_id}}).then(r=>setAuthorBooks(r.data.books)),
-                axiosBooks.get(`/book/all`, {params:{genero:details.genero_id}}).then(r=>setGenreBooks(r.data.books)),
-            ]);
+            await Promise.all([
 
-            // remover logs depois
-            console.log("details",details);
-            console.log("stores",stores);
-            console.log("author",author);
-            console.log("author books",authorBooks);
-            console.log("genre books",genreBooks);
+                axiosBooks.get(`book/available/${id}`).then(r => {
+                    console.log(r.data.available)
+                    setStores(r.data.available)
+                }), // replace by available
+
+                axiosBooks.get(`/author/${details.autor_id}`).then(r => {
+                    console.log(r.data.author)
+                    setAuthor(r.data.author)
+                }),
+
+                axiosBooks.get(`/book/all`, {params: {autor: details.autor_id}}).then(r => {
+                    console.log(r.data.books)
+                    setAuthorBooks(r.data.books)
+                }),
+
+                axiosBooks.get(`/book/all`, {params: {genero: details.genero_id}}).then(r => {
+                    console.log(r.data.books)
+                    setGenreBooks(r.data.books)
+                }),
+            ])
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         getData();
-    },[])
+    }, [])
 
     // remover && false depois de passar os dados corretos
-    if(!(details && stores && author && authorBooks && genreBooks && false)) return null;
+    if (!(details && stores && author && authorBooks && genreBooks)) return null;
 
     return <div className={"BookDetail_content"}>
 
@@ -58,15 +68,14 @@ export default function BookDetails(props) {
         </div>
 
         <div className={"Container"}>
-
             <BookInfo
+                foto={details.foto}
                 tipo={details.tipo}
                 genero={details.genero}
                 nome={details.nome}
                 autor={details.autor}
                 editora={details.editora}
-                descricao={details.descricao}
-            />
+                sinopse={details.sinopse}/>
 
             <div className={"Multiple"}>
 
@@ -75,14 +84,13 @@ export default function BookDetails(props) {
                     <Subtitle text={"Onde Comprar"}/>
                     <div className={"WhereToBuyList"}>
                         {stores.map(s => {
-                          return  <WhereToBuy
-                              key={s.id}
-                              capa={s.capa}
-                              nome={s.nome}
-                              localidade={s.localidade}
-                              distrito={s.distrito}
-                              preco={s.preco} // verificar o preço para o item
-                          />
+                            return <WhereToBuy
+                                capa={s.capa}
+                                nome={s.nome}
+                                localidade={s.localidade}
+                                distrito={s.distrito}
+                                preco={s.preco}
+                            />
                         })}
 
                     </div>
@@ -90,18 +98,27 @@ export default function BookDetails(props) {
 
                 <div className={"ContainerRight"}>
                     <AboutAuthor
+                        foto={author.foto}
                         nome={author.nome}
                         biografia={author.biografia}
                     />
                 </div>
             </div>
-            <Subtitle text={"Mais livros de ${autor.nome}"}/>
-            <WrapList books={authorBooks}/>
+            <Subtitle text={"Mais livros de ${author.nome}"}/>
+            <WrapList books={authorBooks}
+                      nome={author.nome}
+                      autor={author.autor}
+                      foto={author.foto}/>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            <WrapList books={genreBooks}/>
+            <WrapList books={genreBooks}
+                      nome={author.nome}
+                      autor={author.autor}
+                      foto={author.foto}/>
 
-            <Reviews/>
+            <Reviews
+                nota={details.nota}
+                avaliacoes={details.avaliacoes}/>
         </div>
 
         <Footer/>

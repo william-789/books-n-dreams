@@ -1,6 +1,7 @@
 import "./aboutAuthor.scss";
 import React from "react";
 import Subtitle from "../subtitle/subtitle";
+import {baseImageLink} from "../../util/axiosBooks";
 
 export default function AboutAuthor(props) {
     return (
@@ -9,7 +10,7 @@ export default function AboutAuthor(props) {
 
             <div className={"ContentWrapper"}>
                 <div className={"Image"}>
-                    <img src={props.foto} />
+                    <img src={baseImageLink + props.foto}/>
                 </div>
 
                 <div className={"Info"}>

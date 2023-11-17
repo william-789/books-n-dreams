@@ -15,7 +15,7 @@ export default function Library(props) {
                 <h1 className={"slogan"}>Aqui Há Gato</h1>
                 <p className={"text"}>Santarém, Portugal</p>
 
-                <Link to={"/bookstore/:id"}>
+                <Link to={"/bookstore/6"}>
                     <div className={"box"} id={"mais-info"}>
                         <button className="btn-mais-info"><strong>Mais Informações</strong></button>
                     </div>

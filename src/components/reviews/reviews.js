@@ -12,8 +12,9 @@ export default function Reviews(props) {
 
     const totalStars = 5;
 
-    const averageRating = 4.6;
-    const totalReviews = 65;
+    const averageRating = props.nota ? props.nota.toFixed(1) : null;
+    const totalReviews = props.avaliacoes || 0;
+
     const renderUserStars = () => {
         const stars = [];
 
@@ -53,15 +54,19 @@ export default function Reviews(props) {
     return (
         <div className={"Reviews"}>
             <Subtitle text={"O que os nossos utilizadores pensam sobre este item"} />
-            <div className={"Average"}>
-                <h1> {averageRating.toFixed(1)}</h1>
-                <div className="AverageValue">
-                    {[...Array(totalStars)].map((_, index) => (
-                        <FontAwesomeIcon key={index} icon={FaStarSolid} className="Star" />
-                    ))}
-                    <div className="ReviewCount">{`${totalReviews} avaliações`}</div>
+            {averageRating !== null ? (
+                <div className={"Average"}>
+                    <h1> {averageRating}</h1>
+                    <div className="AverageValue">
+                        {[...Array(totalStars)].map((_, index) => (
+                            <FontAwesomeIcon key={index} icon={FaStarSolid} className="Star" />
+                        ))}
+                        <div className="ReviewCount">{`${totalReviews} avaliações`}</div>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <p>Sem avaliações.</p>
+            )}
 
             <div className={"WriteReviews"}>
                 <div className={"UserPhoto"}>
