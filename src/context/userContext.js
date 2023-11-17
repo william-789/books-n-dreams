@@ -1,16 +1,29 @@
 import { createContext, useState, useContext } from 'react';
 import AuthModal from "../pages/user/auth-modal/AuthModal";
+import { jwtDecode } from "jwt-decode";
 
-// Create a context with initial state values and a function to update the state
 const UserContext = createContext({
   modalIsOpen: false,
   openModal: () => {},
   closeModal: () => {},
+  user: {}
 });
 
-// Create a provider component that will wrap your app
 export const UserProvider = ({ children }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false); // starts false
+  const [user, setUser] = useState({}); // starts as empty object
+
+  // User
+  const authUser = (token) => {
+    // Decode the token
+    const decodedToken = jwtDecode(token);
+    setUser({...decodedToken});
+    localStorage.setItem('token', token); // store token
+  }
+
+  const isLogged = () => {
+    return !!user.id;
+  }
 
   // Modal controllers
   const openModal = () => {
@@ -24,6 +37,8 @@ export const UserProvider = ({ children }) => {
     modalIsOpen,
     openModal,
     closeModal,
+    authUser,
+    isLogged
   };
 
   return (

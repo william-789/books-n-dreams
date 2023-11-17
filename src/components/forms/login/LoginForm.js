@@ -2,22 +2,30 @@ import './LoginForm.scss'
 import Input from "../../shared/Input/Input";
 import { useUser } from "../../../context/userContext";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import axiosBooks from "../../../util/axiosBooks";
 
 function LoginForm() {
-  const history = useHistory();
   const { control, handleSubmit, formState: { errors } } = useForm();
+  const { authUser ,closeModal } = useUser()
+  const [error, setError] = useState('');
 
-  const getFav = async(email) => {
-
-  }
-
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    await axiosBooks.post('/user/login', data)
+      .then(r=> {
+        authUser(r.data.token)
+        setError('')
+      })
+      .then(()=>closeModal())
+      .catch(e => {
+        if(e.status === 404) setError('E-mail ou palavra-passe incorretos')
+        else setError('Um erro ocorreu. Tente novamente mais tarde.')
+      })
   };
 
   return (
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+        {error && <div className="error">{error}</div>}
         <Input
           label={"E-mail"}
           type={"email"}
