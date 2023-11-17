@@ -2,31 +2,32 @@
 
 .BookInfo {
   display: flex;
-  width: 98%;
-  justify-content: space-between;
+  position: relative;
+  width: 100%;
   margin-bottom: 4rem;
   margin-top: 6rem;
 
   .Capa {
-    position: relative;
-    width: 95%;
-    aspect-ratio: 1/1;
+    width: 100%;
+    aspect-ratio: 1/1.2;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 2rem;
+  }
 
-    .Favorite {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
+  .Favorite {
+    position: absolute;
+    top: -3%;
+    left: -2%;
   }
 
   .Info {
     flex-direction: column;
-    width: 98%;
+    width: 90%;
     font-family: $headingFont;
     color: $brown;
+    margin-left: 5%;
 
     > h1 {
       font-weight: 600;
@@ -62,7 +63,13 @@
     margin-top: 0;
 
     .Capa {
-      width: 60%;
+      width: 80%;
+      aspect-ratio: 1/1.2;
+    }
+
+    .Favorite {
+      top: 0%;
+      left: 5%;
     }
 
     .Info {
