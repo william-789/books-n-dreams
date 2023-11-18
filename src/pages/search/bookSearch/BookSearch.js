@@ -1,22 +1,21 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowDownWideShort, faChevronDown, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import {useEffect, useState} from "react";
 import axiosBooks from "../../../util/axiosBooks";
 import WrapList from "../../../components/bookList/wrapList";
 import Filter from "../../../components/filter/Filter";
+import SearchInput from "../../../components/searchInput/SearchInput";
+import Pagination from "../../../components/shared/pagination/Pagination";
 
 export default function BookSearch(props) {
     const [books, setBooks] = useState(null);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        axiosBooks.get(`/book/all`)
+        axiosBooks.get(`/book/all`, {params: {per_page: 8, page: page}})
             .then(r => setBooks(r.data.books))
             .catch(e => console.log("Error", e))
-    }, [])
+    }, [page])
 
     if(!books) {return null}
-
-    console.log(books)
 
     return <div className={"BookSearch content"}>
 
@@ -28,18 +27,15 @@ export default function BookSearch(props) {
 
                     <h1>Pesquisa por Livro</h1>
 
-                    <div className={"input"}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                        <input/>
-                    </div>
-
-                    <p>Livros</p>
+                    <SearchInput text={"Livros"}/>
 
                     <div className={"bookList"}>
                         <WrapList list={books}/>
                     </div>
+
+                    <Pagination setPage={setPage} page={page} totalPages={100}/>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 }

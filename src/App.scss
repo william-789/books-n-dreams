@@ -67,11 +67,18 @@ body, html {
 }
 
 @import "pages/navbar/NavBar";
-@import "pages/details/BookshopDetails/BookshopDetails";
 @import "components/slideShow/SlideShow";
 @import "components/favorite/favorite";
 @import "components/subtitle/subtitle";
 @import "components/filter/Filter";
+@import "components/bookshop/Bookshop";
+@import "components/searchInput/SearchInput";
+@import "components/authorList/AuthorList";
+@import "components/author/Author";
 @import "pages/home/Home";
+@import "pages/details/BookshopDetails/BookshopDetails";
 @import "pages/search/generalSearch/GeneralSearch";
 @import "pages/search/bookSearch/BookSearch";
+@import "pages/search/bookshopSearch/BookshopSearch";
+@import "pages/search/merchSearch/MerchSearch";
+@import "pages/search/authorSearch/AuthorSearch";

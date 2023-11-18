@@ -1,7 +1,12 @@
-.BookSearch {
+.BookshopSearch {
 
   .contentDisplay {
     display: flex;
+
+    @media(max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .search {

@@ -1,4 +1,5 @@
-.BookSearch {
+.AuthorSearch {
+  text-decoration: none;
 
   .contentDisplay {
     display: flex;
@@ -10,10 +11,9 @@
     .container {
       margin: 0 10%;
 
-      h1 {
-        font-size: $titleSize;
+      h2 {
+        font-size: $paragraphSize;
         color: $brown;
-        width: 100%;
       }
     }
   }

@@ -1,0 +1,41 @@
+.SearchInput {
+  display: flex;
+  align-items: center;
+
+  .input {
+    background-color: $backgroundAccent;
+    width: 70%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 50px;
+    color: $brown;
+    font-family: $paragraphFont;
+    margin-right: 40px;
+
+    #inputField {
+      background-color: $backgroundAccent;
+      padding-left: 20px;
+      border: none;
+      width: 70%;
+      height: 55px;
+      font-family: $paragraphFont;
+      font-size: 1rem;
+
+      &::placeholder {
+        color: #838383;
+        font-family: $paragraphFont;
+        font-size: 1rem;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  p {
+    color: #838383;
+  }
+}
