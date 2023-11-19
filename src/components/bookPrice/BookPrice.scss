@@ -7,6 +7,8 @@
   width: 95%;
   margin-bottom: 20px;
   margin-right: 0.6rem;
+  transform: scale(1);
+  transition: transform 0.08s ease-in-out;
 
   .link {
     height: 100%;
@@ -43,5 +45,9 @@
       margin: 0 0 5px 0;
     }
 
+  }
+
+  &:hover {
+    transform: scale(1.02);
   }
 }

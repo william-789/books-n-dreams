@@ -1,0 +1,20 @@
+.AuthorSearch {
+  text-decoration: none;
+
+  .contentDisplay {
+    display: flex;
+  }
+
+  .search {
+    flex: 1;
+
+    .container {
+      margin: 0 10%;
+
+      h2 {
+        font-size: $paragraphSize;
+        color: $brown;
+      }
+    }
+  }
+}

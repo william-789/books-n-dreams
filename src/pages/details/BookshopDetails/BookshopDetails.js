@@ -34,8 +34,6 @@ export default function BookshopDetails(props) {
         return null
     }
 
-    console.log("books", books)
-
     const bookstoreInfo = details.bookstore.info
     const bookstorePhoto = photos.filter(l => l.particularidade === null)
     const photoList = bookstorePhoto.map(p => p.path)

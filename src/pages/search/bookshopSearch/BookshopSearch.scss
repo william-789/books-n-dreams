@@ -1,0 +1,25 @@
+.BookshopSearch {
+
+  .contentDisplay {
+    display: flex;
+
+    @media(max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .search {
+    flex: 1;
+
+    .container {
+      margin: 0 10%;
+
+      h1 {
+        font-size: $titleSize;
+        color: $brown;
+        width: 100%;
+      }
+    }
+  }
+}

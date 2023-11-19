@@ -1,0 +1,8 @@
+.AuthorList {
+  display: flex;
+  flex-wrap: wrap;
+
+  .Author {
+    width: 48%;
+  }
+}
