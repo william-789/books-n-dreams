@@ -82,3 +82,13 @@ body, html {
 @import "pages/search/bookshopSearch/BookshopSearch";
 @import "pages/search/merchSearch/MerchSearch";
 @import "pages/search/authorSearch/AuthorSearch";
+
+@import "components/shared/Modal/Modal";
+@import "components/error/ErrorModal";
+@import "components/shared/Input/Input";
+@import "components/shared/buttons/buttons";
+@import "components/forms/login/LoginForm";
+@import "components/shared/Dropdown/Dropdown";
+@import "components/forms/register/RegisterForm";
+@import "pages/user/auth-modal/AuthModal";
+@import "components/shared/pagination/Pagination";

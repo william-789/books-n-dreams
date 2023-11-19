@@ -12,8 +12,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 3rem;
-
 
     .Image {
       background-color: $brown;
@@ -58,7 +56,7 @@
       align-items: center;
 
       .Image {
-        width: 40%;
+        width: 50%;
         margin-right: 40px;
       }
     }

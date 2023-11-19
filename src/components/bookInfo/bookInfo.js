@@ -1,7 +1,7 @@
 import "./bookInfo.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleRight as arrow} from "@fortawesome/free-solid-svg-icons";
-import axiosBooks, {baseImageLink} from "../../util/axiosBooks";
+import {baseImageLink} from "../../util/axiosBooks";
 
 import Favorite from "../../components/favorite/favorite";
 import Subtitle from "../subtitle/subtitle";
@@ -10,12 +10,9 @@ import React from "react";
 export default function BookInfo(props) {
     return (
         <div className={"BookInfo"}>
-            <div className={"Capa"}>
-                <img src={baseImageLink + props.foto}/>
-                <div className={"Favorite"}>
+            <div className={"Capa"}
+                 style={{backgroundImage: `url(${baseImageLink + props.foto})`}}/>
                 <Favorite/>
-                </div>
-            </div>
 
             <div className={"Info"}>
                 <h4>
