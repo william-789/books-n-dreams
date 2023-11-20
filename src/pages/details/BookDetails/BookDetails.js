@@ -61,6 +61,8 @@ export default function BookDetails(props) {
     // remover && false depois de passar os dados corretos
     if (!(details && stores && author && authorBooks && genreBooks)) return null;
 
+    console.log(author)
+
     return <div className={"BookDetail_content"}>
 
         <div className={"Header"}>

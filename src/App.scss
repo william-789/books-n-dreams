@@ -66,7 +66,15 @@ body, html {
   }
 }
 
-@import "pages/navbar/NavBar";
+@import "components/shared/Modal/Modal";
+@import "components/error/ErrorModal";
+@import "components/shared/Input/Input";
+@import "components/shared/buttons/buttons";
+@import "components/forms/login/LoginForm";
+@import "components/shared/Dropdown/Dropdown";
+@import "components/forms/register/RegisterForm";
+@import "components/shared/pagination/Pagination";
+
 @import "components/slideShow/SlideShow";
 @import "components/favorite/favorite";
 @import "components/subtitle/subtitle";
@@ -75,6 +83,10 @@ body, html {
 @import "components/searchInput/SearchInput";
 @import "components/authorList/AuthorList";
 @import "components/author/Author";
+@import "components/merch/Merch";
+@import "components/merchList/MerchList";
+
+@import "pages/navbar/NavBar";
 @import "pages/home/Home";
 @import "pages/details/BookshopDetails/BookshopDetails";
 @import "pages/search/generalSearch/GeneralSearch";
@@ -83,12 +95,4 @@ body, html {
 @import "pages/search/merchSearch/MerchSearch";
 @import "pages/search/authorSearch/AuthorSearch";
 
-@import "components/shared/Modal/Modal";
-@import "components/error/ErrorModal";
-@import "components/shared/Input/Input";
-@import "components/shared/buttons/buttons";
-@import "components/forms/login/LoginForm";
-@import "components/shared/Dropdown/Dropdown";
-@import "components/forms/register/RegisterForm";
 @import "pages/user/auth-modal/AuthModal";
-@import "components/shared/pagination/Pagination";
