@@ -20,7 +20,6 @@ export default function BookshopSearch() {
     if (!bookstore) {
         return null
     }
-    console.log(bookstore)
 
     return <div className={"BookSearch content"}>
 

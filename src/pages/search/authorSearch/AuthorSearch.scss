@@ -11,6 +11,12 @@
     .container {
       margin: 0 10%;
 
+      h1 {
+        font-size: $titleSize;
+        color: $brown;
+        width: 100%;
+      }
+
       h2 {
         font-size: $paragraphSize;
         color: $brown;
