@@ -44,10 +44,15 @@
       font-size: 0.8rem;
       margin: 0 0 5px 0;
     }
-
   }
 
   &:hover {
     transform: scale(1.02);
+  }
+
+  .lastUnits{
+    width: 100%;
+    background-color: #FF7F51;
+    color: white;
   }
 }

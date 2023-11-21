@@ -16,6 +16,8 @@ export default function BookshopDetails(props) {
     const [details, setDetails] = useState(null);
     const [books, setBooks] = useState(null);
     const [photos, setPhotos] = useState(null);
+    const [stores, setStores] = useState(null)
+
 
     useEffect(() => {
         axiosBooks.get(`/store/${id}`)
@@ -25,9 +27,14 @@ export default function BookshopDetails(props) {
             })
             .catch(e => console.log("Error", e))
 
-        axiosBooks.get(`/book/all`, {params:{livraria: id}})
+        axiosBooks.get(`/book/all`, {params: {livraria: id}})
             .then(r => setBooks(r.data.books))
             .catch(e => console.log("Error", e))
+
+        axiosBooks.get(`item/available/`, {params:{livraria: id}})
+            .then(r => setStores(r.data.available))
+            .catch(e => console.log("Error", e))
+
     }, [])
 
     if (!details || !books || !photos) {
@@ -97,8 +104,8 @@ export default function BookshopDetails(props) {
 
             <div className={"button"}>
                 <Link to={"/search"}>
-            <PrimaryButton text={"Ver mais"}/>
-            </Link>
+                    <PrimaryButton text={"Ver mais"}/>
+                </Link>
             </div>
 
             <br/>
@@ -107,4 +114,5 @@ export default function BookshopDetails(props) {
         </div>
         <Footer/>
     </div>
+
 }

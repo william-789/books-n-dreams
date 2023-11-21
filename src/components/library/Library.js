@@ -3,7 +3,6 @@ import React from "react";
 import './Library.scss';
 import {Link} from "react-router-dom";
 
-
 export default function Library(props) {
 
     return <div className="banner-library">
@@ -20,11 +19,7 @@ export default function Library(props) {
                         <button className="btn-mais-info"><strong>Mais Informações</strong></button>
                     </div>
                 </Link>
-
             </div>
         </div>
-
     </div>
-
-
 }
