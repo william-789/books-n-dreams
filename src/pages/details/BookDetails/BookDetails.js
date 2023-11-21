@@ -61,8 +61,6 @@ export default function BookDetails(props) {
     // remover && false depois de passar os dados corretos
     if (!(details && stores && author && authorBooks && genreBooks)) return null;
 
-    console.log(author)
-
     return <div className={"BookDetail_content"}>
 
         <div className={"Header"}>
@@ -85,15 +83,16 @@ export default function BookDetails(props) {
 
                     <Subtitle text={"Onde Comprar"}/>
                     <div className={"WhereToBuyList"}>
-                        {stores.map(s => {
-                            return <WhereToBuy
+                        {stores.map(s => (
+                            <WhereToBuy
                                 capa={s.capa}
                                 nome={s.nome}
                                 localidade={s.localidade}
                                 distrito={s.distrito}
                                 preco={s.preco}
+                                allPrices={stores.map(store => store.preco)}
                             />
-                        })}
+                        ))}
 
                     </div>
                 </div>
@@ -106,8 +105,8 @@ export default function BookDetails(props) {
                     />
                 </div>
             </div>
-            <Subtitle text={`Mais livros de ${author.nome}`} />
-            <WrapList list={authorBooks} />
+            <Subtitle text={`Mais livros de ${author.nome}`}/>
+            <WrapList list={authorBooks}/>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
             <WrapList list={genreBooks}/>

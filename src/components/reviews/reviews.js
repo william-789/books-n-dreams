@@ -12,8 +12,10 @@ export default function Reviews(props) {
 
     const totalStars = 5;
 
-    const averageRating = props.nota ? props.nota.toFixed(1) : null;
     const totalReviews = props.avaliacoes || 0;
+
+
+    const averageRating = props.nota/props.avaliacoes;
 
     const renderUserStars = () => {
         const stars = [];

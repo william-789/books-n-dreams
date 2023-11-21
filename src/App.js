@@ -8,7 +8,7 @@ import Home from "./pages/home/Home";
 import AuthorDetails from "./pages/details/AuthorDetails";
 import BookDetails from "./pages/details/BookDetails/BookDetails";
 import BookshopDetails from "./pages/details/BookshopDetails/BookshopDetails";
-import MerchDetails from "./pages/details/MerchDetails";
+import MerchDetails from "./pages/details/MerchDetails/MerchDetails";
 import GeneralSearch from "./pages/search/generalSearch/GeneralSearch";
 import AuthorSearch from "./pages/search/authorSearch/AuthorSearch";
 import BookSearch from "./pages/search/bookSearch/BookSearch";
