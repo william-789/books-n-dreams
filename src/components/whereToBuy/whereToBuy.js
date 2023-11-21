@@ -26,7 +26,7 @@ export default function WhereToBuy(props) {
                 style={{ backgroundImage: `url(${baseImageLink + props.capa})` }}
             />
 
-            {isCheapest && (<div className="cheapestIndicator">Mais Barato</div>)}
+            {isCheapest && (<div className="cheapestIndicator">Mais barato</div>)}
 
             <div className={"info"}>
                 <h3>{props.nome}</h3>

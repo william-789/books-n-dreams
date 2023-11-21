@@ -5,7 +5,7 @@ import { baseImageLink } from "../../util/axiosBooks";
 
 export default function BookPrice(props) {
     const { id } = useParams();
-    const showLastUnits = props.disponiveis && props.disponiveis < 5;
+    const showLastUnits = props.disponiveis && props.disponiveis < 3; //TODO: Mudar número de disponivéis
 
     return (
         <div className={"BookPrice"}>
@@ -14,16 +14,17 @@ export default function BookPrice(props) {
                     <img src={baseImageLink + props.foto} alt={props.nome} />
                 </div>
 
-                {showLastUnits && <p className={"lastUnits"}>Últimas unidades</p>}
-
                 <div className={"info"}>
                     <h3>{props.nome}</h3>
                     <h4>{props.autor}</h4>
 
-
                     <ThirdButton text={"Desde " + props.text + "€"} />
                 </div>
+
+                {showLastUnits && <p className={"lastUnits"}>Últimas unidades</p>}
+
             </Link>
+
         </div>
-    );
+);
 }
