@@ -1,41 +1,74 @@
 .SearchInput {
   display: flex;
   align-items: center;
+  width: 100%;
 
-  .input {
-    background-color: $backgroundAccent;
-    width: 70%;
-    height: 60px;
+  .contentDisplay {
+    width: 100%;
     display: flex;
-    align-items: center;
-    padding-left: 20px;
-    border-radius: 50px;
-    color: $brown;
-    font-family: $paragraphFont;
-    margin-right: 40px;
+    justify-content: space-between;
 
-    #inputField {
-      background-color: $backgroundAccent;
-      padding-left: 20px;
-      border: none;
-      width: 70%;
-      height: 55px;
-      font-family: $paragraphFont;
-      font-size: 1rem;
+    .search {
+      width: 100%;
+      display: flex;
+      align-items: center;
 
-      &::placeholder {
-        color: #838383;
+      .input {
+        width: 80%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        color: $brown;
         font-family: $paragraphFont;
-        font-size: 1rem;
+
+        #inputField {
+          width: 100%;
+          background-color: $backgroundAccent;
+          border-radius: 50px;
+          padding-left: 20px;
+          border: none;
+          height: 55px;
+          font-family: $paragraphFont;
+          font-size: 1rem;
+
+          &::placeholder {
+            color: #838383;
+            font-family: $paragraphFont;
+            font-size: 1rem;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        @media(max-width: 768px) {
+          width: 90%;
+        }
       }
 
-      &:focus {
-        outline: none;
+      svg {
+        color: $brown;
+        display: flex;
+        height: 1.5rem;
+        margin-left: 20px;
+
+        &:hover {
+          color: $orange;
+          cursor: pointer;
+        }
       }
     }
   }
 
   p {
     color: #838383;
+    display: flex;
+    align-items: center;
+    margin-right: 4%;
+
+    @media(max-width: 768px) {
+      display: none;
+    }
   }
 }

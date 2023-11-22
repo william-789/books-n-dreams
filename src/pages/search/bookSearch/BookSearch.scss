@@ -2,6 +2,10 @@
 
   .contentDisplay {
     display: flex;
+
+    @media(max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   .search {
@@ -14,6 +18,17 @@
         font-size: $titleSize;
         color: $brown;
         width: 100%;
+      }
+
+      .bookList {
+
+        .WrapList {
+
+          .BookPrice {
+            width: 30%;
+            margin-right: 3%;
+          }
+        }
       }
     }
   }
