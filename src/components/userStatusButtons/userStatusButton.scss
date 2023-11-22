@@ -1,0 +1,60 @@
+$backgroundColor: #F1F1F1;
+$orange: #FF7F51;
+$brown: #705D56;
+$darkBlue: #3C4242;
+$lightGrey: #9E9E9E;
+$backgroundAccent: #EBE6E4;
+$colourCloser: #4D9AD1;
+$colourCheaper: #62C33F;
+
+$headingFont: Raleway, sans-serif;
+$paragraphFont: Roboto, sans-serif;
+
+$titleSize: 2rem; // UTILIZAR REM?
+$titleSizeAPP: 1.5rem; // UTILIZAR REM?
+
+$subtitleSize: 1.8rem; // UTILIZAR REM?
+$subtitleSizeAPP: 1.3rem; // UTILIZAR REM?
+
+$listTitles: 1.4rem; //UTILIZAR REM?
+$listTitlesAPP: 1.2rem; //UTILIZAR REM?
+
+$paragraphSize: 1.2rem; // UTILIZAR REM?
+$paragraphSizeAPP: 1rem; // UTILIZAR REM?
+
+$libraryDetails: 1.6rem;
+$libraryDetailsAPP: 0.9rem;
+
+
+.userButtonStatus{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  button{
+    font-family: $headingFont;
+    font-size: $paragraphSize;
+    color: $brown;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .active{
+    font-family: $headingFont;
+    font-size: $paragraphSize;
+    color: $orange;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+
+  }
+
+
+}
+
+
+
+
