@@ -1,0 +1,75 @@
+.FilterOption {
+
+  .filterDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: #8d8d8d;
+    margin-top: 5%;
+    padding-left: 15px;
+
+    &:hover {
+      color: $orange;
+      cursor: pointer;
+    }
+  }
+
+  .filterText {
+    font-size: 1.1rem;
+  }
+
+  .optionDisplay {
+    padding-left: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 0.9rem;
+
+      &:hover {
+        color: $orange;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .radioButton {
+
+    input {
+      height: 1rem;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      margin: 0;
+      border: 1px solid #8d8d8d;
+      appearance: none;
+
+      &:checked {
+        accent-color: $orange;
+        background-color: $orange;
+        border: 1px solid $orange;
+      }
+
+      &:hover {
+        color: $orange;
+        cursor: pointer;
+      }
+    }
+
+    .checkboxSmaller {
+      height: 0.8rem;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  .dropdown {
+    max-height: 15rem;
+    overflow: auto;
+
+  @media(max-width: 768px) {
+    max-height: 10rem;
+  }
+  }
+}

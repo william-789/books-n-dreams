@@ -37,12 +37,18 @@
       font-size: $paragraphSizeAPP;
       margin-top: 0;
       margin-bottom: 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     h4 {
       font-weight: 600;
       font-size: 0.8rem;
       margin: 0 0 5px 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
   }
