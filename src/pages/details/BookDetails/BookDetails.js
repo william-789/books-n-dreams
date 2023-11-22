@@ -2,7 +2,7 @@ import "./BookDetails.scss"
 import "../../../components/subtitle/subtitle.scss"
 import "../../../components/bookInfo/bookInfo.scss"
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axiosBooks from "../../../util/axiosBooks";
 
 import Subtitle from "../../../components/subtitle/subtitle"
@@ -12,27 +12,30 @@ import Footer from "../../../components/footer/Footer";
 import AboutAuthor from "../../../components/aboutAuthor/aboutAuthor";
 import WrapList from "../../../components/bookList/wrapList";
 import Reviews from "../../../components/reviews/reviews";
+import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
+import UserReviews from "../../../components/userReviews/userReviews";
 
 export default function BookDetails(props) {
     const {id} = useParams();
     const [details, setDetails] = useState(null)
     const [stores, setStores] = useState(null)
     const [author, setAuthor] = useState(null);
+    const [user, setUser] = useState(null)
 
     const [authorBooks, setAuthorBooks] = useState(null);
     const [genreBooks, setGenreBooks] = useState(null);
 
     const getData = async () => {
         try {
-            await axiosBooks.get(`/book/${id}`).then(r => setDetails(r.data.book));
+            let details = await axiosBooks.get(`/book/${id}`).then(r => r.data.book);
             console.log("book", details) // remover log quando estiver a funcionar
-
+            setDetails(details);
             await Promise.all([
 
                 axiosBooks.get(`book/available/${id}`).then(r => {
                     console.log(r.data.available)
                     setStores(r.data.available)
-                }), // replace by available
+                }),
 
                 axiosBooks.get(`/author/${details.autor_id}`).then(r => {
                     console.log(r.data.author)
@@ -47,6 +50,11 @@ export default function BookDetails(props) {
                 axiosBooks.get(`/book/all`, {params: {genero: details.genero_id}}).then(r => {
                     console.log(r.data.books)
                     setGenreBooks(r.data.books)
+                }),
+
+                axiosBooks.get(`/user/${id}`).then(r => {
+                    console.log(r.data)
+                    setUser(r.data)
                 }),
             ])
         } catch (error) {
@@ -106,14 +114,32 @@ export default function BookDetails(props) {
                 </div>
             </div>
             <Subtitle text={`Mais livros de ${author.nome}`}/>
-            <WrapList list={authorBooks}/>
+            <WrapList list={authorBooks.slice(0, 4)}/>
+            <div className={"button"}>
+                <Link to={"/search"}>
+                    <PrimaryButton text={"Ver mais"}/>
+                </Link>
+            </div>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            <WrapList list={genreBooks}/>
+            <WrapList list={genreBooks.slice(0, 4)}/>
+            <div className={"button"}>
+                <Link to={"/search"}>
+                    <PrimaryButton text={"Ver mais"}/>
+                </Link>
+            </div>
 
             <Reviews
+                foto={user && user.foto ? user.foto : null}
                 nota={details.nota}
-                avaliacoes={details.avaliacoes}/>
+                avaliacoes={details.avaliacoes}
+            />
+
+            <UserReviews
+                foto={user && user.foto ? user.foto : null}
+                nome={"Ana Silva"}
+                comentario={"Recomendo. Só queria que tivesse mais história para ler mais"}
+                nota={4}/>
         </div>
 
         <Footer/>
