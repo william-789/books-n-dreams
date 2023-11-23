@@ -15,20 +15,29 @@ export default function FilterOption(props) {
     } else {
         icon =
             <div className={"radioButton"}>
-                <input type="radio" name="radioButton" className={"checkbox"} onClick={props.func}></input>
+                <input type="radio" name="radioButton" className={"checkbox"} onChange={() => props.func(props.filter)}></input>
             </div>
     }
 
     if (props.style === "dropdown") {
         dropdown =
-            <div className={"dropdown"} style={{display: dropdownVisible ? "block" : "none"}}>
+            <div className={"dropdown"} style={{maxHeight: dropdownVisible ? "250px" : "0"}}>
+
+                <div className={"optionDisplay"}>
+                    <p><b>Limpar</b></p>
+                    <div className={"radioButton"}>
+                        <input type="radio" name="radioButton" className={"checkboxSmaller"} onChange={() => props.func("")}></input>
+                    </div>
+                </div>
+
                 {list.map(l =>
-                    <div className={"optionDisplay"}>
+                    <div key={l.id} className={"optionDisplay"}>
                         <p>{l.nome}</p>
                         <div className={"radioButton"}>
-                        <input type="radio" name="radioButton" className={"checkboxSmaller"} onClick={props.func}></input>
+                        <input type="radio" name={l.name} className={"checkboxSmaller"} onChange={() => l.method(l.id)}></input>
                         </div>
                     </div>)}
+
             </div>
     } else {
         dropdown = <div></div>
