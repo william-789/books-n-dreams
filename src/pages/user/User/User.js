@@ -17,14 +17,11 @@ import UserButtonStatus from "../../../components/userStatusButtons/userStatusBu
 export default function User(props) {
     const [livros, setLivros] = useState(null);
 
-
     useEffect(()=>{
         axiosBooks.get("/book/all").then(r=>setLivros(r.data.books)).catch(e=>console.log(e))
     },[])
 
     if(!livros) return null;
-
-
 
     return <div className={"user content"}>
 
@@ -47,28 +44,27 @@ export default function User(props) {
                 </div>
             </div>
         </div>
-
         <div className="wrapper">
 
             <SubTitles text={"Lista de Favoritos"}/>
 
+        </div>
+
+        <div className={"wrapper-list-profile"}>
             <WrapList list={livros.slice(0, 4)}/>
+        </div>
 
+        <div className="wrapper">
             <UserLibrary/>
             <UserLibrary/>
-
 
             <Link to={"/search-bookshop"}>
                 <div className={"btn-box"}>
                     <button className={"button-ver-mais"}>Ver mais</button>
                 </div>
             </Link>
-
-
             <SubTitles text={"Histórico de Compras"}/>
-
             <UserButtonStatus/>
-
             <UserStatus/>
             <UserStatus/>
 

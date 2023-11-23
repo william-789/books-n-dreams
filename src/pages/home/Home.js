@@ -26,8 +26,8 @@ export default function Home(props) {
                     <p className="textBooksAndDreams">Uma aplicação, mil livrarias, infinitas histórias</p>
                 </div>
                 <div className="banner-christmas">
+                <div className="christmas-texto">
 
-                    <div className="christmas-texto">
                         <div className="left"></div>
                         <div className="right">
                             <p>A <strong>BOOKS AND DREAMS</strong><br/>
@@ -47,14 +47,18 @@ export default function Home(props) {
                         </div>
 
                     </div>
-
                 </div>
                 <SubTitles text={"As nossas sugestões para ti"}/>
-                {/* <Books/>  */}
-                <WrapList list={livros.slice(0, 8)}/>
+            </div>
+
+            <div className={"wrapper-list-home"}>
+                <WrapList  list={livros.slice(0, 8)}/>
+            </div>
+
+
+            <div className="wrapper">
                 <Library/>
                 <SubTitles text={"A nossa missão"}/>
-
 
                 <div className="banner-mission">
                     <div className={"mission-text"}>
@@ -66,7 +70,6 @@ export default function Home(props) {
 
                     <div className={"image-mission"}></div>
                 </div>
-
             </div>
             <Footer/>
 
