@@ -42,7 +42,7 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
     align-items: center;
     font-size: 0.8rem;
     color: white;
-    margin-top: 2.2rem;
+    margin-top: 4rem;
 
     .title{
       font-family: $headingFont;
@@ -83,10 +83,13 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
 
       .banner-library{
         width:  100%;
-        height: 300px;
+        height: 180px;
         border-radius: 2rem;
-
         text-align: center;
+
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+
 
         .library-text{
           display: flex;
@@ -101,7 +104,7 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
             line-height: 20px;
             font-family: $headingFont;
             font-size: 1.5rem;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
 
 
           }

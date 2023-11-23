@@ -138,7 +138,14 @@ $libraryDetailsAPP: 0.9rem;
       justify-content: space-between;
     }
   }
+
+  .wrapper-list-profile{
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
 }
+
 
 
 /*  - - -   MEDIA - - - */
@@ -220,10 +227,8 @@ $libraryDetailsAPP: 0.9rem;
 
     }
 
-
     .wrapper{
       width: 85%;
-      height: 1600px;
       margin: 0 auto;
 
       .userInfo{
@@ -278,6 +283,11 @@ $libraryDetailsAPP: 0.9rem;
         justify-content: space-between;
 
       }
+    }
+
+    .wrapper-list-profile{
+      max-width: 80%;
+
     }
   }
 
