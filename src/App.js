@@ -14,7 +14,7 @@ import AuthorSearch from "./pages/search/authorSearch/AuthorSearch";
 import BookSearch from "./pages/search/bookSearch/BookSearch";
 import BookshopSearch from "./pages/search/bookshopSearch/BookshopSearch";
 import MerchSearch from "./pages/search/merchSearch/MerchSearch";
-import User from "./pages/user/User";
+import User from "./pages/user/User/User";
 import Checkout from "./pages/user/Checkout";
 import Favorites from "./pages/user/Favorites";
 import PurchaseDetails from "./pages/user/PurchaseDetails";

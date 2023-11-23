@@ -38,6 +38,7 @@ export const UserProvider = ({ children }) => {
     openModal,
     closeModal,
     authUser,
+    user,
     isLogged
   };
 
