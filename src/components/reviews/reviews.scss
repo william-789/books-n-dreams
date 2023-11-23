@@ -138,13 +138,13 @@
 
     .Average {
       width: 90%;
-      padding: 0.5rem;
+      padding: 0.3rem;
 
       .AverageValue {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
 
         .ReviewCount {
-          font-size: 0.8rem;
+          font-size: 1rem;
         }
 
         > h1 {
@@ -155,6 +155,7 @@
 
     .WriteReviews {
       width: 100%;
+      height: 16rem;
 
       .UserPhoto {
         width: 15%;
@@ -162,11 +163,12 @@
 
       .ReviewBox {
         > textarea {
-          width: 70%;
+          width: 60%;
         }
       }
       .button{
         width: 30%;
+        bottom: 1rem;
       }
     }
   }
