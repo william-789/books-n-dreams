@@ -8,7 +8,7 @@ export default function FilterOption(props) {
     let list = props.list || [];
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const toggleDrowpdown = () => setDropdownVisible(!dropdownVisible);
+    const toggleDropdown = () => setDropdownVisible(!dropdownVisible);
 
     if (props.style === "dropdown") {
         icon = <FontAwesomeIcon icon={faChevronDown}/>
@@ -26,7 +26,7 @@ export default function FilterOption(props) {
                 <div className={"optionDisplay"}>
                     <p><b>Limpar</b></p>
                     <div className={"radioButton"}>
-                        <input type="radio" name={list[0]?.name} className={"checkboxSmaller"} onChange={() => props.clear}></input>
+                        <input type="radio" name={list[0]?.name} className={"checkboxSmaller"} onChange={() => props.clear(props.clearFilter)}></input>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@ export default function FilterOption(props) {
     }
 
     return <div className={"FilterOption"}>
-        <div className={"filterDisplay"} onClick={toggleDrowpdown}>
+        <div className={"filterDisplay"} onClick={toggleDropdown}>
             <p className={`filterText ${props.class}`}>{props.text}</p>
             {icon}
         </div>

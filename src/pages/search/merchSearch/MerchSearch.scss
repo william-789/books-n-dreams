@@ -26,6 +26,11 @@
           .Merch {
             width: 30%;
             margin-right: 3%;
+
+            @media(max-width: 768px) {
+              width: 48%;
+              margin-right: 2%;
+            }
           }
         }
       }

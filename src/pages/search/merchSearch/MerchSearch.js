@@ -21,6 +21,8 @@ export default function MerchSearch(props) {
             list: typeList?.map(b => {
                 return {...b, name: "type", id: b.id, method: (id) => {setType(id)}}
             }),
+            clear: setType,
+            clearFilter: null,
             method: () => {
             }
         },
@@ -31,6 +33,8 @@ export default function MerchSearch(props) {
             list: bookstoreList?.map(b => {
                 return {...b, name: "bookstore", id: b.id, method: (id) => {setBookstore(id)}}
             }),
+            clear: setBookstore,
+            clearFilter: null,
             method: () => {
             }
         }
