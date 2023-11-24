@@ -26,7 +26,7 @@ export default function FilterOption(props) {
                 <div className={"optionDisplay"}>
                     <p><b>Limpar</b></p>
                     <div className={"radioButton"}>
-                        <input type="radio" name="radioButton" className={"checkboxSmaller"} onChange={() => props.func("")}></input>
+                        <input type="radio" name={list[0]?.name} className={"checkboxSmaller"} onChange={() => props.clear}></input>
                     </div>
                 </div>
 
