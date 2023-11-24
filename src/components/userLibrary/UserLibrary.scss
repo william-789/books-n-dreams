@@ -31,10 +31,11 @@ $libraryDetailsAPP: 0.9rem;
   display: flex;
   align-content: center;
   width: 100%;
-  height: 8rem;
-  margin: 1rem auto 1rem auto ;
+  height: 9rem;
+  margin: 1rem auto 0.5rem auto ;
   background-color: $backgroundAccent;
   border-radius: 1rem;
+
 
   .userLibraryImage{
     background-image: url("../../components/userLibrary/LivrariaBarata.png");
@@ -73,6 +74,7 @@ $libraryDetailsAPP: 0.9rem;
         font-size: $paragraphSize;
         color: $brown;
         text-align: left;
+        line-height: 1.5rem;
       }
 
     }
@@ -89,7 +91,7 @@ $libraryDetailsAPP: 0.9rem;
     align-content: center;
     width: 100%;
     height: 7rem;
-    margin: 1rem auto 1rem auto ;
+    margin: 1rem auto 0.2rem auto ;
     background-color: $backgroundAccent;
     border-radius: 1rem;
 
@@ -131,6 +133,9 @@ $libraryDetailsAPP: 0.9rem;
           font-size: $paragraphSizeAPP;
           color: $brown;
           text-align: left;
+          line-height: 1.3rem;
+
+
         }
 
       }
