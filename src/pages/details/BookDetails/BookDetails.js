@@ -13,10 +13,11 @@ import AboutAuthor from "../../../components/aboutAuthor/aboutAuthor";
 import WrapList from "../../../components/bookList/wrapList";
 import Reviews from "../../../components/reviews/reviews";
 import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
-import UserReviews from "../../../components/userReviews/userReviews";
+import UserReview from "../../../components/userReviews/userReviews";
 
 export default function BookDetails(props) {
     const {id} = useParams();
+
     const [details, setDetails] = useState(null)
     const [stores, setStores] = useState(null)
     const [author, setAuthor] = useState(null);
@@ -24,12 +25,14 @@ export default function BookDetails(props) {
 
     const [authorBooks, setAuthorBooks] = useState(null);
     const [genreBooks, setGenreBooks] = useState(null);
+    const [comments, setComments] = useState(null);
 
     const getData = async () => {
         try {
             let details = await axiosBooks.get(`/book/${id}`).then(r => r.data.book);
             console.log("book", details) // remover log quando estiver a funcionar
             setDetails(details);
+
             await Promise.all([
 
                 axiosBooks.get(`book/available/${id}`).then(r => {
@@ -52,10 +55,17 @@ export default function BookDetails(props) {
                     setGenreBooks(r.data.books)
                 }),
 
-                axiosBooks.get(`/user/${id}`).then(r => {
+
+               axiosBooks.get(`/user/${id}`).then(r => {
                     console.log(r.data)
                     setUser(r.data)
                 }),
+
+                axiosBooks.get(`/item/comments/${details.item}`).then(r => {
+                    console.log(r.data.comments)
+                    setComments(r.data.comments)
+                }),
+
             ])
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -67,7 +77,7 @@ export default function BookDetails(props) {
     }, [])
 
     // remover && false depois de passar os dados corretos
-    if (!(details && stores && author && authorBooks && genreBooks)) return null;
+    if (!(details && stores && author && authorBooks && genreBooks && comments)) return null;
 
     return <div className={"BookDetail_content"}>
 
@@ -91,8 +101,9 @@ export default function BookDetails(props) {
 
                     <Subtitle text={"Onde Comprar"}/>
                     <div className={"WhereToBuyList"}>
-                        {stores.map(s => (
+                        {stores.slice(0, 4).map(s => (
                             <WhereToBuy
+                                key={s.id} // Lembre-se de adicionar uma chave única para cada elemento no loop
                                 capa={s.capa}
                                 nome={s.nome}
                                 localidade={s.localidade}
@@ -101,7 +112,6 @@ export default function BookDetails(props) {
                                 allPrices={stores.map(store => store.preco)}
                             />
                         ))}
-
                     </div>
                 </div>
 
@@ -135,11 +145,17 @@ export default function BookDetails(props) {
                 avaliacoes={details.avaliacoes}
             />
 
-            <UserReviews
-                foto={user && user.foto ? user.foto : null}
-                nome={"Ana Silva"}
-                comentario={"Recomendo. Só queria que tivesse mais história para ler mais"}
-                nota={4}/>
+            <div className={"UserReviewsList"}>
+                {comments !== null && comments.slice(0, 4).map(c => (
+                    <UserReview
+                        key={c.id}
+                        nome={c.nome}
+                        comentario={c.comentario}
+                        foto={c.foto}
+                        nota={c.nota}
+                    />
+                ))}
+            </div>
         </div>
 
         <Footer/>
