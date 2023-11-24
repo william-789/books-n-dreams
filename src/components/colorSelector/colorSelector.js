@@ -3,7 +3,7 @@ import"./colorSelector.scss"
 export default function ColorSelector (props) {
     const [selectedColor, setSelectedColor] = useState(null);
 
-    const colors = ['red', 'green', 'blue'];
+    const colors = ['#D99E28', '#C69A9B', '#C5E4CD'];
 
     const handleColorClick = (color) => {
         setSelectedColor(color);

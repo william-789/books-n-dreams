@@ -19,6 +19,7 @@ export default function MerchDetails(props) {
 
     const [details, setDetails] = useState(null)
     const [stores, setStores] = useState(null)
+    const [book, setBook] = useState(null)
     const [genreMerch, setGenreMerch] = useState(null);
     const [genreBooks, setGenreBooks] = useState(null);
     const [comments, setComments] = useState(null);
@@ -51,6 +52,11 @@ export default function MerchDetails(props) {
                 axiosBooks.get(`/book/all`, {params: {genero: details.genero_id}}).then(r => {
                     // console.log(r.data.books)
                     setGenreBooks(r.data.books)
+                }),
+
+                axiosBooks.get(`/book/${details.item}`).then(r => {
+                    // console.log(r.data.books)
+                    setBook(r.data.book)
                 }),
 
                 axiosBooks.get(`/user/${id}`).then(r => {
@@ -112,7 +118,7 @@ export default function MerchDetails(props) {
             </div>
 
             <Subtitle text={`Produtos relacionados`}/>
-            <WrapList list={genreMerch.slice(0, 4)}/>
+            <MerchList list={genreMerch.slice(0, 4)}/>
             <div className={"button"}>
                 <Link to={"/search"}>
                     <PrimaryButton text={"Ver mais"}/>
@@ -128,7 +134,7 @@ export default function MerchDetails(props) {
             </div>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            <WrapList list={allMerch.slice(0,4)}/>
+            <MerchList list={allMerch.slice(0,4)}/>
             <Link to={"/search"}>
                 <PrimaryButton text={"Ver mais"}/>
             </Link>
