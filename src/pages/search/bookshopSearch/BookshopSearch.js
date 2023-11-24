@@ -28,15 +28,21 @@ export default function BookshopSearch() {
             method: setOrder
         },
         {
-            text: "Mais Antiga",
+            text: "Adesão Mais Antiga",
             style: "checkbox",
             filter: "data-asc",
             method: setOrder
         },
         {
-            text: "Mais Recente",
+            text: "Adesão Mais Recente",
             style: "checkbox",
             filter: "data-desc",
+            method: setOrder
+        },
+        {
+            text: "Limpar",
+            style: "checkbox",
+            filter: "",
             method: setOrder
         }
     ];
@@ -54,15 +60,6 @@ export default function BookshopSearch() {
         })
             .then(r => setFilteredBookstore(r.data.bookstores))
             .catch(e => console.log("Error", e))
-
-        if(isLogged()) {
-            axiosBooks.get(`/user/${user.id}`)
-                .then(r => setUserDistrict(r.data.user.distrito))
-                .catch(e => console.log("Error", e))
-        } else {
-            openModal()
-        }
-
     }, [page, filter, order])
 
     if (!filteredBookstore) {

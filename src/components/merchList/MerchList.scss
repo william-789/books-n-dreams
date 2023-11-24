@@ -1,12 +1,19 @@
 .MerchList {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 
   .Merch {
-    width: 30%;
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
-    @media(max-width: 768px) {
-      width: 47%;
+    @media (min-width: 768px) {
+      width: calc(25% - 10px);
     }
   }
 }

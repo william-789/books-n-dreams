@@ -11,24 +11,60 @@ export default function AuthorSearch(props) {
     const [page, setPage] = useState(1);
     const [filteredAuthor, setFilteredAuthor] = useState(null);
     const [filter, setFilter] = useState("")
-    const [nationality, setNationality] = useState(null)
+    const [nationalityList, setNationalityList] = useState(null)
+    const [nationality, setNationality] = useState(null);
+    const [order, setOrder] = useState(null);
 
     const filterOptions = [
-        {text: "Nacionalidade", style: "dropdown", list: nationality},
-        {text: "Ordem Alfabética", style: "checkbox"},
+        {
+            text: "Nacionalidade",
+            style: "dropdown",
+            list: nationalityList?.map(n => {
+                return {
+                    ...n, name: "genre", id: n.id, method: (id) => {
+                        setNationality(id)
+                    }
+                }
+            }),
+            method: () => {
+            }
+        },
+        {
+            text: "Ordem Alfabética",
+            style: "checkbox",
+            filter: "nome",
+            method: setOrder
+        },
+        {
+            text: "Limpar",
+            style: "checkbox",
+            filter: "",
+            method: () => {
+                setOrder(null)
+            }
+        }
     ];
 
     useEffect(() => {
-        axiosBooks.get(`/author/all`, {params: {per_page: 6, page: page, nome: filter}})
+        axiosBooks.get(`/author/all`, {
+            params:
+                {
+                    per_page: 6,
+                    page: page,
+                    nome: filter,
+                    ordem: order,
+                    nacionalidade: nationality
+                }
+        })
             .then(r => setFilteredAuthor(r.data.authors))
             .catch(e => console.log("Error", e))
 
         axiosBooks.get(`/author/nationalities/all`,)
-            .then(r => setNationality(r.data.nationalities))
+            .then(r => setNationalityList(r.data.nationalities))
             .catch(e => console.log("Error", e))
-    }, [page, filter])
+    }, [page, filter, nationality, order])
 
-    if (!filteredAuthor || !nationality) {
+    if (!filteredAuthor || !nationalityList) {
         return null
     }
 
@@ -45,7 +81,6 @@ export default function AuthorSearch(props) {
                 <div className={"container"}>
 
                     <h1>Pesquisa por Autor</h1>
-
                     <SearchInput text={"Autores"} func={search}/>
 
                     <div className={"authorList"}>

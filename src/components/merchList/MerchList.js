@@ -11,7 +11,7 @@ export default function MerchList(props) {
                     key={m.id}
                     id={m.id}
                     name={m.nome}
-                    image={baseImageLink + m.foto}
+                    image={m.foto}
                 />
             ))}
         </div>
