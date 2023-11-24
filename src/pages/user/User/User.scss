@@ -161,6 +161,7 @@ $libraryDetailsAPP: 0.9rem;
       position: relative;
       border: 1px solid rgba(0, 0, 0, 0);
 
+
       .userBanner{
         width: 100%;
         height: 150px;
@@ -181,9 +182,10 @@ $libraryDetailsAPP: 0.9rem;
         justify-content: center;
         align-items: center;
         border: 1px solid rgba(255, 0, 0, 0);
-        width: 80%;
+        width: 50%;
         margin: 4rem auto 0 auto ;
         z-index: 1;
+
 
         .imageText{
           display: flex;
@@ -226,6 +228,15 @@ $libraryDetailsAPP: 0.9rem;
       }
 
     }
+
+
+
+
+
+
+
+
+
 
     .wrapper{
       width: 85%;

@@ -32,7 +32,6 @@ export default function User(props) {
                     <div className={"userImage"}></div>
                     <div className={"userText"}>
                         <h1>Ana Borges</h1>
-
                         <div className={"button"}>
                             <Link to={"/edit-personal"}>
                                 <ThirdButton text={"Editar Perfil"}/>
@@ -44,6 +43,8 @@ export default function User(props) {
                 </div>
             </div>
         </div>
+
+
         <div className="wrapper">
 
             <SubTitles text={"Lista de Favoritos"}/>
