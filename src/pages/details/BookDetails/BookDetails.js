@@ -55,8 +55,8 @@ export default function BookDetails(props) {
                     setGenreBooks(r.data.books)
                 }),
 
+               axiosBooks.get(`/user/${id}`).then(r => {
 
-                axiosBooks.get(`/user/${id}`).then(r => {
                     console.log(r.data)
                     setUser(r.data)
                 }),

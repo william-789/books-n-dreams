@@ -26,6 +26,8 @@ export default function AuthorSearch(props) {
                     }
                 }
             }),
+            clear: setNationality,
+            clearFilter: null,
             method: () => {
             }
         },

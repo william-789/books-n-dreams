@@ -23,6 +23,8 @@ export default function BookSearch(props) {
             list: genreList?.map(g => {
                 return {...g, name:"genre", id: g.id, method: (id) => {setGenre(id)}}
             }),
+            clear: setGenre,
+            clearFilter: null,
             method: () => {}
         },
 
@@ -32,6 +34,8 @@ export default function BookSearch(props) {
             list: authorList?.map(a => {
                 return {...a, name:"author", id: a.id, method: (id) => {setAuthor(id)}}
             }),
+            clear: setAuthor,
+            clearFilter: null,
             method: () => {}
         },
 
@@ -41,6 +45,8 @@ export default function BookSearch(props) {
             list: bookstoreList?.map(b => {
                 return {...b, name:"bookstore", id: b.id, method: (id) => {setBookstore(id)}}
             }),
+            clear: setBookstore,
+            clearFilter: null,
             method: () => {}
         }
     ];
