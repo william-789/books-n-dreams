@@ -14,7 +14,6 @@ export default function BookPrice(props) {
                     <div className={"Image"} style={{ backgroundImage: `url(${baseImageLink + props.foto})` }} />
                 </div>
 
-
                 <div className={"Info"}>
                     <h3>{props.nome}</h3>
                     <h4>{props.autor}</h4>

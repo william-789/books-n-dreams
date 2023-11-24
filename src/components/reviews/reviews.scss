@@ -10,7 +10,7 @@
     justify-content: center;
     background-color: $brown;
     color: #EBE6E4;
-    width: 35%;
+    width: 25vw;
     aspect-ratio: 1/0.2;
     border-radius: 200px;
     padding: 1rem;
@@ -89,9 +89,10 @@
         outline: none;
         resize: none;
 
-        width: 88%;
+        width: 65vw;
         height: 5rem;
         color: $brown;
+        margin-right: 1rem;
         border-radius: 1rem;
 
         font-size: 1rem;

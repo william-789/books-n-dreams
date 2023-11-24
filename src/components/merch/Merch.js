@@ -5,9 +5,9 @@ import ThirdButton from "../buttons/ThirdButton/ThirdButton";
 
 export default function Merch(props) {
     return <div className={"Merch"}>
-        <Link to={`/merch/${props.id}`}>
-            <div className={"image"}>
-                <img src={baseImageLink + props.image} alt={props.name}/>
+        <Link to={`/merch/${props.id}`} className={"Link"}>
+            <div className={"ImageContainer"}>
+                <div className={"Image"} style={{ backgroundImage: `url(${baseImageLink + props.image})` }} />
             </div>
 
             <div className={"info"}>

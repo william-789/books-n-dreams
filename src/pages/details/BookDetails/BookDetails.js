@@ -56,6 +56,7 @@ export default function BookDetails(props) {
                 }),
 
                axiosBooks.get(`/user/${id}`).then(r => {
+
                     console.log(r.data)
                     setUser(r.data)
                 }),
@@ -87,7 +88,7 @@ export default function BookDetails(props) {
         <div className={"Container"}>
             <BookInfo
                 foto={details.foto}
-                tipo={details.tipo}
+                tipo={"livro"}
                 genero={details.genero}
                 nome={details.nome}
                 autor={details.autor}
@@ -122,6 +123,7 @@ export default function BookDetails(props) {
                     />
                 </div>
             </div>
+
             <Subtitle text={`Mais livros de ${author.nome}`}/>
             <WrapList list={authorBooks.slice(0, 4)}/>
             <div className={"button"}>
@@ -131,7 +133,9 @@ export default function BookDetails(props) {
             </div>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            <WrapList list={genreBooks.slice(0, 4)}/>
+            <WrapList list={genreBooks.slice(0, 4)}
+                      key={details.id}
+                      tipo={"livro"}/>
             <div className={"button"}>
                 <Link to={"/search"}>
                     <PrimaryButton text={"Ver mais"}/>
