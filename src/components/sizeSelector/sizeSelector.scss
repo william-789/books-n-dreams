@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Josefin+Sans:wght@200;300;500;600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+@import "src/App.scss";
+
+.Size-selector {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
+  .Size {
+    width: 6rem;
+    aspect-ratio: 1/1;
+    background-color: $backgroundAccent;
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 2rem;
+    font-size: 2rem;
+    color: $brown;
+    opacity: 60%;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border-radius: 25px;
+
+    &:hover {
+     // background-color: $orange;
+      opacity: 100%;
+    }
+
+    &.selected {
+      border: 6px solid $brown;
+      //background-color: $orange;
+      color: $brown;
+      opacity: 100%;
+    }
+  }
+}

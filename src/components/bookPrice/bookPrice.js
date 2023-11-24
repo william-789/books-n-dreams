@@ -9,19 +9,20 @@ export default function BookPrice(props) {
 
     return (
         <div className={"BookPrice"}>
-            <Link to={`/book/${props.id}`} className={"link"}>
-                <div className={"image"}>
-                    <img src={baseImageLink + props.foto} alt={props.nome} />
+            <Link to={`/book/${props.id}`} className={"Link"}>
+                <div className={"ImageContainer"}>
+                    <div className={"Image"} style={{ backgroundImage: `url(${baseImageLink + props.foto})` }} />
                 </div>
 
-                <div className={"info"}>
+
+                <div className={"Info"}>
                     <h3>{props.nome}</h3>
                     <h4>{props.autor}</h4>
 
                     <ThirdButton text={"Desde " + props.text + "€"} />
                 </div>
 
-                {showLastUnits && <p className={"lastUnits"}>Últimas unidades</p>}
+                {showLastUnits && <p className={"LastUnits"}>Últimas unidades</p>}
 
             </Link>
 

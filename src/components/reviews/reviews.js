@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar, faUser} from "@fortawesome/free-regular-svg-icons";
 import {faStar as FaStarSolid} from "@fortawesome/free-solid-svg-icons";
@@ -9,13 +9,13 @@ import axiosBooks from "../../util/axiosBooks";
 import {useParams} from "react-router-dom";
 import {useUser} from "../../context/userContext";
 import ErrorModal from "../error/ErrorModal";
+import {useError} from "../../context/errorContext";
 
 export default function Reviews(props) {
-    const {id} = useParams();
-    const { user } = useUser();
+    const {id} = props;
+    const { showError } = useError()
     const [userReview, setUserReview] = useState(""); // Estado para armazenar a revisão do usuário
     const [userRating, setUserRating] = useState(0.0); // Estado para armazenar a classificação do usuário
-    const [errorModalOpen, setErrorModalOpen] = useState(false);
 
     const totalStars = 5;
 
@@ -49,33 +49,32 @@ export default function Reviews(props) {
     };
 
 
-    const handleSubmitReview = () => {
+    const handleSubmitReview = async () => {
         try {
             const pedido = {
-                item: id,
-                utilizador: user.id,
                 nota: userRating,
                 comentario: userReview
             };
-            console.log("Pedido", pedido);
+            const token = localStorage.getItem("token");
 
-            const response = axiosBooks.post(`item/rate/${id}`, pedido);
+            const response = await axiosBooks.post(`item/rate/${id}`, pedido, { headers: { 'token-header': token } });
+
             if (response.status === 200) {
-                console.log("Review_added_sucefully");
+                console.log("Review added successfully");
+            } else if (response.status === 400 && response.data.message === "already_rated") {
+                showError("Item already rated by the user");
             } else {
-                console.error("Failed_to_add_review");
-                setErrorModalOpen(true);
+                showError(response.data.message || "Failed to add review");
             }
         } catch (error) {
-            console.error("Erro ao adicionar avaliação:", error);
-        } finally {
-            setErrorModalOpen(false);
+            showError("Erro ao adicionar avaliação");
         }
 
         // Limpar o estado da revisão e da classificação após a submissão
         setUserReview("");
         setUserRating(0);
     };
+
 
     return (
         <div className={"Reviews"}>
@@ -122,13 +121,6 @@ export default function Reviews(props) {
                 </button>
 
             </div>
-
-            {errorModalOpen && (
-                <ErrorModal
-                    message={"Mensagem de erro aqui"}
-                    onClose={() => setErrorModalOpen(false)}
-                />
-            )}
 
         </div>
     );
