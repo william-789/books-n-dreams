@@ -55,7 +55,7 @@ export default function BookDetails(props) {
                     setGenreBooks(r.data.books)
                 }),
 
-               axiosBooks.get(`/user/${id}`).then(r => {
+                axiosBooks.get(`/user/${id}`).then(r => {
 
                     console.log(r.data)
                     setUser(r.data)
@@ -88,7 +88,6 @@ export default function BookDetails(props) {
         <div className={"Container"}>
             <BookInfo
                 foto={details.foto}
-                tipo={"livro"}
                 genero={details.genero}
                 nome={details.nome}
                 autor={details.autor}
@@ -103,7 +102,8 @@ export default function BookDetails(props) {
                     <div className={"WhereToBuyList"}>
                         {stores.slice(0, 4).map(s => (
                             <WhereToBuy
-                                key={s.id} // Lembre-se de adicionar uma chave única para cada elemento no loop
+                                key={props.id}
+                                id={s.id}
                                 capa={s.capa}
                                 nome={s.nome}
                                 localidade={s.localidade}
@@ -134,8 +134,7 @@ export default function BookDetails(props) {
 
             <Subtitle text={"Nossas sugestões para ti"}/>
             <WrapList list={genreBooks.slice(0, 4)}
-                      key={details.id}
-                      tipo={"livro"}/>
+                      key={details.id}/>
             <div className={"button"}>
                 <Link to={"/search"}>
                     <PrimaryButton text={"Ver mais"}/>
