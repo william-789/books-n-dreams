@@ -4,6 +4,7 @@ import Input from '../../shared/Input/Input';
 import Dropdown from '../../shared/Dropdown/Dropdown';
 import Pagination from "../../shared/pagination/Pagination";
 import axiosBooks from "../../../util/axiosBooks";
+import InputFile from "../../shared/Input/InputFile";
 
 const distritos = [
   { value: 'Aveiro', label: 'Aveiro' },
@@ -26,7 +27,7 @@ const distritos = [
 ];
 
 const RegisterForm = () => {
-  const { control, handleSubmit, formState: { errors }, watch } = useForm();
+  const { register, control, handleSubmit, formState: { errors }, watch } = useForm();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null); // test
@@ -39,6 +40,9 @@ const RegisterForm = () => {
 
   const password = watch('password');
   const accountType = watch("accountType");
+
+  console.log(accountType)
+
 
   const onSubmit = async (data) => {
     let formData = new FormData();
@@ -278,12 +282,12 @@ const RegisterForm = () => {
             }}
           />
         {errors.description && <div className="error">{errors.description.message}</div>}
-        <Input
+        <InputFile
             label="Fotografia"
-            type="file"
             name="fileInput"
-            control={control}
             onChange={(event) => setPhoto(event)}
+            register={register}
+            errors={errors}
             rules={{
               required: 'Escolha uma foto bonita para os leitores :)',
             }}
