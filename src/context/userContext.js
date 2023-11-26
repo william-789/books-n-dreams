@@ -10,7 +10,7 @@ const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false); // starts false
+  const [modalIsOpen, setModalIsOpen] = useState(true); // starts false
   const [user, setUser] = useState({}); // starts as empty object
 
   // User

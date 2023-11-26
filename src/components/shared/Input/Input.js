@@ -3,6 +3,7 @@ import './Input.scss';
 import { Controller } from 'react-hook-form';
 
 function Input({ label = '', type, name, big, placeholder = '', control, rules }) {
+
   return (
     <div className="container">
       {label && <label>{label}</label>}
@@ -17,6 +18,7 @@ function Input({ label = '', type, name, big, placeholder = '', control, rules }
               id={name}
               placeholder={placeholder ? placeholder : `Introduz o teu ${label.toLowerCase()}`}
               {...field}
+              //onChange={handleChange}
               style={{ border: fieldState.error ? '2px solid #FF7F51' : '1px solid #ccc',
                 paddingBottom: big ? '60px' : '15px',}}
             />
@@ -26,5 +28,4 @@ function Input({ label = '', type, name, big, placeholder = '', control, rules }
     </div>
   );
 }
-
 export default Input;
