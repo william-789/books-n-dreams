@@ -88,6 +88,7 @@ export default function BookDetails(props) {
         <div className={"Container"}>
             <BookInfo
                 foto={details.foto}
+                tipo={details.tipo}
                 genero={details.genero}
                 nome={details.nome}
                 autor={details.autor}

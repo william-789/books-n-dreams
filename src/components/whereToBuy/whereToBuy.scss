@@ -23,8 +23,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 15vw;
-    height: 15vw;
+    width: 13vw;
+    height: 13vw;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
 
@@ -38,11 +38,11 @@
   .info {
     position: absolute;
     color: $darkBlue;
-    top: 1rem;
     font-family: $headingFont;
     font-size: 1.3rem;
     width: 100%;
     left: 100%;
+    margin-left: 1rem;
 
     flex-direction: column;
     display: flex;
@@ -60,6 +60,16 @@
       margin-top: 0.2rem;
       margin-bottom: 0.6rem;
     }
+    @media (max-width: 768px) {
+      .info {
+        width: 100%;
+        top: 0;
+        margin-left: 1rem;
+      }
+      h3{
+        font-size: 1rem;
+      }
+    }
   }
 
   .SecondaryButton {
@@ -67,9 +77,13 @@
     aspect-ratio: 1 / 0.14;
     margin-top: 5.5rem;
     margin-right: 5rem;
+    margin-left: 1rem;
 
     @media (max-width: 768px) {
       width: 100%;
+      aspect-ratio: 1/0.20;
+      margin-top: 8rem;
+      font-size: 0.9rem;
     }
   }
 
