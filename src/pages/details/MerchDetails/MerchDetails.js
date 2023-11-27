@@ -13,9 +13,11 @@ import Reviews from "../../../components/reviews/reviews";
 import MerchInfo from "../../../components/merchInfo/merchInfo";
 import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 import MerchList from "../../../components/merchList/MerchList";
+import {useUser} from "../../../context/userContext";
 
 export default function MerchDetails(props) {
     const {id} = useParams();
+    const { user } = useUser();
 
     const [details, setDetails] = useState(null)
     const [stores, setStores] = useState(null)
@@ -24,8 +26,8 @@ export default function MerchDetails(props) {
     const [serieMerch, setSerieMerch] = useState(null);
     const [genreBooks, setGenreBooks] = useState(null);
     const [comments, setComments] = useState(null);
-    const [user, setUser] = useState(null);
     const [allMerch, setAllMerch] = useState(null);
+    const [utilizador, setUtilizador] = useState(null)
 
     const getData = async () => {
         try {
@@ -65,9 +67,9 @@ export default function MerchDetails(props) {
                     setBook(r.data.book)
                 }),
 
-                axiosBooks.get(`/user/${id}`).then(r => {
-                    // console.log(r.data)
-                    setUser(r.data)
+                axiosBooks.get(`/user/${user.id}`).then(r => {
+                    console.log(r.data.utilizador);
+                    setUtilizador(r.data.utilizador);
                 }),
 
                 axiosBooks.get(`/item/comments/${details.item}`).then(r => {
@@ -108,14 +110,15 @@ export default function MerchDetails(props) {
             <div className={"WhereToBuyList"}>
                 {stores.slice(0, 4).map(s => (
                     <WhereToBuy
-                        key={s.id}
                         id={s.id}
                         capa={s.capa}
                         nome={s.nome}
                         localidade={s.localidade}
                         distrito={s.distrito}
                         preco={s.preco}
+                        itemId={details.item}
                         allPrices={stores.map(store => store.preco)}
+                        userLocalidade={user ? user.localidade : null}
                     />
                 ))}
             </div>

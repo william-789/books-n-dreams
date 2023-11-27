@@ -5,7 +5,7 @@ import { baseImageLink } from "../../util/axiosBooks";
 import React from "react";
 
 export default function BookPrice(props) {
-    const showLastUnits = props.disponiveis && props.disponiveis < 2;
+    const showLastUnits = props.disponiveis && props.disponiveis < 1;
     const isEsgotado = props.disponiveis === 0;
 
     return (

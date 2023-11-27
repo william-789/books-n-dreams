@@ -14,14 +14,16 @@ import WrapList from "../../../components/bookList/wrapList";
 import Reviews from "../../../components/reviews/reviews";
 import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 import UserReview from "../../../components/userReviews/userReviews";
+import {useUser} from "../../../context/userContext";
 
 export default function BookDetails(props) {
     const {id} = useParams();
+    const { user } = useUser();
 
     const [details, setDetails] = useState(null)
     const [stores, setStores] = useState(null)
     const [author, setAuthor] = useState(null);
-    const [user, setUser] = useState(null)
+    const [utilizador, setUtilizador] = useState(null)
 
     const [authorBooks, setAuthorBooks] = useState(null);
     const [genreBooks, setGenreBooks] = useState(null);
@@ -55,13 +57,13 @@ export default function BookDetails(props) {
                     setGenreBooks(r.data.books)
                 }),
 
-                axiosBooks.get(`/user/${id}`).then(r => {
-
-                    console.log(r.data)
-                    setUser(r.data)
+                axiosBooks.get(`/user/${user.id}`).then(r => {
+                    console.log(r.data.utilizador);
+                    setUtilizador(r.data.utilizador);
                 }),
 
-                axiosBooks.get(`/item/comments/${details.item}`).then(r => {
+
+            axiosBooks.get(`/item/comments/${details.item}`).then(r => {
                     console.log(r.data.comments)
                     setComments(r.data.comments)
                 }),
@@ -103,15 +105,17 @@ export default function BookDetails(props) {
                     <div className={"WhereToBuyList"}>
                         {stores.slice(0, 4).map(s => (
                             <WhereToBuy
-                                key={props.id}
                                 id={s.id}
                                 capa={s.capa}
                                 nome={s.nome}
                                 localidade={s.localidade}
                                 distrito={s.distrito}
                                 preco={s.preco}
+                                itemId={details.item}
                                 allPrices={stores.map(store => store.preco)}
+                                userLocalidade={user ? user.localidade : null}
                             />
+
                         ))}
                     </div>
                 </div>
