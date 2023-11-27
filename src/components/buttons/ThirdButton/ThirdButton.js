@@ -1,8 +1,15 @@
 import React from "react";
-import "./ThirdButton.scss"
+import "./ThirdButton.scss";
 
 export default function ThirdButton(props) {
-    return <div className={"ThirdButton"}>
-        <button className="button"> {props.text}</button>
-    </div>
+    const { text, disponiveis, onClick } = props;
+    const isEsgotado = disponiveis === 0;
+
+    return (
+        <div className={`ThirdButton ${isEsgotado ? "esgotado" : ""}`}>
+            <button className="button" onClick={onClick} disabled={isEsgotado}>
+                {isEsgotado ? "Esgotado" : disponiveis > 0 ? `Desde ${text}` : text}
+            </button>
+        </div>
+    );
 }

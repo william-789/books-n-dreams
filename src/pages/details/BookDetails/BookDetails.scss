@@ -7,6 +7,16 @@
   height: 100%;
   overflow: auto;
 
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 55vh;
+    font-size: 5rem;
+    color: $orange;
+  }
+
   .Header {
     display: flex;
     justify-content: center;
@@ -87,6 +97,10 @@
   .UserReviewsList{
 display: flex;
     flex-direction: column;
+  }
+
+  @media (max-width: 768px) {
+
   }
 }
 

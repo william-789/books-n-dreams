@@ -5,6 +5,8 @@ import "./wrapList.scss";
 export default function WrapList(props) {
     const list = props.list || [];
 
+    console.log("WrapList Props:", props); // Adicione este log
+
     return (<div className={"WrapList"}>
             {list.map((item) => (
                 <BookPrice
