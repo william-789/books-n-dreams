@@ -12,6 +12,7 @@ export default function MerchList(props) {
                     id={m.id}
                     name={m.nome}
                     image={m.foto}
+                    text={m.desde}
                 />
             ))}
         </div>

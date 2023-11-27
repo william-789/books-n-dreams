@@ -19,35 +19,48 @@ export default function BookshopSearch() {
             text: "Perto de Si",
             style: "checkbox",
             filter: "",
-            method: setOrder
+            method: () => {
+                setOrder(null)
+                getUserDistrict()
+            }
         },
         {
             text: "Ordem Alfabética",
             style: "checkbox",
             filter: "nome",
-            method: setOrder
+            method: (filter) => {
+                setOrder(filter)
+                setUserDistrict(null)
+            }
         },
         {
             text: "Adesão Mais Antiga",
             style: "checkbox",
             filter: "data-asc",
-            method: setOrder
+            method: (filter) => {
+                setOrder(filter)
+                setUserDistrict(null)
+            }
         },
         {
             text: "Adesão Mais Recente",
             style: "checkbox",
             filter: "data-desc",
-            method: setOrder
+            method: (filter) => {
+                setOrder(filter)
+                setUserDistrict(null)
+            }
         },
         {
             text: "Limpar",
             style: "checkbox",
             filter: "",
-            method: setOrder
+            method: () => {
+                setOrder(null)
+                setUserDistrict(null)
+            }
         }
     ];
-
-    console.log("ordem", order);
 
     useEffect(() => {
         axiosBooks.get(`/store/all`, {
@@ -55,21 +68,30 @@ export default function BookshopSearch() {
                 {
                     per_page: 5, page: page,
                     nome: filter,
+                    distrito: userDistrict,
                     ordem: order
                 }
         })
             .then(r => setFilteredBookstore(r.data.bookstores))
             .catch(e => console.log("Error", e))
-    }, [page, filter, order])
+    }, [page, filter, order, userDistrict])
 
     if (!filteredBookstore) {
         return null
     }
 
-    console.log(filteredBookstore);
-
     function search(input) {
         setFilter(input)
+    }
+
+    function getUserDistrict() {
+        if (isLogged()) {
+            axiosBooks.get(`/user/${user.id}`)
+                .then(r => setUserDistrict(r.data.user.distrito))
+                .catch(e => console.log("Error", e))
+        } else {
+            openModal()
+        }
     }
 
     return <div className={"BookSearch content"}>
@@ -84,7 +106,8 @@ export default function BookshopSearch() {
                     <SearchInput text={"Livrarias"} func={search}/>
 
                     <div className={"bookshopList"}>
-                        {filteredBookstore.map(b => <Bookshop key={b.id} id={b.id} name={b.nome} image={baseImageLink + b.capa}/>)}
+                        {filteredBookstore.map(b => <Bookshop key={b.id} id={b.id} name={b.nome}
+                                                              image={baseImageLink + b.capa}/>)}
                     </div>
 
                     <Pagination setPage={setPage} page={page} totalPages={100}/>
