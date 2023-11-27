@@ -21,6 +21,8 @@
       }
 
       .bookList {
+        display: flex;
+        align-items: center;
 
         .WrapList {
 
@@ -33,6 +35,13 @@
               margin-right: 2%;
             }
           }
+        }
+
+        .noResult {
+          font-size: $paragraphSizeAPP;
+          font-family: $paragraphFont;
+          color: $brown;
+          margin-top: 15px;
         }
       }
     }

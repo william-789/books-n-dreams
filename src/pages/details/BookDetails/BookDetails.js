@@ -74,7 +74,7 @@ export default function BookDetails(props) {
 
     useEffect(() => {
         getData();
-    }, [])
+    }, [id])
 
     // remover && false depois de passar os dados corretos
     if (!(details && stores && author && authorBooks && genreBooks && comments)) return null;
@@ -129,7 +129,7 @@ export default function BookDetails(props) {
             <WrapList list={authorBooks.slice(0, 4)}/>
             <div className={"button"}>
                 <Link to={"/search"}>
-                    <PrimaryButton text={"Ver mais"}/>
+                    {authorBooks.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
                 </Link>
             </div>
 
@@ -138,7 +138,7 @@ export default function BookDetails(props) {
                       key={details.id}/>
             <div className={"button"}>
                 <Link to={"/search"}>
-                    <PrimaryButton text={"Ver mais"}/>
+                    {genreBooks.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
                 </Link>
             </div>
 

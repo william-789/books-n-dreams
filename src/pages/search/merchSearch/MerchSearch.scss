@@ -33,6 +33,13 @@
             }
           }
         }
+
+        .noResult {
+          font-size: $paragraphSizeAPP;
+          font-family: $paragraphFont;
+          color: $brown;
+          margin-top: 15px;
+        }
       }
     }
   }

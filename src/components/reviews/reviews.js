@@ -48,7 +48,6 @@ export default function Reviews(props) {
         setUserRating(rating);
     };
 
-
     const handleSubmitReview = async () => {
         try {
             const pedido = {
@@ -56,7 +55,6 @@ export default function Reviews(props) {
                 comentario: userReview
             };
             const token = localStorage.getItem("token");
-
             const response = await axiosBooks.post(`item/rate/${id}`, pedido, { headers: { 'token-header': token } });
 
             if (response.status === 200) {
@@ -74,7 +72,6 @@ export default function Reviews(props) {
         setUserReview("");
         setUserRating(0);
     };
-
 
     return (
         <div className={"Reviews"}>

@@ -125,7 +125,7 @@ export default function MerchDetails(props) {
 
             <div className={"button"}>
                 <Link to={"/search"}>
-                    <PrimaryButton text={"Ver mais"}/>
+                    {genreMerch.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
                 </Link>
             </div>
 
@@ -144,7 +144,7 @@ export default function MerchDetails(props) {
             )}
 
             <Link to={"/search"}>
-                <PrimaryButton text={"Ver mais"}/>
+                {serieMerch.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
             </Link>
 
             <Reviews

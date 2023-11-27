@@ -86,7 +86,7 @@ export default function AuthorSearch(props) {
                     <SearchInput text={"Autores"} func={search}/>
 
                     <div className={"authorList"}>
-                        <AuthorList list={filteredAuthor}/>
+                        {filteredAuthor.length > 0 ? <AuthorList list={filteredAuthor}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
                     <Pagination setPage={setPage} page={page} totalPages={100}/>
