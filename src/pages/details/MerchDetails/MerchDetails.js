@@ -21,6 +21,7 @@ export default function MerchDetails(props) {
     const [stores, setStores] = useState(null)
     const [book, setBook] = useState(null)
     const [genreMerch, setGenreMerch] = useState(null);
+    const [serieMerch, setSerieMerch] = useState(null);
     const [genreBooks, setGenreBooks] = useState(null);
     const [comments, setComments] = useState(null);
     const [user, setUser] = useState(null);
@@ -29,7 +30,7 @@ export default function MerchDetails(props) {
     const getData = async () => {
         try {
             let details = await axiosBooks.get(`/item/merch/${id}`).then(r => r.data.merch);
-            // console.log("merch", details)
+            console.log("merch", details)
             setDetails(details);
 
             await Promise.all([
@@ -37,7 +38,7 @@ export default function MerchDetails(props) {
                 axiosBooks.get(`/item/available/${id}`).then(r => {
                     //console.log(r.data.available)
                     setStores(r.data.available)
-                }), // replace by available
+                }),
 
                 axiosBooks.get(`/item/merch/all`).then(r => {
                     // console.log(r.data.merch)
@@ -45,8 +46,13 @@ export default function MerchDetails(props) {
                 }),
 
                 axiosBooks.get(`/item/merch/all`, {params: {genero: details.genero_id}}).then(r => {
-                   // console.log(r.data.merch)
+                    // console.log(r.data.merch)
                     setGenreMerch(r.data.merch)
+                }),
+
+                axiosBooks.get(`/item/merch/all`, {params: {serie: details.serie}}).then(r => {
+                    console.log(r.data.merch)
+                    setSerieMerch(r.data.merch)
                 }),
 
                 axiosBooks.get(`/book/all`, {params: {genero: details.genero_id}}).then(r => {
@@ -78,10 +84,10 @@ export default function MerchDetails(props) {
         getData();
     }, [])
 
-    console.log(details, stores, genreMerch, genreBooks, comments);
+    // console.log(details, stores, genreMerch, genreBooks, comments);
 
     // remover && false depois de passar os dados corretos
-    if (!(details && allMerch && stores && genreMerch && genreBooks && comments)) return null;
+    if (!(details && serieMerch && stores && genreMerch && genreBooks && comments)) return null;
 
     return <div className={"MerchDetail_content"}>
 
@@ -95,30 +101,28 @@ export default function MerchDetails(props) {
                 tipo={details.tipo}
                 genero={details.genero}
                 nome={details.nome}
-                descricao={details.descricao}/>
+                descricao={details.descricao}
+            />
 
-            <div className={"Multiple"}>
-
-                <div className={"ContainerLeft"}>
-
-                    <Subtitle text={"Onde Comprar"}/>
-                    <div className={"WhereToBuyList"}>
-                        {stores.map(s => {
-                            return <WhereToBuy
-                                capa={s.capa}
-                                nome={s.nome}
-                                localidade={s.localidade}
-                                distrito={s.distrito}
-                                preco={s.preco}
-                            />
-                        })}
-
-                    </div>
-                </div>
+            <Subtitle text={"Onde Comprar"}/>
+            <div className={"WhereToBuyList"}>
+                {stores.slice(0, 4).map(s => (
+                    <WhereToBuy
+                        key={s.id}
+                        id={s.id}
+                        capa={s.capa}
+                        nome={s.nome}
+                        localidade={s.localidade}
+                        distrito={s.distrito}
+                        preco={s.preco}
+                        allPrices={stores.map(store => store.preco)}
+                    />
+                ))}
             </div>
 
             <Subtitle text={`Produtos relacionados`}/>
             <MerchList list={genreMerch.slice(0, 4)}/>
+
             <div className={"button"}>
                 <Link to={"/search"}>
                     <PrimaryButton text={"Ver mais"}/>
@@ -126,7 +130,8 @@ export default function MerchDetails(props) {
             </div>
 
             <Subtitle text={`Livros relacionados`}/>
-            <WrapList list={genreBooks.slice(0, 4)}/>
+            <WrapList list={genreBooks.slice(0, 4)}
+                      key={details.id}/>
             <div className={"button"}>
                 <Link to={"/search"}>
                     <PrimaryButton text={"Ver mais"}/>
@@ -134,7 +139,10 @@ export default function MerchDetails(props) {
             </div>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            <MerchList list={allMerch.slice(0,4)}/>
+            {details && (
+                <MerchList list={serieMerch.slice(0, 4)} details={details} />
+            )}
+
             <Link to={"/search"}>
                 <PrimaryButton text={"Ver mais"}/>
             </Link>

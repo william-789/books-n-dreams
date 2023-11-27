@@ -2,12 +2,20 @@
 @import "src/App";
 
 .WhereToBuy {
-  position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 2rem;
   margin-top: 2rem;
+
+  .Link {
+    display: flex;
+    color: black;
+    position: relative;
+    width: 100%;
+    text-decoration: none;
+  }
 
   .image {
     background-color: $brown;
@@ -15,21 +23,30 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 60%;
+    width: 13vw;
+    height: 13vw;
     aspect-ratio: 1 / 1;
-    border-radius: 200px;
-    margin-right: 3rem;
+    border-radius: 50%;
 
-    > img {
-      width: 100%;
+    @media (max-width: 768px) {
+      width: 30vw;
+      height: 30vw;
+      border-radius: 300px;
     }
   }
 
   .info {
+    position: absolute;
     color: $darkBlue;
     font-family: $headingFont;
     font-size: 1.3rem;
     width: 100%;
+    left: 100%;
+    margin-left: 1rem;
+
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
 
     h3 {
       font-size: $listTitles;
@@ -43,10 +60,30 @@
       margin-top: 0.2rem;
       margin-bottom: 0.6rem;
     }
+    @media (max-width: 768px) {
+      .info {
+        width: 100%;
+        top: 0;
+        margin-left: 1rem;
+      }
+      h3{
+        font-size: 1rem;
+      }
+    }
+  }
 
-    .SecondaryButton {
-      width: 16vw;
-      aspect-ratio: 1 / 0.14;
+  .SecondaryButton {
+    width: 80%;
+    aspect-ratio: 1 / 0.14;
+    margin-top: 5.5rem;
+    margin-right: 5rem;
+    margin-left: 1rem;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      aspect-ratio: 1/0.20;
+      margin-top: 8rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -54,7 +91,7 @@
     position: absolute;
     top: 0.8rem;
     left: -0.8rem;
-    width: 10vw;
+    width: 8vw;
     white-space: nowrap;
     padding: 0.5rem;
     background-color: $colourCheaper;
@@ -66,26 +103,30 @@
     font-weight: 600;
 
     @media (max-width: 768px) {
-    width: auto;
+      width: auto;
     }
-  }
 
-  .libraryNearIndicator {
-    position: absolute;
-    top: 0.8rem;
-    left: -0.8rem;
-    width: 20%;
-    padding: 0.5rem;
-    background-color: $colourCloser;
-    color: white;
-    text-align: center;
-    border-radius: 50px;
-    font-size: large;
-    font-family: $headingFont;
-    font-weight: 600;
-  }
+    .libraryNearIndicator {
+      position: absolute;
+      top: 0.8rem;
+      left: -0.8rem;
+      width: 20%;
+      padding: 0.5rem;
+      background-color: $colourCloser;
+      color: white;
+      text-align: center;
+      border-radius: 50px;
+      font-size: large;
+      font-family: $headingFont;
+      font-weight: 600;
+    }
 
-  &:hover {
-    transform: scale(1.02);
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 }

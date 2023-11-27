@@ -58,3 +58,29 @@
     margin-right: 0rem;
   }
 }
+
+.Review {
+  @media (max-width: 768px) {
+    display: flex;
+    width: 90%;
+    margin-left: 1rem;
+  }
+
+  .UserPhoto {
+    @media (max-width: 768px) {
+      width: 15%;
+    }
+  }
+
+  .UserInfo {
+    @media (max-width: 768px) {
+      width: 50%;
+    }
+  }
+
+  .Rating {
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+}
