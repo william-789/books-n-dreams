@@ -2,20 +2,24 @@ import React from "react";
 import './UserLibrary.scss'
 import Favorite from "../favorite/favorite";
 import {Link} from "react-router-dom";
+import {baseImageLink} from "../../util/axiosBooks";
 
 export default function UserLibrary(props) {
 
+  const bgImage = {
+    backgroundImage: `url(${baseImageLink+props.capa})`,
+  };
     return (
             <div className={"userLibrary"}>
 
-                <div className={"userLibraryImage"}></div>
+                <div className={"userLibraryImage"} style={bgImage}></div>
 
                 <div className={"userLibraryText"}>
 
                     <Link to={"/bookstore/:id"}>
                         <div className={"texts"}>
-                            <div className={"title"}>Centesima Página</div>
-                            <div className={"text"}>Rua Dona Augusta 5,<br/>1225-221 Lisboa, Portugal </div>
+                            <div className={"title"}>{props.nome}</div>
+                            <div className={"text"}>{props.morada},<br/>{props.codigo_postal} {/*props.localidade*/} {props.distrito}, Portugal </div>
                         </div>
                     </Link>
 
