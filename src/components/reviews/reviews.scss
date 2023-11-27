@@ -117,6 +117,9 @@
       width: 15%;
       height: 2rem;
       border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       position: absolute;
       bottom: 2rem;
@@ -132,6 +135,10 @@
       margin-top: 4px;
       margin-bottom: 4px;
       white-space: nowrap;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 

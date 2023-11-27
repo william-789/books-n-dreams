@@ -99,7 +99,7 @@ export default function BookSearch(props) {
                     <SearchInput text={"Livros"} func={search}/>
 
                     <div className={"bookList"}>
-                        <WrapList list={filteredBooks}/>
+                        {filteredBooks.length > 0 ? <WrapList list={filteredBooks}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
                     <Pagination setPage={setPage} page={page} totalPages={100}/>
