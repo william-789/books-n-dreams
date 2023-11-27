@@ -67,7 +67,7 @@ export default function MerchSearch(props) {
         return null
     }
 
-    console.log(typeList, "type")
+    console.log(filteredMerch)
 
     function search(input) {
         setFilter(input)
