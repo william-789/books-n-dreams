@@ -94,7 +94,7 @@ export default function BookshopSearch() {
         }
     }
 
-    return <div className={"BookSearch content"}>
+    return <div className={"BookshopSearch content"}>
 
         <div className={"contentDisplay"}>
             <Filter list={filterOptions}/>
@@ -106,8 +106,9 @@ export default function BookshopSearch() {
                     <SearchInput text={"Livrarias"} func={search}/>
 
                     <div className={"bookshopList"}>
-                        {filteredBookstore.map(b => <Bookshop key={b.id} id={b.id} name={b.nome}
-                                                              image={baseImageLink + b.capa}/>)}
+                        {filteredBookstore.length > 0 ?
+                            filteredBookstore.map(b => <Bookshop key={b.id} id={b.id} name={b.nome} image={baseImageLink + b.capa}/>)
+                        : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
                     <Pagination setPage={setPage} page={page} totalPages={100}/>
