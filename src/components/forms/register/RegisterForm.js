@@ -42,6 +42,7 @@ const RegisterForm = () => {
   const accountType = watch("accountType");
 
   console.log(accountType)
+  console.log("pass", password)
 
 
   const onSubmit = async (data) => {
@@ -68,11 +69,11 @@ const RegisterForm = () => {
 
     console.log(formData)
 
-    // await axiosBooks.post('/user/register', formData, {
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   }
-    // }).then(r=>console.log(r)).catch(e=>console.log(e))
+    await axiosBooks.post('/user/register', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(r=>console.log(r)).catch(e=>console.log(e))
   };
   const getPageCount = (type) => {
     switch (+type) {
@@ -153,119 +154,120 @@ const RegisterForm = () => {
           {errors.passwordConfirmation && <div className="error">{errors.passwordConfirmation.message}</div>}
         </div>
       <div className={`page ${currentPage === 2 ? '' : 'hidden'}`}>
-          <div className={"group"}>
-            <div className={"left flex-1"}>
-              <Input
-                label="Morada"
-                type="text"
-                name="morada"
-                placeholder="Escreve aqui a tua morada"
-                control={control}
-                rules={{
-                  required: 'Morada é obrigatória',
-                  maxLength: {
-                    value: 145,
-                    message: 'Máximo de 145 caracteres',
-                  },
-                }}
-              />
-              {errors.morada && <div className="error">{errors.morada.message}</div>}
-            </div>
-            <div className={"c-45"}>
-              <Input
-                label="Código Postal"
-                type="text"
-                name="codigo_postal"
-                placeholder="Escreve aqui o teu código postal"
-                control={control}
-                rules={{
-                  required: 'Código postal é obrigatório',
-                  pattern: {
-                    value: /^\d{5}-\d{3}$/,
-                    message: 'Insira um código postal válido (99999-999)',
-                  },
-                }}
-              />
-              {errors.codigo_postal && <div className="error">{errors.codigo_postal.message}</div>}
-            </div>
+        <div className={"group"}>
+          <div className={"left flex-1"}>
+            <Input
+              label="Morada"
+              type="text"
+              name="morada"
+              placeholder="Escreve aqui a tua morada"
+              control={control}
+              rules={{
+                required: 'Morada é obrigatória',
+                maxLength: {
+                  value: 145,
+                  message: 'Máximo de 145 caracteres',
+                },
+              }}
+            />
+            {errors.morada && <div className="error">{errors.morada.message}</div>}
           </div>
-          <div className={"group"}>
-            <div className={"c-45 left"}>
-              <Input
-                label="Localidade"
-                type="text"
-                name="localidade"
-                placeholder="Escreve aqui a tua localidade"
-                control={control}
-                rules={{
-                  required: 'Localidade é obrigatória',
-                }}
-              />
-              {errors.localidade && <div className="error">{errors.localidade.message}</div>}
-            </div>
-            <div className={"flex-1"}>
-              <Dropdown
-                label={"Distrito"}
-                name={"distrito"}
-                control={control}
-                options={[
-                  { value: '', label: 'Escolha o distrito' },
-                  ...distritos
-                ]}
-                rules={{ required: "Distrito é obrigatório" }}
-              />
-              {errors.distrito && <div className="error">{errors.distrito.message}</div>}
-            </div>
+          <div className={"c-45"}>
+            <Input
+              label="Código Postal"
+              type="text"
+              name="codigo_postal"
+              placeholder="Escreve aqui o teu código postal"
+              control={control}
+              rules={{
+                required: 'Código postal é obrigatório',
+                pattern: {
+                  value: /^\d{5}-\d{3}$/,
+                  message: 'Insira um código postal válido (99999-999)',
+                },
+              }}
+            />
+            {errors.codigo_postal && <div className="error">{errors.codigo_postal.message}</div>}
           </div>
-          <Input
-            label="Contacto Telefónico"
-            type="text"
-            name="contacto"
-            placeholder="Escreve aqui o teu contacto telefónico"
-            control={control}
-            rules={{
-              required: +accountType === 2 ? 'Obrigatório' : false,
-              pattern: {
-                value: /^\d{9}$/,
-                message: 'Insira um número válido',
-              },
-            }}
-          />
-          {errors.contacto && <div className="error">{errors.contacto.message}</div>}
-          {+accountType === 2 &&
-            <>
-              <Input
-                label="NIPC"
-                type="text"
-                name="NIPC"
-                placeholder="Enter your fiscal number (e.g., 123456789)"
-                control={control}
-                rules={{
-                  required: 'NIPC é obrigatório',
-                  pattern: {
-                    value: /^\d{9}$/,
-                    message: 'Insira um NIPC válido (123456789)',
-                  },
-                }}
-              />
-              {errors.NIPC && <div className="error">{errors.NIPC.message}</div>}
-            </>}
-          {+accountType === 1 &&
-            <>
-              <Input
-                label="Data de Nascimento"
-                type="date"
-                name="data_nascimento"
-                placeholder="YYYY-MM-DD"
-                control={control}
-                rules={{
-                  required: 'Obrigatório.'
-                }}/>
-              {errors.data_nascimento && <div className="error">{errors.data_nascimento.message}</div>}
-            </>}
-
         </div>
-      <div className={`page ${currentPage === 3 ? '' : 'hidden'}`}>
+        <div className={"group"}>
+          <div className={"c-45 left"}>
+            <Input
+              label="Localidade"
+              type="text"
+              name="localidade"
+              placeholder="Escreve aqui a tua localidade"
+              control={control}
+              rules={{
+                required: 'Localidade é obrigatória',
+              }}
+            />
+            {errors.localidade && <div className="error">{errors.localidade.message}</div>}
+          </div>
+          <div className={"flex-1"}>
+            <Dropdown
+              label={"Distrito"}
+              name={"distrito"}
+              control={control}
+              options={[
+                { value: '', label: 'Escolha o distrito' },
+                ...distritos
+              ]}
+              rules={{ required: "Distrito é obrigatório" }}
+            />
+            {errors.distrito && <div className="error">{errors.distrito.message}</div>}
+          </div>
+        </div>
+        <Input
+          label="Contacto Telefónico"
+          type="text"
+          name="contacto"
+          placeholder="Escreve aqui o teu contacto telefónico"
+          control={control}
+          rules={{
+            required: +accountType === 2 ? 'Obrigatório' : false,
+            pattern: {
+              value: /^\d{9}$/,
+              message: 'Insira um número válido',
+            },
+          }}
+        />
+        {errors.contacto && <div className="error">{errors.contacto.message}</div>}
+        {+accountType === 2 &&
+          <>
+            <Input
+              label="NIPC"
+              type="text"
+              name="NIPC"
+              placeholder="Enter your fiscal number (e.g., 123456789)"
+              control={control}
+              rules={{
+                required: 'NIPC é obrigatório',
+                pattern: {
+                  value: /^\d{9}$/,
+                  message: 'Insira um NIPC válido (123456789)',
+                },
+              }}
+            />
+            {errors.NIPC && <div className="error">{errors.NIPC.message}</div>}
+          </>}
+        {+accountType === 1 &&
+          <>
+            <Input
+              label="Data de Nascimento"
+              type="date"
+              name="data_nascimento"
+              placeholder="YYYY-MM-DD"
+              control={control}
+              rules={{
+                required: 'Obrigatório.'
+              }}/>
+            {errors.data_nascimento && <div className="error">{errors.data_nascimento.message}</div>}
+          </>}
+      </div>
+      {+accountType === 2 &&
+      <>
+        <div className={`page ${currentPage === 3 ? '' : 'hidden'}`}>
           <Input
             big={true}
             label="Descrição"
@@ -281,8 +283,8 @@ const RegisterForm = () => {
               },
             }}
           />
-        {errors.description && <div className="error">{errors.description.message}</div>}
-        <InputFile
+          {errors.description && <div className="error">{errors.description.message}</div>}
+          <InputFile
             label="Fotografia"
             name="fileInput"
             onChange={(event) => setPhoto(event)}
@@ -305,6 +307,7 @@ const RegisterForm = () => {
           />
           {errors.horario && <div className="error">{errors.horario.message}</div>}
         </div>
+      </>}
       {totalPages > 1 && < Pagination page={currentPage} totalPages={totalPages} setPage={setCurrentPage}/>}
       <div className={"button-container"}>
         <button className={"submit"} type={"submit"}>
