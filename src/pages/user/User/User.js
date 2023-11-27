@@ -13,6 +13,7 @@ import SecondaryButton from "../../../components/buttons/SecondaryButton/Seconda
 import UserStatus from "../../../components/userStatus/UserStatus";
 import UserButtonStatus from "../../../components/userStatusButtons/userStatusButton";
 import {useUser} from "../../../context/userContext";
+import Empty from "../../../components/shared/Empty/Empty";
 
 
 export default function User() {
@@ -114,7 +115,11 @@ export default function User() {
         </div>
 
         <div className={"wrapper-list-profile"}>
-            <WrapList list={wishlist}/>
+            {wishlist.length > 0 ?
+              <WrapList list={wishlist}/> :
+              <Empty text={'Sem produtos na wishlist'} />
+            }
+
         </div>
 
         <div className="wrapper">
@@ -123,13 +128,15 @@ export default function User() {
                 <UserLibrary {...b} />)
             }
 
-            <Link to={"/search-bookshop"}>
+            {(wishlist.length > 0 || bookstores.length > 0) && <Link to={"/search-bookshop"}>
                 <div className={"btn-box"}>
                     <button className={"button-ver-mais"}>Ver mais</button>
                 </div>
-            </Link>
+            </Link>}
             <SubTitles text={"Histórico de Compras"}/>
             <UserButtonStatus activeButton={tabAtiva} setActiveButton={setTabAtiva}/>
+            {aDecorrer.length === 0 && entregues.length === 0 && canceladas.length === 0 &&
+            <Empty text={'Histórico de compras vazio'} />}
             { tabAtiva === 0 && (
                 aDecorrer.map((ad)=>
                     <UserStatus />
