@@ -27,7 +27,6 @@ export default function BookSearch(props) {
             clearFilter: null,
             method: () => {}
         },
-
         {
             text: "Autor",
             style: "dropdown",
@@ -38,7 +37,6 @@ export default function BookSearch(props) {
             clearFilter: null,
             method: () => {}
         },
-
         {
             text: "Livraria",
             style: "dropdown",
@@ -55,7 +53,7 @@ export default function BookSearch(props) {
         axiosBooks.get(`/book/all`, {
             params:
                 {
-                    per_page: 9,
+                    per_page: 6,
                     page: page,
                     nome: filter,
                     genero: genre,
@@ -102,7 +100,7 @@ export default function BookSearch(props) {
                         {filteredBooks.length > 0 ? <WrapList list={filteredBooks}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    <Pagination setPage={setPage} page={page} totalPages={100}/>
+                    <Pagination setPage={setPage} page={page} totalPages={10}/>
                 </div>
             </div>
         </div>
