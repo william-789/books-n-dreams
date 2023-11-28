@@ -89,7 +89,7 @@ export default function MerchSearch(props) {
                         {filteredMerch.length > 0 ? <MerchList list={filteredMerch}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    <Pagination setPage={setPage} page={page} totalPages={100}/>
+                    <Pagination setPage={setPage} page={page} totalPages={10}/>
                 </div>
             </div>
         </div>
