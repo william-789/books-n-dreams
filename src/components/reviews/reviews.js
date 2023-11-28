@@ -54,6 +54,7 @@ export default function Reviews(props) {
                 nota: userRating,
                 comentario: userReview
             };
+
             const token = localStorage.getItem("token");
             const response = await axiosBooks.post(`item/rate/${id}`, pedido, { headers: { 'token-header': token } });
 
