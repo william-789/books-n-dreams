@@ -112,7 +112,7 @@ export default function BookshopSearch() {
                         : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    <Pagination setPage={setPage} page={page} totalPages={10}/>
+                    {filteredBookstore.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={10}/> : <div/>}
                 </div>
             </div>
         </div>

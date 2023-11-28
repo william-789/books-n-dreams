@@ -89,7 +89,7 @@ export default function AuthorSearch(props) {
                         {filteredAuthor.length > 0 ? <AuthorList list={filteredAuthor}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    <Pagination setPage={setPage} page={page} totalPages={10}/>
+                    {filteredAuthor.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={10}/> : <div/>}
                 </div>
             </div>
         </div>
