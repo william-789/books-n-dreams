@@ -66,7 +66,8 @@ export default function BookshopSearch() {
         axiosBooks.get(`/store/all`, {
             params:
                 {
-                    per_page: 5, page: page,
+                    per_page: 5,
+                    page: page,
                     nome: filter,
                     distrito: userDistrict,
                     ordem: order
@@ -97,7 +98,7 @@ export default function BookshopSearch() {
     return <div className={"BookshopSearch content"}>
 
         <div className={"contentDisplay"}>
-            <Filter list={filterOptions}/>
+            <Filter list={isLogged() ? filterOptions : filterOptions.slice(1)}/>
 
             <div className={"search"}>
                 <div className={"container"}>
@@ -111,7 +112,7 @@ export default function BookshopSearch() {
                         : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    <Pagination setPage={setPage} page={page} totalPages={100}/>
+                    <Pagination setPage={setPage} page={page} totalPages={10}/>
                 </div>
             </div>
         </div>
