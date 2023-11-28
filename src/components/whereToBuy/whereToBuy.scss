@@ -72,12 +72,21 @@
     }
   }
 
-  .SecondaryButton {
+  .Button {
+    background-color: $orange;
+    color: white;
     width: 80%;
     aspect-ratio: 1 / 0.14;
     margin-top: 5.5rem;
     margin-right: 5rem;
     margin-left: 1rem;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: $headingFont;
+    font-weight: 700;
+    font-size: 1vw;
 
     @media (max-width: 768px) {
       width: 100%;
@@ -121,12 +130,12 @@
       font-weight: 600;
     }
 
-    &:hover {
-      transform: scale(1.02);
-    }
 
     @media (max-width: 768px) {
       width: 100%;
     }
+  }
+  &:hover {
+    transform: scale(1.02);
   }
 }
