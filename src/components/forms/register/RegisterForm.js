@@ -30,10 +30,10 @@ const RegisterForm = () => {
   const { register, control, handleSubmit, formState: { errors }, watch } = useForm();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [selectedImage, setSelectedImage] = useState(null); // test
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [message, setMessage] = useState(null);
 
-  const setPhoto = (event) => { // test
-    console.log("set photo", event.target?.files)
+  const setPhoto = (event) => {
     const file = event.target.files[0];
     setSelectedImage(file);
   };
@@ -41,13 +41,11 @@ const RegisterForm = () => {
   const password = watch('password');
   const accountType = watch("accountType");
 
-  console.log(accountType)
-  console.log("pass", password)
 
 
   const onSubmit = async (data) => {
     let formData = new FormData();
-    console.log(data);
+
     formData.append('accountType', data.accountType);
     formData.append('nome', data.name);
     formData.append('email', data.email);
@@ -62,18 +60,22 @@ const RegisterForm = () => {
     formData.append('NIPC', data.NIPC);
     formData.append('horario', data.horario);
 
-    console.log(data.fileInput)
     if (selectedImage) {
       formData.append('capa', selectedImage);
     }
-
-    console.log(formData)
 
     await axiosBooks.post('/user/register', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
-    }).then(r=>console.log(r)).catch(e=>console.log(e))
+    }).then(() => {
+      setMessage({type: 'success', text: 'Registo feito com sucesso. Faz login para acessar a conta.'})
+    })
+      .catch(e => {
+        if(e.response.status === 401) setMessage({type: 'error', text: 'Este e-mail já está em uso. Faz login para acessar a conta.'})
+        else setMessage({type: 'error', text: 'Um erro ocorreu. Tente novamente mais tarde.'})
+
+      })
   };
   const getPageCount = (type) => {
     switch (+type) {
@@ -91,10 +93,9 @@ const RegisterForm = () => {
     setTotalPages(getPageCount(accountType));
   }, [accountType]);
 
-  console.log("image",selectedImage)
-
   return (
     <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
+      {message && <div className={'message '+message.type}>{message.text}</div>}
       <div className={`page ${currentPage === 1 ? '' : 'hidden'}`}>
           <Dropdown
             label={"Tipo de Conta"}

@@ -13,7 +13,7 @@ export default function MerchInfo(props) {
     return (<div className={"MerchInfo"}>
             <div className={"Foto"}
                  style={{backgroundImage: `url(${baseImageLink + props.foto})`}}/>
-            <Favorite/>
+            <Favorite id={props.id} type={'merch'}/>
 
             <div className={"Info"}>
                 <h4>

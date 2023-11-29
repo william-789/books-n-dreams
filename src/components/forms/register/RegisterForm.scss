@@ -1,4 +1,14 @@
 .register-form {
+  .message {
+    text-align: center;
+    font-size: 15px;
+    &.success {
+      color: green;
+    }
+    &.error {
+      color: $orange;
+    }
+  }
   .page.hidden {
     visibility: hidden;
     height: 0;

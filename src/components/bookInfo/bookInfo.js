@@ -11,7 +11,7 @@ export default function BookInfo(props) {
     return (<div className={"BookInfo"}>
                     <div className={"Capa"}
                          style={{backgroundImage: `url(${baseImageLink + props.foto})`}}/>
-                    <Favorite/>
+                    <Favorite id={props.id} type={'livro'}/>
 
                     <div className={"Info"}>
                         <h4>

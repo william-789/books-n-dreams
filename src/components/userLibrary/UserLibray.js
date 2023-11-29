@@ -16,14 +16,14 @@ export default function UserLibrary(props) {
 
                 <div className={"userLibraryText"}>
 
-                    <Link to={"/bookstore/:id"}>
+                    <Link to={`/bookstore/${props.id}`}>
                         <div className={"texts"}>
                             <div className={"title"}>{props.nome}</div>
                             <div className={"text"}>{props.morada},<br/>{props.codigo_postal} {/*props.localidade*/} {props.distrito}, Portugal </div>
                         </div>
                     </Link>
 
-                    <Favorite/>
+                    <Favorite id={props.id} type={'store'}/>
                 </div>
 
             </div>

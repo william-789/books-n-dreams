@@ -16,9 +16,11 @@ function LoginForm() {
         authUser(r.data.token)
         setError('')
       })
-      .then(()=>closeModal())
+      .then(()=> {
+        closeModal()
+      })
       .catch(e => {
-        if(e.status === 400) setError('E-mail ou palavra-passe incorretos')
+        if(e.response.status === 400) setError('E-mail ou palavra-passe incorretos')
         else setError('Um erro ocorreu. Tente novamente mais tarde.')
       })
   };
