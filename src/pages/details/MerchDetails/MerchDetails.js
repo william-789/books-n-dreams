@@ -14,6 +14,7 @@ import MerchInfo from "../../../components/merchInfo/merchInfo";
 import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 import MerchList from "../../../components/merchList/MerchList";
 import {useUser} from "../../../context/userContext";
+import Empty from "../../../components/shared/Empty/Empty";
 
 export default function MerchDetails(props) {
     const {id} = useParams();
@@ -67,9 +68,9 @@ export default function MerchDetails(props) {
                     setBook(r.data.book)
                 }),
 
-                axiosBooks.get(`/user/${user.id}`).then(r => {
-                    console.log(r.data.utilizador);
-                    setUtilizador(r.data.utilizador);
+                axiosBooks.get(`/user/${user.id}`).then((r) => {
+                    console.log(r.data.user);
+                    setUtilizador(r.data.user);
                 }),
 
                 axiosBooks.get(`/item/comments/${details.item}`).then(r => {
@@ -85,8 +86,6 @@ export default function MerchDetails(props) {
     useEffect(() => {
         getData();
     }, [])
-
-    // console.log(details, stores, genreMerch, genreBooks, comments);
 
     // remover && false depois de passar os dados corretos
     if (!(details && serieMerch && stores && genreMerch && genreBooks && comments)) return null;
@@ -117,8 +116,8 @@ export default function MerchDetails(props) {
                         distrito={s.distrito}
                         preco={s.preco}
                         itemId={details.item}
-                        allPrices={stores.map(store => store.preco)}
-                        userLocalidade={user ? user.localidade : null}
+                        allPrices={stores.map((store) => store.preco)}
+                        userLocalidade={utilizador ? utilizador.localidade : null}
                     />
                 ))}
             </div>
@@ -142,9 +141,10 @@ export default function MerchDetails(props) {
             </div>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            {details && (
-                <MerchList list={serieMerch.slice(0, 4)} details={details} />
-            )}
+            {details && serieMerch.length === 0 ?
+                <MerchList list={serieMerch.slice(0, 4)} details={details} /> :
+                <Empty text={'Sem sugestões'}/>
+            }
 
             <Link to={"/search"}>
                 {serieMerch.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
