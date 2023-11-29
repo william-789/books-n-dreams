@@ -65,17 +65,12 @@ export default function WhereToBuy(props) {
 
         fetchUser();
 
-        console.log('Before condition check');
         if (props.userLocalidade && typeof props.localidade === 'string') {
             const isSameLocation = props.localidade.toLowerCase() === props.userLocalidade.toLowerCase();
             setLibraryIsNear(isSameLocation);
-            console.log('isSameLocation:', isSameLocation);
         } else {
             setLibraryIsNear(false);
         }
-
-
-        console.log('After condition check');
 
     }, [props.localidade, utilizador, props.userLocalidade]);
 

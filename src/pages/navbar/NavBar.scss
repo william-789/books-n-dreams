@@ -36,14 +36,37 @@
         padding: 13px;
         border-radius: 50px;
 
-        &:hover {
-          transform: scale(1.2);
+        &.cart{
+          position: relative;
+          .quantity {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            background-color: $brown;
+            color: white;
+            aspect-ratio: 1/1;
+            border-radius: 100px;
+          right: -18px;
+            top: -15px;
+
+            h1{
+              font-size: 0.6vw;
+              font-weight: 700;
+            }
+          }
+
+        }
+          &:hover {
+            transform: scale(1.2);
+          }
+
+          @media (max-width: 768px) {
+            background-color: $backgroundAccent;
+          }
         }
 
-        @media (max-width: 768px) {
-          background-color: $backgroundAccent;
-        }
-      }
 
       .menuItem {
         width: 1.5rem;
