@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from 'react';
 import AuthModal from "../pages/user/auth-modal/AuthModal";
 import { jwtDecode } from "jwt-decode";
+import axiosBooks from "../util/axiosBooks";
 
 const UserContext = createContext({
   modalIsOpen: false,
@@ -10,8 +11,41 @@ const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false); // starts false
+  const [modalIsOpen, setModalIsOpen] = useState(true); // starts false
   const [user, setUser] = useState({}); // starts as empty object
+  const [wishlist, setWishlist] = useState({}); // { merch: [], livro: [] }
+  const [favStores, setFavStores] = useState([]);
+
+  const isFavorite = (id) => {
+    return favStores.includes(id);
+  }
+
+  const onWishlist = (id, type) => { // types: 'merch', 'livro'
+    return wishlist[type].includes(id);
+  }
+  const toggleFavStore = (id) => { // called only if user is logged
+    // toggle on DB
+    axiosBooks.post('/toggle-fav', {params: {id}})
+    // toggle locally
+    if(isFavorite(id)) {
+      const newFav = favStores.filter((s) => s !== id)
+      setFavStores(newFav)
+    } else {
+        setFavStores([...favStores,id])
+    }
+  }
+
+  const toggleWishlist = (id, type) => { // called only if user is logged
+    // toggle on DB
+    axiosBooks.post('/toggle-from-wishlist', {params:{ id, type }})
+    // toggle locally
+    if(onWishlist(id, type)) {
+      const newWishlist = wishlist[type].filter((s) => s !== id)
+      setWishlist({...wishlist, type: newWishlist})
+    } else {
+      setWishlist({...wishlist, type: [...wishlist[type], id]})
+    }
+  }
 
   // User
   const authUser = (token) => {
@@ -39,7 +73,11 @@ export const UserProvider = ({ children }) => {
     closeModal,
     authUser,
     user,
-    isLogged
+    isLogged,
+    isFavorite,
+    onWishlist,
+    toggleFavStore,
+    toggleWishlist
   };
 
   return (

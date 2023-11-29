@@ -52,7 +52,7 @@ export default function BookshopDetails(props) {
                  style={{backgroundImage: `url(${baseImageLink + bookstoreInfo.capa})`}}/>
 
             <div className={"favorite"}>
-                <Favorite/>
+                <Favorite id={bookstoreInfo.id} type={'store'}/>
             </div>
         </div>
 
