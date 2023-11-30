@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
-const Dropdown = ({ label, name, control, options, rules }) => {
+const Dropdown = ({ label, name, control, options, rules, standard }) => {
   return (
     <div className="Dropdown">
       <label htmlFor={name}>{label}</label>
@@ -17,7 +17,7 @@ const Dropdown = ({ label, name, control, options, rules }) => {
             style={{ border: fieldState.invalid ? '2px solid #FF7F51' : '1px solid #ccc' }}
           >
             <option value="" disabled hidden>
-              Escolha o tipo da tua conta
+              {standard}
             </option>
             {options.map((option) => (
               <option key={option.value} value={option.value}>
