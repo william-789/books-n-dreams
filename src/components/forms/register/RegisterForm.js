@@ -107,6 +107,7 @@ const RegisterForm = () => {
               { value: 2, label: 'Livraria' },
             ]}
             rules={{ required: "Tipo de conta é obrigatório" }}
+            standard={'Escolha o tipo da tua conta'}
           />
           {errors.accountType && <div className="error">{errors.accountType.message}</div>}
           <Input
@@ -215,6 +216,7 @@ const RegisterForm = () => {
                 ...distritos
               ]}
               rules={{ required: "Distrito é obrigatório" }}
+              standard={'Escolha o distrito'}
             />
             {errors.distrito && <div className="error">{errors.distrito.message}</div>}
           </div>
