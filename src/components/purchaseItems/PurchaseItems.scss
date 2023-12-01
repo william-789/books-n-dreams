@@ -1,0 +1,254 @@
+$backgroundColor: #F1F1F1;
+$orange: #FF7F51;
+$brown: #705D56;
+$darkBlue: #3C4242;
+$lightGrey: #9E9E9E;
+$backgroundAccent: #EBE6E4;
+$colourCloser: #4D9AD1;
+$colourCheaper: #62C33F;
+
+$AddShoppingButton: #c7c2c1;
+
+$headingFont: Raleway, sans-serif;
+$paragraphFont: Roboto, sans-serif;
+
+$titleSize: 2rem; // UTILIZAR REM?
+$titleSizeAPP: 1.5rem; // UTILIZAR REM?
+
+$subtitleSize: 1.8rem; // UTILIZAR REM?
+$subtitleSizeAPP: 1.3rem; // UTILIZAR REM?
+
+$listTitles: 1.4rem; //UTILIZAR REM?
+$listTitlesAPP: 1.2rem; //UTILIZAR REM?
+
+$paragraphSize: 1.2rem; // UTILIZAR REM?
+$paragraphSizeAPP: 1rem; // UTILIZAR REM?
+
+$libraryDetails: 1.6rem;
+$libraryDetailsAPP: 0.9rem;
+
+
+.purchaseItems-Library{
+  display: flex;
+  align-content: center;
+  width: 96%;
+  height: 160px;
+  margin-top: 1rem;
+
+
+  .purchaseItems-LibraryImage{
+    background-image: url("../../components/userItems/LivrariaBarata.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 140px;
+    height: 160px;
+
+  }
+
+  .purchaseItems-LibraryText{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 160px;
+
+
+
+    .texts{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: start;
+      width: 100%;
+      height: 160px;
+      margin: 0;
+
+      .name{
+        font-family: $headingFont;
+        font-size: $listTitles;
+        font-weight: bold;
+        color: $brown;
+        margin-top: 1rem;
+        margin-left: 0.5rem;
+        margin-bottom: -0.9rem;
+      }
+
+      .author{
+        font-family: $paragraphFont;
+        font-size: $paragraphSize;
+        color: $brown;
+        margin-left: 0.5rem;
+        margin-bottom: -0.9rem;
+      }
+
+      .library{
+        font-family: $paragraphFont;
+        font-size: $paragraphSize;
+        color: $brown;
+        margin-left: 0.5rem;
+        line-height: -1rem;
+      }
+
+      .purchaseItems-quantity{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 2rem;
+        width: 100%;
+
+          .quantity{
+            display: flex;
+            justify-content: space-between;
+            margin-left: 0.5rem;
+
+              .purchaseItems-title{
+                font-family: $paragraphFont;
+                font-size: $paragraphSize;
+                color: $brown;
+              }
+
+              .purchaseItems-value{
+                font-family: $paragraphFont;
+                font-size: $paragraphSize;
+                color: $brown;
+                margin-left: 0.5rem;
+              }
+          }
+        .price{
+          font-family: $headingFont;
+          font-size: $paragraphSize;
+          color: $AddShoppingButton;
+          background-color: #705D56;
+          padding: 0.1rem 1.5rem;
+          border-radius: 1rem;
+        }
+      }
+
+    }
+
+
+
+
+  }
+
+}
+
+
+/*  - - -   MEDIA - - - */
+@media (max-width: 768px) {
+
+  .purchaseItems-Library{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    margin-bottom: -0.4rem;
+
+
+    .purchaseItems-LibraryImage{
+      background-image: url("../../components/userItems/LivrariaBarata.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 98px;
+      height: 100px;
+
+
+    }
+
+    .purchaseItems-LibraryText{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100px;
+
+
+      .texts{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100px;
+
+
+        .name{
+          font-family: $headingFont;
+          font-size: $libraryDetailsAPP;
+          font-weight: bold;
+          color: $brown;
+          margin-top:0.5rem;
+          margin-left: 0.5rem;
+
+        }
+
+        .author{
+          font-family: $paragraphFont;
+          font-size: $libraryDetailsAPP;
+          color: $brown;
+          margin-left: 0.5rem;
+
+        }
+
+        .library{
+          font-family: $paragraphFont;
+          font-size: $libraryDetailsAPP;
+          color: $brown;
+          margin-left: 0.5rem;
+          margin-top: 0;
+        }
+
+        .purchaseItems-quantity{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 25px;
+          margin: 0;
+
+          .quantity{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 25px;
+            margin-bottom: 0px;
+            margin-left: 0.5rem;
+            .purchaseItems-title{
+              font-family: $paragraphFont;
+              font-size: $libraryDetailsAPP;
+              color: $brown;
+            }
+
+            .purchaseItems-value{
+              font-family: $paragraphFont;
+              font-size: $libraryDetailsAPP;
+              color: $brown;
+
+            }
+
+          }
+          .price{
+            font-family: $headingFont;
+            font-size: $libraryDetailsAPP;
+            color: $AddShoppingButton;
+            background-color: #705D56;
+            padding: 0.1rem 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            align-self: center;
+          }
+
+
+        }
+
+
+      }
+
+    }
+
+  }
+
+
+
+}
+
