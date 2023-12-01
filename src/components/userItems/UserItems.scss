@@ -31,8 +31,7 @@ $libraryDetailsAPP: 0.9rem;
   .userItems-Library{
     display: flex;
     align-content: center;
-    width: 100%;
-    height: 12rem;
+    width: 80%;
 
     .userItems-LibraryImage{
       background-image: url("../../components/userItems/LivrariaBarata.png");
@@ -41,6 +40,8 @@ $libraryDetailsAPP: 0.9rem;
       background-position: center;
       width: 140px;
       height: 188px;
+
+
 
     }
 
