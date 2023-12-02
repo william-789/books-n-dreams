@@ -45,7 +45,7 @@ function App() {
         <Route path={"/profile"} component={User}/>
         <Route path={"/favorites"} component={Favorites}/>
         <Route path={"/shopping-cart"} component={ShoppingCart}/>
-        <Route path={"/purchase-details"} compoCheckoutnent={PurchaseDetails}/>
+        <Route path={"/purchase-details"} component={PurchaseDetails}/>
         <Route path={"/checkout"} component={Checkout}/>
         <Route path={"/edit-personal"} component={EditPersonalInfo}/>
         <Route path={"/edit-payment"} component={EditPaymentInfo}/>
