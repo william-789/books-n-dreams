@@ -15,7 +15,7 @@ import BookSearch from "./pages/search/bookSearch/BookSearch";
 import BookshopSearch from "./pages/search/bookshopSearch/BookshopSearch";
 import MerchSearch from "./pages/search/merchSearch/MerchSearch";
 import User from "./pages/user/User/User";
-import Checkout from "./pages/user/Checkout";
+import Checkout from "./pages/user/checkout/Checkout";
 import Favorites from "./pages/user/Favorites";
 import PurchaseDetails from "./pages/user/purchase_details/PurchaseDetails";
 import ShoppingCart from "./pages/user/shopping_cart/ShoppingCart";
@@ -45,7 +45,7 @@ function App() {
         <Route path={"/profile"} component={User}/>
         <Route path={"/favorites"} component={Favorites}/>
         <Route path={"/shopping-cart"} component={ShoppingCart}/>
-        <Route path={"/purchase-details"} component={PurchaseDetails}/>
+        <Route path={"/purchase-details"} compoCheckoutnent={PurchaseDetails}/>
         <Route path={"/checkout"} component={Checkout}/>
         <Route path={"/edit-personal"} component={EditPersonalInfo}/>
         <Route path={"/edit-payment"} component={EditPaymentInfo}/>
