@@ -15,7 +15,7 @@ import BookSearch from "./pages/search/bookSearch/BookSearch";
 import BookshopSearch from "./pages/search/bookshopSearch/BookshopSearch";
 import MerchSearch from "./pages/search/merchSearch/MerchSearch";
 import User from "./pages/user/User/User";
-import Checkout from "./pages/user/Checkout";
+import Checkout from "./pages/user/checkout/Checkout";
 import Favorites from "./pages/user/Favorites";
 import PurchaseDetails from "./pages/user/purchase_details/PurchaseDetails";
 import ShoppingCart from "./pages/user/shopping_cart/ShoppingCart";
