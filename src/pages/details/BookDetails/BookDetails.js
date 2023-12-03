@@ -12,7 +12,6 @@ import Footer from "../../../components/footer/Footer";
 import AboutAuthor from "../../../components/aboutAuthor/aboutAuthor";
 import WrapList from "../../../components/bookList/wrapList";
 import Reviews from "../../../components/reviews/reviews";
-import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 import UserReview from "../../../components/userReviews/userReviews";
 import { useUser } from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
