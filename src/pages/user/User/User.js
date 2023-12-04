@@ -1,15 +1,11 @@
 import React, {useEffect, useState} from "react";
-import './User.scss';
 import {Link} from "react-router-dom";
 import Footer from "../../../components/footer/Footer";
 import SubTitles from '../../../components/subtitle/subtitle';
-import Library from "../../../components/library/Library";
 import WrapList from "../../../components/bookList/wrapList"
 import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
 import ThirdButton from "../../../components/buttons/ThirdButton/ThirdButton";
-import Favorite from "../../../components/favorite/favorite";
 import UserLibrary from "../../../components/userLibrary/UserLibray";
-import SecondaryButton from "../../../components/buttons/SecondaryButton/SecondaryButton";
 import UserStatus from "../../../components/userStatus/UserStatus";
 import UserButtonStatus from "../../../components/userStatusButtons/userStatusButton";
 import {useUser} from "../../../context/userContext";
@@ -27,7 +23,10 @@ export default function User() {
     const [tabAtiva, setTabAtiva] = useState(0);
     const [carregando, setCarregando] = useState(true)
 
-    if(!isLogged) {openModal()} // REVIEW
+    // if(!isLogged()) {
+    //     openModal()
+    //     return;
+    // } // REVIEW
     const getData = async () => {
         const token = localStorage.getItem("token");
         const config = {
@@ -76,6 +75,7 @@ export default function User() {
         getData()
     },[])
 
+    console.log(bookstores)
     if(carregando) return null;
 
     const bgImage = {
@@ -83,7 +83,7 @@ export default function User() {
     };
 
     const profileImage = {
-        backgroundImage: `url(${baseImageLink+detalhes.foto})`,
+        backgroundImage: `url(${baseImageLink+(detalhes.foto || '/users/userIcon.png')})`,
     };
 
     return <div className={"user content"}>
