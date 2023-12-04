@@ -22,6 +22,7 @@ import ShoppingCart from "./pages/user/shopping_cart/ShoppingCart";
 import EditPersonalInfo from "./pages/user/EditPersonalInfo";
 import EditPaymentInfo from "./pages/user/EditPaymentInfo";
 import NavBar from "./pages/navbar/NavBar";
+import Community from "./pages/community/Community";
 
 function App() {
   return <BrowserRouter>
@@ -49,6 +50,7 @@ function App() {
         <Route path={"/checkout"} component={Checkout}/>
         <Route path={"/edit-personal"} component={EditPersonalInfo}/>
         <Route path={"/edit-payment"} component={EditPaymentInfo}/>
+        <Route path={"/community/"} component={Community}/>
         <Redirect to={"/homePage"}/>
       </Switch>
     </div>
