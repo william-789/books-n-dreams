@@ -29,7 +29,7 @@
     }
 
     @media (min-width: 1280px) {
-     display: none;
+      display: none;
     }
   }
 
@@ -42,7 +42,7 @@
   }
 
 
-  .Multiple{
+  .Multiple {
     display: flex;
     width: 100%;
     margin-bottom: 4rem;
@@ -65,7 +65,7 @@
     }
 
     @media (max-width: 768px) {
-     width: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -94,8 +94,8 @@
     }
   }
 
-  .UserReviewsList{
-display: flex;
+  .UserReviewsList {
+    display: flex;
     flex-direction: column;
   }
 

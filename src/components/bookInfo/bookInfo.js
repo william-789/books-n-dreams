@@ -28,6 +28,4 @@ export default function BookInfo(props) {
                     </div>
                 </div>
             );
-
-
 }
