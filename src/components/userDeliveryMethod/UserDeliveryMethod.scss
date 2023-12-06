@@ -59,9 +59,11 @@ $libraryDetailsAPP: 0.9rem;
       margin-left: 2.6rem;
 
       .radio-box {
+        appearance: none;
         height: 2rem;
         width: 2rem;
-        accent-color: $brown;
+        accent-color: $orange;
+        border: 1px solid $orange;
         border-radius: 50%;
         cursor: pointer;
       }
@@ -128,9 +130,12 @@ $libraryDetailsAPP: 0.9rem;
 
 
       .radio-box {
+        appearance: none;
         height: 2rem;
         width: 2rem;
-        accent-color: $brown;
+        accent-color: $orange;
+        border: 1px solid $orange;
+        background-color: $orange;
         border-radius: 50%;
         cursor: pointer;
       }
@@ -316,9 +321,11 @@ $libraryDetailsAPP: 0.9rem;
       margin-left: 2.6rem;
 
       .radio-box {
+        appearance: none;
         height: 2rem;
         width: 2rem;
-        accent-color: $brown;
+        accent-color: $orange;
+        border: 1px solid $orange;
         border-radius: 50%;
         cursor: pointer;
       }
@@ -384,9 +391,12 @@ $libraryDetailsAPP: 0.9rem;
 
 
       .radio-box {
+        appearance: none;
         height: 2rem;
         width: 2rem;
-        accent-color: $brown;
+        accent-color: $orange;
+        border: 1px solid $orange;
+        background-color: $orange;
         border-radius: 50%;
         cursor: pointer;
       }
@@ -505,9 +515,11 @@ $libraryDetailsAPP: 0.9rem;
         margin-left: 1.6rem;
 
         .radio-box {
+          appearance: none;
           height: 1.5rem;
           width: 1.5rem;
-          accent-color: $brown;
+          accent-color: $orange;
+          border: 1px solid $orange;
           border-radius: 50%;
           cursor: pointer;
         }
@@ -573,9 +585,12 @@ $libraryDetailsAPP: 0.9rem;
         margin-top: 2.2rem;
 
         .radio-box {
+          appearance: none;
           height: 1.5rem;
           width: 1.5rem;
-          accent-color: $brown;
+          accent-color: $orange;
+          border: 1px solid $orange;
+          background-color: $orange;
           border-radius: 50%;
           cursor: pointer;
         }
@@ -758,9 +773,11 @@ $libraryDetailsAPP: 0.9rem;
         margin-left: 1.6rem;
 
         .radio-box {
+          appearance: none;
           height: 1.5rem;
           width: 1.5rem;
-          accent-color: $brown;
+          accent-color: $orange;
+          border: 1px solid $orange;
           border-radius: 50%;
           cursor: pointer;
         }
@@ -826,9 +843,12 @@ $libraryDetailsAPP: 0.9rem;
         margin-top: 2.2rem;
 
         .radio-box {
+          appearance: none;
           height: 1.5rem;
           width: 1.5rem;
-          accent-color: $brown;
+          accent-color: $orange;
+          border: 1px solid $orange;
+          background-color: $orange;
           border-radius: 50%;
           cursor: pointer;
         }
