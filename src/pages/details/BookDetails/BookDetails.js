@@ -29,6 +29,7 @@ export default function BookDetails(props) {
     const [genreBooks, setGenreBooks] = useState(null);
     const [comments, setComments] = useState(null);
 
+
     const getData = async () => {
         try {
             let details = await axiosBooks.get(`/book/${id}`).then((r) => r.data.book);
@@ -78,6 +79,14 @@ export default function BookDetails(props) {
     useEffect(() => {
         getData();
     }, [id]);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            getData();
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, [comments]);
 
     // remover && false depois de passar os dados corretos
     if (!(details && stores && author && authorBooks && genreBooks && comments))
@@ -152,6 +161,7 @@ export default function BookDetails(props) {
                     foto={user && user.foto ? user.foto : null}
                     nota={details.nota}
                     avaliacoes={details.avaliacoes}
+                    id={details.item}
                 />
 
                 <div className={"UserReviewsList"}>
@@ -162,10 +172,10 @@ export default function BookDetails(props) {
                                 nome={c.nome}
                                 comentario={c.comentario}
                                 foto={c.foto}
-                                nota={c.nota}
-                            />
+                                nota={c.nota}/>
                         ))}
                 </div>
+
             </div>
 
             <Footer />
