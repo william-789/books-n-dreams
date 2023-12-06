@@ -86,6 +86,7 @@ body, html {
 @import "components/author/Author";
 @import "components/merch/Merch";
 @import "components/merchList/MerchList";
+@import "components/userInfoEdit/UserInfoEdit";
 
 @import "pages/navbar/NavBar";
 @import "pages/home/Home";
@@ -96,6 +97,8 @@ body, html {
 @import "pages/search/bookshopSearch/BookshopSearch";
 @import "pages/search/merchSearch/MerchSearch";
 @import "pages/search/authorSearch/AuthorSearch";
+@import "pages/user/User/edit/editPayment/EditPaymentInfo";
+@import "pages/user/User/edit/editPersonal/EditPersonalInfo";
 
 @import "pages/user/auth-modal/AuthModal";
 @import "components/shared/Empty/Empty";

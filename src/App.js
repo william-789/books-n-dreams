@@ -18,9 +18,9 @@ import User from "./pages/user/User/User";
 import Checkout from "./pages/user/Checkout";
 import Favorites from "./pages/user/Favorites";
 import PurchaseDetails from "./pages/user/PurchaseDetails";
-import ShoppingCart from "./pages/user/ShoppingCart";
-import EditPersonalInfo from "./pages/user/EditPersonalInfo";
-import EditPaymentInfo from "./pages/user/EditPaymentInfo";
+import ShoppingCart from "./pages/user/shopping_cart/ShoppingCart";
+import EditPersonalInfo from "./pages/user/User/edit/editPersonal/EditPersonalInfo";
+import EditPaymentInfo from "./pages/user/User/edit/editPayment/EditPaymentInfo";
 import NavBar from "./pages/navbar/NavBar";
 
 function App() {
