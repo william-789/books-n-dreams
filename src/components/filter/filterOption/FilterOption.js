@@ -15,7 +15,9 @@ export default function FilterOption(props) {
     } else {
         icon =
             <div className={"radioButton"}>
-                <input type="radio" name="radioButton" className={"checkbox"} onChange={() => props.func(props.filter)}></input>
+                <input type="radio" name="radioButton" className={"checkbox"} onChange={() => {
+                    props.func(props.filter)
+                }}></input>
             </div>
     }
 
@@ -34,7 +36,10 @@ export default function FilterOption(props) {
                     <div key={l.id} className={"optionDisplay"}>
                         <p>{l.nome}</p>
                         <div className={"radioButton"}>
-                        <input type="radio" name={l.name} className={"checkboxSmaller"} onChange={() => l.method(l.id)}></input>
+                        <input type="radio" name={l.name} className={"checkboxSmaller"} onChange={() => {
+                            l.method(l.id)
+                            l.page(1)}}
+                        ></input>
                         </div>
                     </div>)}
 

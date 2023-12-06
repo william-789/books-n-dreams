@@ -14,6 +14,7 @@ export default function SearchInput(props) {
                 </div>
                 <FontAwesomeIcon icon={faMagnifyingGlass} onClick={() => {
                     props.func(filter)
+                    props.page(1)
                 }}/>
             </div>
             <p>{props.text}</p>

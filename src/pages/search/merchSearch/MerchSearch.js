@@ -19,7 +19,7 @@ export default function MerchSearch(props) {
             text: "Tipo",
             style: "dropdown",
             list: typeList?.map(b => {
-                return {...b, name: "type", id: b.id, method: (id) => {setType(id)}}
+                return {...b, name: "type", id: b.id, page: setPage, method: (id) => {setType(id)}}
             }),
             clear: setType,
             clearFilter: null,
@@ -31,7 +31,7 @@ export default function MerchSearch(props) {
             style: "dropdown",
             class: "bookstore",
             list: bookstoreList?.map(b => {
-                return {...b, name: "bookstore", id: b.id, method: (id) => {setBookstore(id)}}
+                return {...b, name: "bookstore", id: b.id, page: setPage, method: (id) => {setBookstore(id)}}
             }),
             clear: setBookstore,
             clearFilter: null,
@@ -67,8 +67,6 @@ export default function MerchSearch(props) {
         return null
     }
 
-    console.log(filteredMerch)
-
     function search(input) {
         setFilter(input)
     }
@@ -83,7 +81,7 @@ export default function MerchSearch(props) {
 
                     <h1>Pesquisa por Merchandising</h1>
 
-                    <SearchInput text={"Merchandising"} func={search}/>
+                    <SearchInput text={"Merchandising"} func={search} page={setPage}/>
 
                     <div className={"merchList"}>
                         {filteredMerch.length > 0 ? <MerchList list={filteredMerch}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
@@ -93,6 +91,5 @@ export default function MerchSearch(props) {
                 </div>
             </div>
         </div>
-
     </div>
 }
