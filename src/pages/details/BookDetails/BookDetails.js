@@ -12,7 +12,6 @@ import Footer from "../../../components/footer/Footer";
 import AboutAuthor from "../../../components/aboutAuthor/aboutAuthor";
 import WrapList from "../../../components/bookList/wrapList";
 import Reviews from "../../../components/reviews/reviews";
-import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 import UserReview from "../../../components/userReviews/userReviews";
 import { useUser } from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
@@ -29,6 +28,7 @@ export default function BookDetails(props) {
     const [authorBooks, setAuthorBooks] = useState(null);
     const [genreBooks, setGenreBooks] = useState(null);
     const [comments, setComments] = useState(null);
+
 
     const getData = async () => {
         try {
@@ -79,6 +79,14 @@ export default function BookDetails(props) {
     useEffect(() => {
         getData();
     }, [id]);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            getData();
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, [comments]);
 
     // remover && false depois de passar os dados corretos
     if (!(details && stores && author && authorBooks && genreBooks && comments))
@@ -153,6 +161,7 @@ export default function BookDetails(props) {
                     foto={user && user.foto ? user.foto : null}
                     nota={details.nota}
                     avaliacoes={details.avaliacoes}
+                    id={details.item}
                 />
 
                 <div className={"UserReviewsList"}>
@@ -163,10 +172,10 @@ export default function BookDetails(props) {
                                 nome={c.nome}
                                 comentario={c.comentario}
                                 foto={c.foto}
-                                nota={c.nota}
-                            />
+                                nota={c.nota}/>
                         ))}
                 </div>
+
             </div>
 
             <Footer />

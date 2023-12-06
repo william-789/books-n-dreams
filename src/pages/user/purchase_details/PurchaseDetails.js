@@ -1,18 +1,25 @@
 import React, {useEffect, useState} from "react";
+import './PurchaseDetails.scss';
 import {Link} from "react-router-dom";
 import Footer from "../../../components/footer/Footer";
 import SubTitles from '../../../components/subtitle/subtitle';
+import Library from "../../../components/library/Library";
 import WrapList from "../../../components/bookList/wrapList"
 import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
 import ThirdButton from "../../../components/buttons/ThirdButton/ThirdButton";
+import Favorite from "../../../components/favorite/favorite";
 import UserLibrary from "../../../components/userLibrary/UserLibray";
+import SecondaryButton from "../../../components/buttons/SecondaryButton/SecondaryButton";
 import UserStatus from "../../../components/userStatus/UserStatus";
 import UserButtonStatus from "../../../components/userStatusButtons/userStatusButton";
 import {useUser} from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
+import UserItems from "../../../components/userItems/UserItems";
+import UserLine from "../../../components/userItems/UserLine";
+import PurchaseItems from "../../../components/purchaseItems/PurchaseItems";
 
 
-export default function User() {
+export default function PurchaseDetails() {
     const { user, isLogged, openModal } = useUser();
     const [detalhes, setDetalhes] = useState();
     const [wishlist, setWishlist] = useState([]);
@@ -23,10 +30,7 @@ export default function User() {
     const [tabAtiva, setTabAtiva] = useState(0);
     const [carregando, setCarregando] = useState(true)
 
-    // if(!isLogged()) {
-    //     openModal()
-    //     return;
-    // } // REVIEW
+    if(!isLogged) {openModal()} // REVIEW
     const getData = async () => {
         const token = localStorage.getItem("token");
         const config = {
@@ -75,87 +79,70 @@ export default function User() {
         getData()
     },[])
 
-    console.log(bookstores)
-    if(carregando) return null;
+    {/* if(carregando) return null; */}
 
     const bgImage = {
-        backgroundImage: `url(${baseImageLink+detalhes.capa})`,
+        backgroundImage: `url(${null})`,
     };
 
     const profileImage = {
-        backgroundImage: `url(${baseImageLink+(detalhes.foto || '/users/userIcon.png')})`,
+        backgroundImage: `url(${null})`,
     };
 
-    return <div className={"user content"}>
+    return <div className={"purchaseDetails content"}>
 
-        <div className={"userInfo"}>
-            <div className={"userBanner"} style={bgImage}></div>
+        <div className={"purchaseDetails-Info"}>
+            <div className={"purchaseDetails-Banner"} style={bgImage}></div>
             <div className={"wrapper-Info"}>
                 <div className={"imageText"}>
-                    <div className={"userImage"} style={profileImage}></div>
-                    <div className={"userText"}>
-                        <h1>{detalhes.nome}</h1>
-                        <div className={"button"}>
-                            <Link to={"/edit-personal"}>
-                                <ThirdButton text={"Editar Perfil"}/>
-                            </Link>
-                        </div>
-
-
+                    <div className={"purchaseDetails-Image"} style={profileImage}></div>
+                    <div className={"purchaseDetails-Text"}>
+                        <h1>Nome Ut</h1>
                     </div>
                 </div>
             </div>
         </div>
 
-
         <div className="wrapper">
 
-            <SubTitles text={"Lista de Favoritos"}/>
+            <SubTitles text={"A minha encomenda"}/>
 
-        </div>
-
-        <div className={"wrapper-list-profile"}>
-            {wishlist.length > 0 ?
-              <WrapList list={wishlist}/> :
-              <Empty text={'Sem produtos na wishlist'} />
-            }
-
-        </div>
-
-        <div className="wrapper">
-            {
-                bookstores.map((b) =>
-                <UserLibrary {...b} />)
-            }
-
-            {(wishlist.length > 0 || bookstores.length > 0) && <Link to={"/search-bookshop"}>
-                <div className={"btn-box"}>
-                    <button className={"button-ver-mais"}>Ver mais</button>
+            <div className={"card"}>
+                <div className={"order-box"}>
+                    <div className={"order-number"}>Ordem Nº 238562312</div>
+                    <div className={"order-date"}>00/10/2023</div>
                 </div>
-            </Link>}
-            <SubTitles text={"Histórico de Compras"}/>
-            <UserButtonStatus activeButton={tabAtiva} setActiveButton={setTabAtiva}/>
-            {aDecorrer.length === 0 && entregues.length === 0 && canceladas.length === 0 &&
-            <Empty text={'Histórico de compras vazio'} />}
-            { tabAtiva === 0 && (
-                aDecorrer.map((ad)=>
-                    <UserStatus />
-                ))
-            }
-            {/*tab 1*/}
-            { tabAtiva === 1 && (
-              entregues.map((ad)=>
-                  <UserStatus />
-              ))
-            }
-            {/*tab 2*/}
-            { tabAtiva === 2 && (
-              canceladas.map((ad)=>
-                  <UserStatus />
-              ))
-            }
+                <UserLine/>
+
+            <div className={"status-text"}>
+                <div className={"text"}>
+                    <div className={"delivery-date"}>Entregue a 04/10/2023</div>
+                    <div className={"order-total"}>Total 47,83€</div>
+                </div>
+                <div className={"in-chart"}>Artigos na encomenda (3)</div>
+            </div>
+
+            <UserLine/>
+
+            <div className={"purchase-items"}>
+                <PurchaseItems/>
+                <PurchaseItems/>
+                <PurchaseItems/>
+            </div>
+
+            </div>
+
+
+            {/* BOTÃO */}
+            <Link to={"/profile"}>
+                <div className={"btn-box"}>
+                    <button className={"button-cancelar"}>Cancelar</button>
+                </div>
+            </Link>
 
         </div>
+
+        <div className={"space"}></div>
 
         <Footer/>
 

@@ -1,18 +1,27 @@
 import React, {useEffect, useState} from "react";
+import './Checkout.scss';
 import {Link} from "react-router-dom";
 import Footer from "../../../components/footer/Footer";
 import SubTitles from '../../../components/subtitle/subtitle';
+import Library from "../../../components/library/Library";
 import WrapList from "../../../components/bookList/wrapList"
 import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
 import ThirdButton from "../../../components/buttons/ThirdButton/ThirdButton";
+import Favorite from "../../../components/favorite/favorite";
 import UserLibrary from "../../../components/userLibrary/UserLibray";
+import SecondaryButton from "../../../components/buttons/SecondaryButton/SecondaryButton";
 import UserStatus from "../../../components/userStatus/UserStatus";
 import UserButtonStatus from "../../../components/userStatusButtons/userStatusButton";
 import {useUser} from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
+import UserItems from "../../../components/userItems/UserItems";
+import UserLine from "../../../components/userItems/UserLine";
+import UserPaymentType from "../../../components/userPaymentType/UserPaymentType";
+import UserDeliveryMethod from "../../../components/userDeliveryMethod/UserDeliveryMethod";
 
 
-export default function User() {
+
+export default function Checkout() {
     const { user, isLogged, openModal } = useUser();
     const [detalhes, setDetalhes] = useState();
     const [wishlist, setWishlist] = useState([]);
@@ -23,10 +32,7 @@ export default function User() {
     const [tabAtiva, setTabAtiva] = useState(0);
     const [carregando, setCarregando] = useState(true)
 
-    // if(!isLogged()) {
-    //     openModal()
-    //     return;
-    // } // REVIEW
+    if(!isLogged) {openModal()} // REVIEW
     const getData = async () => {
         const token = localStorage.getItem("token");
         const config = {
@@ -75,87 +81,62 @@ export default function User() {
         getData()
     },[])
 
-    console.log(bookstores)
-    if(carregando) return null;
+    {/* if(carregando) return null; */}
 
     const bgImage = {
-        backgroundImage: `url(${baseImageLink+detalhes.capa})`,
+        backgroundImage: `url(${null})`,
     };
 
     const profileImage = {
-        backgroundImage: `url(${baseImageLink+(detalhes.foto || '/users/userIcon.png')})`,
+        backgroundImage: `url(${null})`,
     };
 
-    return <div className={"user content"}>
+    return <div className={"shoppingCart content"}>
 
-        <div className={"userInfo"}>
-            <div className={"userBanner"} style={bgImage}></div>
+        <div className={"shoppingCart-Info"}>
+            <div className={"shoppingCart-Banner"} style={bgImage}></div>
             <div className={"wrapper-Info"}>
                 <div className={"imageText"}>
-                    <div className={"userImage"} style={profileImage}></div>
-                    <div className={"userText"}>
-                        <h1>{detalhes.nome}</h1>
-                        <div className={"button"}>
-                            <Link to={"/edit-personal"}>
-                                <ThirdButton text={"Editar Perfil"}/>
-                            </Link>
-                        </div>
-
-
+                    <div className={"shoppingCart-Image"} style={profileImage}></div>
+                    <div className={"shoppingCart-Text"}>
+                        <h1>Nome Ut</h1>
                     </div>
                 </div>
             </div>
         </div>
 
-
         <div className="wrapper">
 
-            <SubTitles text={"Lista de Favoritos"}/>
+            <h1 className={"title-checkout"}>Check Out</h1>
+            <div className={"space"}></div>
+            <SubTitles text={"Método de envio / Recolha"}/>
 
-        </div>
+            <UserDeliveryMethod/>
 
-        <div className={"wrapper-list-profile"}>
-            {wishlist.length > 0 ?
-              <WrapList list={wishlist}/> :
-              <Empty text={'Sem produtos na wishlist'} />
-            }
+            <div className={"space"}></div>
 
-        </div>
+            <SubTitles text={"Tipo de Pagamento"}/>
 
-        <div className="wrapper">
-            {
-                bookstores.map((b) =>
-                <UserLibrary {...b} />)
-            }
+            <UserPaymentType/>
 
-            {(wishlist.length > 0 || bookstores.length > 0) && <Link to={"/search-bookshop"}>
+            <div className={"total-checkout"}>
+                <div className={"text"}>Total</div>
+                <div className={"price"}>55,88€</div>
+            </div>
+
+            {/* BOTÃO */}
+            <Link to={"/checkout"}>
                 <div className={"btn-box"}>
-                    <button className={"button-ver-mais"}>Ver mais</button>
+                    <button className={"button-continuar"}>Continuar</button>
                 </div>
-            </Link>}
-            <SubTitles text={"Histórico de Compras"}/>
-            <UserButtonStatus activeButton={tabAtiva} setActiveButton={setTabAtiva}/>
-            {aDecorrer.length === 0 && entregues.length === 0 && canceladas.length === 0 &&
-            <Empty text={'Histórico de compras vazio'} />}
-            { tabAtiva === 0 && (
-                aDecorrer.map((ad)=>
-                    <UserStatus />
-                ))
-            }
-            {/*tab 1*/}
-            { tabAtiva === 1 && (
-              entregues.map((ad)=>
-                  <UserStatus />
-              ))
-            }
-            {/*tab 2*/}
-            { tabAtiva === 2 && (
-              canceladas.map((ad)=>
-                  <UserStatus />
-              ))
-            }
+            </Link>
 
         </div>
+
+        <div className={"space"}></div>
+
+
+
 
         <Footer/>
 
