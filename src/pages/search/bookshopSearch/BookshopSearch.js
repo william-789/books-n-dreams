@@ -22,6 +22,7 @@ export default function BookshopSearch() {
             method: () => {
                 setOrder(null)
                 getUserDistrict()
+                setPage(1)
             }
         },
         {
@@ -31,6 +32,7 @@ export default function BookshopSearch() {
             method: (filter) => {
                 setOrder(filter)
                 setUserDistrict(null)
+                setPage(1)
             }
         },
         {
@@ -40,6 +42,7 @@ export default function BookshopSearch() {
             method: (filter) => {
                 setOrder(filter)
                 setUserDistrict(null)
+                setPage(1)
             }
         },
         {
@@ -49,15 +52,7 @@ export default function BookshopSearch() {
             method: (filter) => {
                 setOrder(filter)
                 setUserDistrict(null)
-            }
-        },
-        {
-            text: "Limpar",
-            style: "checkbox",
-            filter: "",
-            method: () => {
-                setOrder(null)
-                setUserDistrict(null)
+                setPage(1)
             }
         }
     ];
@@ -104,11 +99,18 @@ export default function BookshopSearch() {
                 <div className={"container"}>
 
                     <h1>Pesquisa por Livraria</h1>
-                    <SearchInput text={"Livrarias"} func={search}/>
+                    <SearchInput text={"Livrarias"} func={search} page={setPage}/>
 
                     <div className={"bookshopList"}>
                         {filteredBookstore.length > 0 ?
-                            filteredBookstore.map(b => <Bookshop key={b.id} id={b.id} name={b.nome} image={baseImageLink + b.capa}/>)
+                            filteredBookstore.map(b => <Bookshop
+                                key={b.id}
+                                id={b.id}
+                                name={b.nome}
+                                address={b.morada}
+                                postalCode={b.codigo_postal}
+                                local={b.localidade}
+                                image={baseImageLink + b.capa}/>)
                         : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 

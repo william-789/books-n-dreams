@@ -1,0 +1,31 @@
+.UserInfoEdit {
+  width: 16%;
+  color: #8d8d8d;
+  margin-top: 8%;
+  padding-left: 15px;
+
+  .separator {
+    border: 1px solid #e3e3e3;
+  }
+
+  @media(max-width: 768px) {
+    width: 70%;
+    margin: 2rem auto;
+  }
+
+  .active {
+    p {
+      font-weight: 600;
+    }
+  }
+
+  p {
+    text-decoration: none;
+    color: $brown;
+
+    &:hover {
+      color: $orange;
+      cursor: pointer;
+    }
+  }
+}
