@@ -13,7 +13,7 @@ const UserContext = createContext({
 export const UserProvider = ({ children }) => {
   const [modalIsOpen, setModalIsOpen] = useState(true); // starts false
   const [user, setUser] = useState({}); // starts as empty object
-  const [wishlist, setWishlist] = useState({}); // { merch: [], livro: [] }
+  const [wishlist, setWishlist] = useState({ merch: [], livro: [] }); // { merch: [], livro: [] }
   const [favStores, setFavStores] = useState([]);
 
   const isFavorite = (id) => {
