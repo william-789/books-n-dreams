@@ -20,6 +20,7 @@ function LoginForm() {
         closeModal()
       })
       .catch(e => {
+          console.log(e, e.response)
         if(e.response.status === 400) setError('E-mail ou palavra-passe incorretos')
         else setError('Um erro ocorreu. Tente novamente mais tarde.')
       })

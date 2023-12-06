@@ -12,16 +12,17 @@ export default function BookSearch(props) {
     const [genreList, setGenreList] = useState(null);
     const [bookstoreList, setBookstoreList] = useState(null);
     const [authorList, setAuthorList] = useState(null);
-    const [author, setAuthor] = useState(null)
-    const [bookstore, setBookstore] = useState(null)
-    const [genre, setGenre] = useState(null)
+    const [author, setAuthor] = useState(null);
+    const [bookstore, setBookstore] = useState(null);
+    const [genre, setGenre] = useState(null);
+    const [finalPage, setFinalPage] = useState(1);
 
     const filterOptions = [
         {
             text: "Género",
             style: "dropdown",
             list: genreList?.map(g => {
-                return {...g, name:"genre", id: g.id, method: (id) => {setGenre(id)}}
+                return {...g, name:"genre", id: g.id, page: setPage, method: (id) => {setGenre(id)}}
             }),
             clear: setGenre,
             clearFilter: null,
@@ -31,7 +32,7 @@ export default function BookSearch(props) {
             text: "Autor",
             style: "dropdown",
             list: authorList?.map(a => {
-                return {...a, name:"author", id: a.id, method: (id) => {setAuthor(id)}}
+                return {...a, name:"author", id: a.id, page: setPage, method: (id) => {setAuthor(id)}}
             }),
             clear: setAuthor,
             clearFilter: null,
@@ -41,7 +42,7 @@ export default function BookSearch(props) {
             text: "Livraria",
             style: "dropdown",
             list: bookstoreList?.map(b => {
-                return {...b, name:"bookstore", id: b.id, method: (id) => {setBookstore(id)}}
+                return {...b, name:"bookstore", id: b.id, page: setPage, method: (id) => {setBookstore(id)}}
             }),
             clear: setBookstore,
             clearFilter: null,
@@ -61,7 +62,9 @@ export default function BookSearch(props) {
                     livraria: bookstore
                 }
         })
-            .then(r => setFilteredBooks(r.data.books))
+            .then(r => {
+                setFilteredBooks(r.data.books)
+                setFinalPage(r.data.total_pages)})
             .catch(e => console.log("Error", e))
 
         axiosBooks.get(`/genre/all`)
@@ -94,13 +97,13 @@ export default function BookSearch(props) {
                 <div className={"container"}>
 
                     <h1>Pesquisa por Livro</h1>
-                    <SearchInput text={"Livros"} func={search}/>
+                    <SearchInput text={"Livros"} func={search} page={setPage}/>
 
                     <div className={"bookList"}>
                         {filteredBooks.length > 0 ? <WrapList list={filteredBooks}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    {filteredBooks.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={10}/> : <div/>}
+                    {filteredBooks.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={finalPage}/> : <div/>}
                 </div>
             </div>
         </div>

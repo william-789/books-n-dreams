@@ -21,7 +21,7 @@ export default function AuthorSearch(props) {
             style: "dropdown",
             list: nationalityList?.map(n => {
                 return {
-                    ...n, name: "genre", id: n.id, method: (id) => {
+                    ...n, name: "genre", id: n.id, page: setPage, method: (id) => {
                         setNationality(id)
                     }
                 }
@@ -35,15 +35,8 @@ export default function AuthorSearch(props) {
             text: "Ordem Alfabética",
             style: "checkbox",
             filter: "nome",
+            page: setPage,
             method: setOrder
-        },
-        {
-            text: "Limpar",
-            style: "checkbox",
-            filter: "",
-            method: () => {
-                setOrder(null)
-            }
         }
     ];
 
@@ -61,7 +54,7 @@ export default function AuthorSearch(props) {
             .then(r => setFilteredAuthor(r.data.authors))
             .catch(e => console.log("Error", e))
 
-        axiosBooks.get(`/author/nationalities/all`,)
+        axiosBooks.get(`/author/nationalities/all`)
             .then(r => setNationalityList(r.data.nationalities))
             .catch(e => console.log("Error", e))
     }, [page, filter, nationality, order])
@@ -83,7 +76,7 @@ export default function AuthorSearch(props) {
                 <div className={"container"}>
 
                     <h1>Pesquisa por Autor</h1>
-                    <SearchInput text={"Autores"} func={search}/>
+                    <SearchInput text={"Autores"} func={search} page={setPage}/>
 
                     <div className={"authorList"}>
                         {filteredAuthor.length > 0 ? <AuthorList list={filteredAuthor}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}

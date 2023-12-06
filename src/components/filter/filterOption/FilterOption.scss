@@ -28,16 +28,10 @@
 
     p {
       font-size: 0.9rem;
-
-      &:hover {
-        color: $orange;
-        cursor: pointer;
-      }
     }
   }
 
   .radioButton {
-
     input {
       height: 1rem;
       aspect-ratio: 1 / 1;
@@ -53,7 +47,7 @@
       }
 
       &:hover {
-        color: $orange;
+        border: 1px solid $orange;
         cursor: pointer;
       }
     }
