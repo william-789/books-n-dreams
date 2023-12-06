@@ -15,6 +15,7 @@ import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButt
 import MerchList from "../../../components/merchList/MerchList";
 import {useUser} from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
+import UserReview from "../../../components/userReviews/userReviews";
 
 export default function MerchDetails(props) {
     const {id} = useParams();
@@ -73,8 +74,7 @@ export default function MerchDetails(props) {
                     setUtilizador(r.data.user);
                 }),
 
-                axiosBooks.get(`/item/comments/${details.item}`).then(r => {
-                    // console.log(r.data.comments)
+                axiosBooks.get(`/item/comments/${details.id}`).then(r => {
                     setComments(r.data.comments)
                 }),
             ])
@@ -85,7 +85,15 @@ export default function MerchDetails(props) {
 
     useEffect(() => {
         getData();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            getData();
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, [comments]);
 
     // remover && false depois de passar os dados corretos
     if (!(details && serieMerch && stores && genreMerch && genreBooks && comments)) return null;
@@ -141,10 +149,8 @@ export default function MerchDetails(props) {
             </div>
 
             <Subtitle text={"Nossas sugestões para ti"}/>
-            {details && serieMerch.length === 0 ?
-                <MerchList list={serieMerch.slice(0, 4)} details={details} /> :
-                <Empty text={'Sem sugestões'}/>
-            }
+                <MerchList list={serieMerch.slice(0, 4)} details={details} />
+
 
             <Link to={"/search"}>
                 {serieMerch.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
@@ -153,7 +159,22 @@ export default function MerchDetails(props) {
             <Reviews
                 foto={user && user.foto ? user.foto : null}
                 nota={details.nota}
-                avaliacoes={details.avaliacoes}/>
+                avaliacoes={details.avaliacoes}
+                id={details.id}
+            />
+
+            <div className={"UserReviewsList"}>
+                {comments !== null &&
+                    comments.slice(0, 4).map((c) => (
+                        <UserReview
+                            key={c.id}
+                            nome={c.nome}
+                            comentario={c.comentario}
+                            foto={c.foto}
+                            nota={c.nota}/>
+                    ))}
+            </div>
+
         </div>
 
         <Footer/>

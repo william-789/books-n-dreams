@@ -16,8 +16,8 @@ export default function Community(props) {
         try {
             await Promise.all([
                 axiosBooks.get(`/item/post/${id}`).then((r) => {
-                    console.log(r.data.posts);
-                    setPosts(r.data.posts);
+                    console.log(r.data.post);
+                    setPosts(r.data.post);
                 }),
 
                 axiosBooks.get(`/user/${user.id}`).then((r) => {
@@ -42,11 +42,14 @@ export default function Community(props) {
                 <UserPost foto={utilizador.foto}/>
             )}
 
-            <Post key={posts.id}
-                  imagem={posts.imagem}
-                  nome={posts.nome}
-                  foto={posts.foto}
-                  texto={posts.texto}/>
+            <Post
+                key={posts.id}
+                imagem={posts.imagem}
+                nome={posts.nome}
+                foto={posts.foto}
+                texto={posts.texto}
+                utilizador={utilizador && utilizador.foto}
+            />
         </div>
     );
 }
