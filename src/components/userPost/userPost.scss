@@ -1,0 +1,100 @@
+@import "src/App";
+
+.UserPost {
+  width: 100%;
+  background-color: #eae5e3;
+  margin: 4% 0;
+  border-radius: 25px;
+  position: relative;
+  padding: 60px 20px;
+  display: flex;
+
+  .Image {
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .UserPhoto {
+      height: 4vw;
+      aspect-ratio: 1 / 1;
+      border-radius: 400px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-right: 1rem;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+
+      svg {
+        font-size: 36px;
+      }
+
+      @media (max-width: 768px) {
+        height: 10vw;
+      }
+    }
+
+    .InputBox {
+      width: 85%;
+      height: 4rem;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 10px;
+      left: 100px;
+      flex-grow: 1;
+
+      @media (max-width: 768px) {
+        width: 80%;
+left: 80px;
+      }
+
+      input {
+        padding: 1rem;
+        border: none;
+        border-radius: 15px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #b7b5b5;
+
+      }
+    }
+
+  }
+
+
+    .button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: $orange;
+      width: 20%;
+      height: 2rem;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+
+      padding: 0.8rem; // Reduzi o padding
+      font-family: $headingFont;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      line-height: 0.4rem;
+      white-space: nowrap;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
