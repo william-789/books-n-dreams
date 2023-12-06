@@ -1,0 +1,361 @@
+@import "src/App";
+
+.Post {
+  width: 100%;
+  aspect-ratio: 1/1.5;
+  background-color: #eae5e3;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 1% 5%;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
+
+  .Extras {
+    width: 8%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: absolute;
+    top: 2rem;
+    right: 1.5rem;
+    color: $brown;
+
+    @media (max-width: 768px) {
+      width: 12%;
+      font-size: 1.5rem;
+    }
+  }
+
+  .UserInfo {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+
+    .Profile {
+      height: 4vw;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-right: 1rem;
+
+      @media (max-width: 768px) {
+        height: 10vw;
+      }
+    }
+
+    .Text {
+      display: flex;
+      flex-direction: column;
+      font-family: $headingFont;
+      color: $brown;
+
+      h2 {
+        margin: 0;
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+
+      h3 {
+        margin: 0;
+        font-weight: 400;
+        font-size: 1.2rem;
+
+      }
+    }
+  }
+
+  .Image {
+    display: flex;
+    justify-content: center;
+    background-color: #eae5e3;
+
+    .Cover {
+      width: 50%;
+      aspect-ratio: 1 / 1.5;
+      border-radius: 40px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-bottom: 1rem;
+
+      @media (max-width: 768px) {
+        width: 70%;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  .TextoPost {
+    font-family: $headingFont;
+    color: $brown;
+    width: 100%;
+    line-height: 2rem;
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 1rem 0;
+    }
+  }
+
+  .LikesComments {
+    display: flex;
+    justify-content: space-between;
+    color: $brown;
+    padding: 3% 1%;
+
+    .Likes {
+      font-size: 2rem;
+      display: flex;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        margin-left: 1rem;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    .Comments {
+      font-size: 1rem;
+
+      h2 {
+        font-size: 1.4rem;
+        margin-left: 1rem;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .LikesCommentsGiven {
+    display: flex;
+    border-top: 1px solid $brown;
+    border-bottom: 1px solid $brown;
+    color: $brown;
+    padding: 3% 1%;
+
+    .LikesGiven {
+      display: flex;
+      flex-direction: row;
+      font-size: 2rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        margin-left: 1rem;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    .CommentsGiven {
+      font-size: 2rem;
+      display: flex;
+      flex-direction: row;
+      margin-left: 2.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        margin-left: 1rem;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.Comentario {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 25px;
+  padding: 2% 0%;
+  margin-top: 15px;
+
+  .Icon {
+    width: 10%;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $backgroundColor;
+
+    @media (max-width: 768px) {
+      width: 16%;
+      aspect-ratio: 1/1;
+    }
+
+    svg {
+      font-size: 2rem;
+      color: $brown;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+
+    }
+
+  }
+
+  .Rectangle {
+    width: 88%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 25px;
+
+    @media (max-width: 768px) {
+      width: 80%;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-family: $headingFont;
+      font-weight: 400;
+      margin: 0;
+      color: $brown;
+    }
+  }
+}
+
+.LikeReply {
+  display: flex;
+  margin-left: 12%;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-family: $headingFont;
+    font-weight: 600;
+    margin: 0 8px;
+    color: #705D56;
+
+    @media (max-width: 768px) {
+      margin-left: 2.8rem
+    }
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-family: $headingFont;
+    font-weight: 600;
+    margin: 0 440px;
+    color: #705D56;
+
+    @media (max-width: 768px) {
+      margin: 0 120px;
+    }
+  }
+}
+
+.CommentBox {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 2rem;
+  background-color: $backgroundColor;
+  padding: 2%;
+  border-radius: 15px;
+
+  .UserImage {
+    margin-right: 1rem;
+
+    .UserCircle {
+      height: 4vw;
+      overflow: hidden;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+
+      @media (max-width: 768px) {
+        height: 8vw;
+      }
+    }
+
+    .UserImage {
+      height: 4vw;
+      object-fit: cover;
+
+      @media (max-width: 768px) {
+        height: 8vw;
+      }
+    }
+  }
+
+  .CommentContent {
+    width: 100%;
+
+    input {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 25px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: #b7b5b5;
+      font-family: $headingFont;
+
+    }
+
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: $orange;
+      width: 30%;
+      height: 2rem;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0.8rem;
+      font-family: $headingFont;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+      line-height: 0.4rem;
+      white-space: nowrap;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        width: 50%
+      }
+
+    }
+  }
+
+  svg {
+    font-size: 36px;
+  }
+
+  @media (max-width: 768px) {
+    height: 10vw;
+  }
+}
