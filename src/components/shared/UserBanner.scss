@@ -1,0 +1,69 @@
+.userInfo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0);
+
+
+  .userBanner{
+    width: 100%;
+    height: 150px;
+    background-color: pink;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+  }
+
+  .wrapper-Info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 0, 0, 0);
+    width: 50%;
+    margin: 4rem auto 0 auto ;
+
+    .imageText{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      border: 1px solid rgba(255, 0, 0, 0);
+
+      .userImage{
+        width: 10rem;   /* 240px */
+        height: 10rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
+      }
+
+      .userText{
+        padding: 0;
+        font-family: $headingFont;
+        font-size: $paragraphSizeAPP;
+        color: $brown;
+        margin-top: 0;
+        margin-left: -0.3rem;
+
+        h1{
+          margin: 0;
+          text-align: center;
+        }
+
+        .button{
+          align-self: center;
+          margin-right: 7px;
+        }
+
+        .group {
+          display: flex;
+        }
+      }
+    }
+  }
+}
