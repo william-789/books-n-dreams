@@ -115,13 +115,14 @@ $libraryDetailsAPP: 0.9rem;
 
       .text{
         font-family: $headingFont;
-        font-size: 1rem;
+        font-size: $listTitles;
         color: $backgroundAccent;
         margin-left: 0.5rem;
       }
 
       .price{
         font-family: $headingFont;
+        font-size: $listTitles;
         margin-right: 0.5rem;
         color: $backgroundAccent;
 
@@ -285,13 +286,14 @@ $libraryDetailsAPP: 0.9rem;
 
         .text{
           font-family: $headingFont;
-          font-size: 1rem;
+          font-size: 1.1rem;
           color: $backgroundAccent;
           margin-left: 0.5rem;
         }
 
         .price{
           font-family: $headingFont;
+          font-size: 1.1rem;
           margin-right: 0.5rem;
           color: $backgroundAccent;
 

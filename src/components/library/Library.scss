@@ -35,6 +35,13 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
   margin-bottom: 2rem;
   text-align: center;
 
+  transition: box-shadow 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 0 2px transparent;
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
   .library-text{
     display: flex;
     flex-direction: column;
@@ -89,6 +96,13 @@ $paragraphSizeAPP: 15px; // UTILIZAR REM?
 
         margin-top: -0.5rem;
         margin-bottom: 1rem;
+
+        transition: box-shadow 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+        &:hover {
+          box-shadow: 0 0 0 2px transparent;
+          opacity: 1;
+          transform: scale(1.02);
+        }
 
 
         .library-text{
