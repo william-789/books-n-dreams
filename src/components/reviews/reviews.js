@@ -6,9 +6,6 @@ import {faStar as FaStarSolid} from "@fortawesome/free-solid-svg-icons";
 import Subtitle from "../subtitle/subtitle";
 import "./reviews.scss";
 import axiosBooks from "../../util/axiosBooks";
-import {useParams} from "react-router-dom";
-import {useUser} from "../../context/userContext";
-import ErrorModal from "../error/ErrorModal";
 import {useError} from "../../context/errorContext";
 
 export default function Reviews(props) {
@@ -60,6 +57,7 @@ export default function Reviews(props) {
 
             if (response.status === 200) {
                 console.log("Review added successfully");
+
             } else if (response.status === 400 && response.data.message === "already_rated") {
                 showError("Item already rated by the user");
             } else {
@@ -72,6 +70,7 @@ export default function Reviews(props) {
         // Limpar o estado da revisão e da classificação após a submissão
         setUserReview("");
         setUserRating(0);
+
     };
 
     return (
