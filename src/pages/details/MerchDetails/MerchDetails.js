@@ -111,6 +111,7 @@ export default function MerchDetails(props) {
 
         <div className={"Container"}>
             <MerchInfo
+                id={details.id}
                 foto={details.foto}
                 tipo={details.tipo}
                 genero={details.genero}

@@ -34,7 +34,10 @@ export default function MerchInfo(props) {
     return (
         <div className={"MerchInfo"}>
             <div className={"Foto"} style={{backgroundImage: `url(${renderMerchImage()})`}} />
-            <Favorite id={props.id} type={'merch'}/>
+
+            <div className={"favorite"}>
+                <Favorite id={props.id} type={'merch'}/>
+            </div>
 
             <div className={"Info"}>
                 <h4>

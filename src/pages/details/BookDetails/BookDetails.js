@@ -41,6 +41,7 @@ export default function BookDetails(props) {
         try {
             let details = await axiosBooks.get(`/book/${id}`).then((r) => r.data.book);
             setDetails(details);
+            console.log(details)
 
             await Promise.all([
                 axiosBooks.get(`book/available/${id}`).then((r) => {
@@ -107,6 +108,7 @@ export default function BookDetails(props) {
 
             <div className={"Container"}>
                 <BookInfo
+                    id={details.item}
                     foto={details.foto}
                     tipo={details.tipo}
                     genero={details.genero}

@@ -16,6 +16,8 @@ export const UserProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState({ merch: [], livro: [] }); // { merch: [], livro: [] }
   const [favStores, setFavStores] = useState([]);
 
+  const token = localStorage.getItem("token");
+
   const isFavorite = (id) => {
     return favStores.includes(id);
   }
@@ -23,29 +25,30 @@ export const UserProvider = ({ children }) => {
   const onWishlist = (id, type) => { // types: 'merch', 'livro'
     return wishlist[type].includes(id);
   }
-  const toggleFavStore =  async (id) => { // called only if user is logged
+  const toggleFavStore = async (id) => {
     // toggle on DB
-   await axiosBooks.post('user/toggle-fav', {params: {id}})
+    await axiosBooks.post('user/toggle-fav', { id }, { headers: { 'token-header': token } });
     // toggle locally
-    if(isFavorite(id)) {
-      const newFav = favStores.filter((s) => s !== id)
-      setFavStores(newFav)
+    if (isFavorite(id)) {
+      const newFav = favStores.filter((s) => s !== id);
+      setFavStores(newFav);
     } else {
-        setFavStores([...favStores,id])
+      setFavStores([...favStores, id]);
     }
   }
 
-  const toggleWishlist = async (id, type) => { // called only if user is logged
+  const toggleWishlist = async (id, type) => {
     // toggle on DB
-    await axiosBooks.post('user/toggle-from-wishlist', {params:{ id, type }})
+    await axiosBooks.post('user/toggle-from-wishlist', { id, type }, { headers: { 'token-header': token } });
     // toggle locally
-    if(onWishlist(id, type)) {
-      const newWishlist = wishlist[type].filter((s) => s !== id)
-      setWishlist({...wishlist, type: newWishlist})
+    if (onWishlist(id, type)) {
+      const newWishlist = wishlist[type].filter((s) => s !== id);
+      setWishlist({ ...wishlist, [type]: newWishlist });
     } else {
-      setWishlist({...wishlist, type: [...wishlist[type], id]})
+      setWishlist({ ...wishlist, [type]: [...wishlist[type], id] });
     }
   }
+
 
   // User
   const authUser = (token) => {
