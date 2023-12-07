@@ -111,7 +111,7 @@ export default function EditPaymentInfo(props) {
                                 <button className={"save"} type={"submit"}>
                                     Guardar Alterações
                                 </button>
-                                <button className={"back"} onClick={history.goBack}>
+                                <button className={"back"} type={"reset"} onClick={history.goBack}>
                                     Cancelar
                                 </button>
 

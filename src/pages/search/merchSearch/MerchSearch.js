@@ -13,6 +13,7 @@ export default function MerchSearch(props) {
     const [typeList, setTypeList] = useState(null);
     const [bookstore, setBookstore] = useState(null);
     const [type, setType] = useState(null);
+    const [finalPage, setFinalPage] = useState(1);
 
     const filterOptions = [
         {
@@ -23,6 +24,7 @@ export default function MerchSearch(props) {
             }),
             clear: setType,
             clearFilter: null,
+            var: type,
             method: () => {
             }
         },
@@ -35,6 +37,7 @@ export default function MerchSearch(props) {
             }),
             clear: setBookstore,
             clearFilter: null,
+            var: bookstore,
             method: () => {
             }
         }
@@ -51,7 +54,9 @@ export default function MerchSearch(props) {
                     tipo: type
                 }
         })
-            .then(r => setFilteredMerch(r.data.merch))
+            .then(r => {
+                setFilteredMerch(r.data.merch)
+                setFinalPage(r.data.total_pages)})
             .catch(e => console.log("Error", e))
 
         axiosBooks.get(`/store/all`)
@@ -87,7 +92,7 @@ export default function MerchSearch(props) {
                         {filteredMerch.length > 0 ? <MerchList list={filteredMerch}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    {filteredMerch.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={10}/> : <div/>}
+                    {filteredMerch.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={finalPage}/> : <div/>}
                 </div>
             </div>
         </div>

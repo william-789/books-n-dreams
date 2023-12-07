@@ -13,6 +13,7 @@ export default function BookshopSearch() {
     const [order, setOrder] = useState(null);
     const [userDistrict, setUserDistrict] = useState(null);
     const {user, isLogged, openModal} = useUser();
+    const [finalPage, setFinalPage] = useState(1);
 
     const filterOptions = [
         {
@@ -68,7 +69,10 @@ export default function BookshopSearch() {
                     ordem: order
                 }
         })
-            .then(r => setFilteredBookstore(r.data.bookstores))
+            .then(r => {
+                setFilteredBookstore(r.data.bookstores)
+                setFinalPage(r.data.total_pages)
+            })
             .catch(e => console.log("Error", e))
     }, [page, filter, order, userDistrict])
 
@@ -114,7 +118,7 @@ export default function BookshopSearch() {
                         : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    {filteredBookstore.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={10}/> : <div/>}
+                    {filteredBookstore.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={finalPage}/> : <div/>}
                 </div>
             </div>
         </div>
