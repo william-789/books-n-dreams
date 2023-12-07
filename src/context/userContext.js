@@ -23,9 +23,9 @@ export const UserProvider = ({ children }) => {
   const onWishlist = (id, type) => { // types: 'merch', 'livro'
     return wishlist[type].includes(id);
   }
-  const toggleFavStore = (id) => { // called only if user is logged
+  const toggleFavStore =  async (id) => { // called only if user is logged
     // toggle on DB
-    axiosBooks.post('/toggle-fav', {params: {id}})
+   await axiosBooks.post('user/toggle-fav', {params: {id}})
     // toggle locally
     if(isFavorite(id)) {
       const newFav = favStores.filter((s) => s !== id)
@@ -35,9 +35,9 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  const toggleWishlist = (id, type) => { // called only if user is logged
+  const toggleWishlist = async (id, type) => { // called only if user is logged
     // toggle on DB
-    axiosBooks.post('/toggle-from-wishlist', {params:{ id, type }})
+    await axiosBooks.post('user/toggle-from-wishlist', {params:{ id, type }})
     // toggle locally
     if(onWishlist(id, type)) {
       const newWishlist = wishlist[type].filter((s) => s !== id)

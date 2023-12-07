@@ -84,13 +84,13 @@ export default function BookDetails(props) {
         getData();
     }, [id]);
 
-    useEffect(() => {
+   /* useEffect(() => {
         const timeoutId = setTimeout(() => {
             getData();
         }, 500);
 
         return () => clearTimeout(timeoutId);
-    }, [comments]);
+    }, [comments]); */
 
     // remover && false depois de passar os dados corretos
     if (!(details && stores && author && authorBooks && genreBooks && comments))

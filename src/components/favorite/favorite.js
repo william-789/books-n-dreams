@@ -30,7 +30,6 @@ export default function Favorite(props) { // always receives type - 'store, merc
         }
     }
 
-    const [favorite, setFavorite] = useState(false)
     return <div className={"Favorite"}>
     <FontAwesomeIcon onClick={()=>handleClick(props.id)}
                             icon={ full ? faHeart : faHeartOpen} className={"icon"}/>

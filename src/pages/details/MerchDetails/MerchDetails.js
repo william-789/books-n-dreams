@@ -128,7 +128,7 @@ export default function MerchDetails(props) {
                         localidade={s.localidade}
                         distrito={s.distrito}
                         preco={s.preco}
-                        itemId={details.item}
+                        itemId={details.id}
                         allPrices={stores.map((store) => store.preco)}
                         userLocalidade={utilizador ? utilizador.localidade : null}
                     />
