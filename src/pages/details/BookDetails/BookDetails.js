@@ -15,6 +15,7 @@ import Reviews from "../../../components/reviews/reviews";
 import UserReview from "../../../components/userReviews/userReviews";
 import { useUser } from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
+import PrimaryButton from "../../../components/buttons/PrimaryButton/PrimaryButton";
 
 export default function BookDetails(props) {
     const { id } = useParams();
@@ -29,45 +30,44 @@ export default function BookDetails(props) {
     const [genreBooks, setGenreBooks] = useState(null);
     const [comments, setComments] = useState(null);
 
+    const handleBookPriceClick = (id) => {
+        const topoPaginaElement = document.getElementById('topoPagina');
+        if (topoPaginaElement) {
+            topoPaginaElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     const getData = async () => {
         try {
             let details = await axiosBooks.get(`/book/${id}`).then((r) => r.data.book);
-            console.log("book", details); // remover log quando estiver a funcionar
             setDetails(details);
 
             await Promise.all([
                 axiosBooks.get(`book/available/${id}`).then((r) => {
-                    console.log(r.data.available);
                     setStores(r.data.available);
                 }),
 
                 axiosBooks.get(`/author/${details.autor_id}`).then((r) => {
-                    console.log(r.data.author);
                     setAuthor(r.data.author);
                 }),
 
                 axiosBooks
                     .get(`/book/all`, { params: { autor: details.autor_id } })
                     .then((r) => {
-                        console.log(r.data.books);
                         setAuthorBooks(r.data.books);
                     }),
 
                 axiosBooks
                     .get(`/book/all`, { params: { genero: details.genero_id } })
                     .then((r) => {
-                        console.log(r.data.books);
                         setGenreBooks(r.data.books);
                     }),
 
                 axiosBooks.get(`/user/${user.id}`).then((r) => {
-                    console.log(r.data.user);
                     setUtilizador(r.data.user);
                 }),
 
                 axiosBooks.get(`/item/comments/${details.item}`).then((r) => {
-                    console.log(r.data.comments);
                     setComments(r.data.comments);
                 }),
             ]);
@@ -77,13 +77,17 @@ export default function BookDetails(props) {
     };
 
     useEffect(() => {
+        handleBookPriceClick(id);
+    }, [id]);
+
+    useEffect(() => {
         getData();
     }, [id]);
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             getData();
-        }, 3000);
+        }, 500);
 
         return () => clearTimeout(timeoutId);
     }, [comments]);
@@ -93,8 +97,11 @@ export default function BookDetails(props) {
         return null;
 
     return (
-        <div className={"BookDetail_content"}>
-            <div className={"Header"}>
+    <div className={"BookDetail_content"}>
+
+        <div id="topoPagina" />
+
+        <div className={"Header"}>
                 <h1>Livro</h1>
             </div>
 
@@ -147,15 +154,34 @@ export default function BookDetails(props) {
                 {details && authorBooks.length < 1 ? (
                     <Empty text={"Sem livros"} />
                 ) : (
-                    <WrapList list={authorBooks.slice(0, 4)} />
+                    <>
+                        <WrapList list={authorBooks.slice(0, 4)} />
+                        {authorBooks.length > 4 && (
+                            <div className={"button"}>
+                                <Link to={"/search"}>
+                                    <PrimaryButton text={"Ver mais"}/>
+                                </Link>
+                            </div>
+                        )}
+                    </>
                 )}
 
                 <Subtitle text={"Nossas sugestões para ti"} />
                 {details && genreBooks.length > 0 ? (
-                    <WrapList list={genreBooks.slice(0, 4)} />
+                    <>
+                        <WrapList list={genreBooks.slice(0, 4)} />
+                        {genreBooks.length > 4 && (
+                            <div className={"button"}>
+                                <Link to={"/search"}>
+                                    <PrimaryButton text={"Ver mais"}/>
+                                </Link>
+                            </div>
+                        )}
+                    </>
                 ) : (
                     <Empty text={"Sem sugestões"} />
                 )}
+
 
                 <Reviews
                     foto={user && user.foto ? user.foto : null}

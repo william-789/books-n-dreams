@@ -1,0 +1,39 @@
+@import "src/App";
+
+.onCloseContainer {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1%;
+
+  > img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background-color: #62C33F;
+    padding: 2%;
+    border-radius: 50px;
+    fill: white;
+  }
+}
+
+.success-content {
+  padding: 0 10%;
+  text-align: center;
+  z-index: 1000;
+
+  .button-container {
+    width: 100%;
+    text-align: center;
+
+    button {
+      padding: 5px 45px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      background-color: $brown;
+      color: $backgroundColor;
+      font-size: $subtitleSizeAPP;
+      margin-top: 2%;
+    }
+  }
+}

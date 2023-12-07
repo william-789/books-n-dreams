@@ -1,55 +1,49 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axiosBooks from "../../util/axiosBooks";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Post from "../../components/post/post";
-import "./Community.scss"
-import {useUser} from "../../context/userContext";
+import "./Community.scss";
+import { useUser } from "../../context/userContext";
 import UserPost from "../../components/userPost/userPost";
 
 export default function Community(props) {
-    const {id = 1} = useParams();
-    const {user} = useUser()
-    const [posts, setPosts] = useState([]);
+    const { id = 1 } = useParams();
+    const { user } = useUser();
+    const [post, setPost] = useState(null);
     const [utilizador, setUtilizador] = useState(null);
 
     const getData = async () => {
         try {
-            await Promise.all([
-                axiosBooks.get(`/item/post/${id}`).then((r) => {
-                    console.log(r.data.post);
-                    setPosts(r.data.post);
-                }),
+            const response = await axiosBooks.get(`/item/post/${id}`);
+            setPost(response.data.post[0]); // Ajuste aqui, diretamente pegando o primeiro post do array
 
-                axiosBooks.get(`/user/${user.id}`).then((r) => {
-                    console.log(r.data.user);
-                    setUtilizador(r.data.user);
-                }),
-            ])
+            const userResponse = await axiosBooks.get(`/user/${user.id}`);
+            setUtilizador(userResponse.data.user);
         } catch (error) {
-            console.log("Error fetching data, ", error)
+            console.log("Error fetching data, ", error);
         }
-    }
+    };
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [id]);
 
     return (
         <div className={"Community"}>
             <h1>Bem Vindo!</h1>
 
-            {utilizador && (
-                <UserPost foto={utilizador.foto}/>
-            )}
+            {utilizador && <UserPost foto={utilizador.foto} />}
 
-            <Post
-                key={posts.id}
-                imagem={posts.imagem}
-                nome={posts.nome}
-                foto={posts.foto}
-                texto={posts.texto}
-                utilizador={utilizador && utilizador.foto}
-            />
+            {post && (
+                <Post
+                    key={post.id}
+                    imagem={post.imagem}
+                    nome={post.nome}
+                    foto={post.foto}
+                    texto={post.texto}
+                    utilizador={utilizador && utilizador.foto}
+                />
+            )}
         </div>
     );
 }

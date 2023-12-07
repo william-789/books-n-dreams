@@ -104,7 +104,7 @@ export default function Post(props) {
 
                 <div className={"CommentContent"}>
     <input
-        placeholder="Escreva seu comentário..."
+        placeholder="Comente..."
         value={comment}
         onChange={handleCommentChange}
     />

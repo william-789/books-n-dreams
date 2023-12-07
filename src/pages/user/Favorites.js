@@ -8,6 +8,8 @@ import Merch from "../../components/merch/Merch";
 import BookPrice from "../../components/bookPrice/bookPrice";
 import UserLibrary from "../../components/userLibrary/UserLibray";
 
+import"./Favorites.scss"
+
 export default function Favorites(props) {
     const history = useHistory();
     const { isLogged, openModal } = useUser();
@@ -82,8 +84,10 @@ export default function Favorites(props) {
     if(loading) return null;
 
 
-    return <div className={"Favorites"}>
+    return <div className={"Favorites Content"}>
         <Subtitle text={'Wishlist'}/>
+
+        <div className={"Whislist"}>
         {
             wishlist.map(i=> i.type === 'merch' ?
 
@@ -106,6 +110,8 @@ export default function Favorites(props) {
                 disponiveis={i.disponiveis}
               />)
         }
+
+        </div>
 
         <Pagination page={currentPage} totalPages={totalPages} setPage={setCurrentPage}/>
         <Subtitle text={'Livrarias favoritas'}/>

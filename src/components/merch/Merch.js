@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 
 export default function Merch(props) {
     const { nome, foto, text, disponiveis } = props;
-
     return (
         <div className={"Merch"}>
             <Link to={`/merch/${props.id}`} className={"Link"}>
