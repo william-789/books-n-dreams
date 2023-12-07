@@ -1,0 +1,27 @@
+.ChangePhoto {
+  width: 100%;
+  background-color: #EBE6E4;
+  display: flex;
+  align-items: center;
+  padding:15px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+
+  > img {
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    margin-right: 45px;
+  }
+  .Input {
+    display: none;
+  }
+  button {
+    border: none;
+    border-radius: 30px;
+    padding: 20px 40px;
+    background-color: $orange;
+    color: #fff;
+  }
+
+}

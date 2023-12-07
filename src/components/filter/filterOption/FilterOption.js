@@ -23,12 +23,12 @@ export default function FilterOption(props) {
 
     if (props.style === "dropdown") {
         dropdown =
-            <div className={"dropdown"} style={{maxHeight: dropdownVisible ? "250px" : "0"}}>
+            <div className={"dropdown"} style={{maxHeight: dropdownVisible ? "170px" : "0"}}>
 
                 <div className={"optionDisplay"}>
-                    <p><b>Limpar</b></p>
+                    <p><b>Todos</b></p>
                     <div className={"radioButton"}>
-                        <input type="radio" name={list[0]?.name} className={"checkboxSmaller"} onChange={() => props.clear(props.clearFilter)}></input>
+                        <input type="radio" name={list[0]?.name} checked={!props.var} className={"checkboxSmaller"} onChange={() => props.clear(props.clearFilter)}></input>
                     </div>
                 </div>
 
