@@ -3,17 +3,17 @@ import {Link} from "react-router-dom";
 import Footer from "../../../components/footer/Footer";
 import SubTitles from '../../../components/subtitle/subtitle';
 import WrapList from "../../../components/bookList/wrapList"
-import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
-import ThirdButton from "../../../components/buttons/ThirdButton/ThirdButton";
+import axiosBooks from "../../../util/axiosBooks";
 import UserLibrary from "../../../components/userLibrary/UserLibray";
 import UserStatus from "../../../components/userStatus/UserStatus";
 import UserButtonStatus from "../../../components/userStatusButtons/userStatusButton";
 import {useUser} from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
+import UserBanner from "../../../components/shared/UserBanner";
 
 
 export default function User() {
-    const { user, isLogged, openModal } = useUser();
+    const { user, token, getUser, isLogged, openModal } = useUser();
     const [detalhes, setDetalhes] = useState();
     const [wishlist, setWishlist] = useState([]);
     const [bookstores, setBookstores] = useState([]);
@@ -34,6 +34,7 @@ export default function User() {
                 'token-header': token
             }
         };
+        // if(token) getUser(); !!!!!! 1.
 
         try {
             const userDetails = await axiosBooks.get(`/user/${user.id}`);
@@ -60,7 +61,6 @@ export default function User() {
             const userOrders = await axiosBooks.get('/user/orders-reader', {
                 headers: config.headers
             });
-            console.log(userOrders.data.a_decorrer)
             setADecorrer(userOrders.data.a_decorrer);
             setEntregues(userOrders.data.entregues);
             setCanceladas(userOrders.data.canceladas);
@@ -72,46 +72,17 @@ export default function User() {
     };
 
     useEffect(()=>{
-        getData()
-    },[])
+        getData();
+    },[user])
 
-    console.log(bookstores)
     if(carregando) return null;
-
-    const bgImage = {
-        backgroundImage: `url(${baseImageLink+detalhes.capa})`,
-    };
-
-    const profileImage = {
-        backgroundImage: `url(${baseImageLink+(detalhes.foto || '/users/userIcon.png')})`,
-    };
 
     return <div className={"user content"}>
 
-        <div className={"userInfo"}>
-            <div className={"userBanner"} style={bgImage}></div>
-            <div className={"wrapper-Info"}>
-                <div className={"imageText"}>
-                    <div className={"userImage"} style={profileImage}></div>
-                    <div className={"userText"}>
-                        <h1>{detalhes.nome}</h1>
-                        <div className={"button"}>
-                            <Link to={"/edit-personal"}>
-                                <ThirdButton text={"Editar Perfil"}/>
-                            </Link>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <UserBanner main {...detalhes} />
 
         <div className="wrapper">
-
-            <SubTitles text={"Lista de Favoritos"}/>
-
+            <SubTitles text={"Wishlist"}/>
         </div>
 
         <div className={"wrapper-list-profile"}>
@@ -119,7 +90,10 @@ export default function User() {
               <WrapList list={wishlist}/> :
               <Empty text={'Sem produtos na wishlist'} />
             }
+        </div>
 
+        <div className="wrapper">
+            <SubTitles text={"Lista de Favoritos"}/>
         </div>
 
         <div className="wrapper">
