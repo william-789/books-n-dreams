@@ -7,6 +7,7 @@ import Input from "../../../../../components/shared/Input/Input";
 import Dropdown from "../../../../../components/shared/Dropdown/Dropdown";
 import Footer from "../../../../../components/footer/Footer";
 import {useHistory} from "react-router-dom";
+import ChangePhoto from "../../../../../components/changePhoto/changePhoto";
 
 export default function EditPersonalInfo(props) {
     const {user, isLogged, openModal} = useUser();
@@ -276,6 +277,7 @@ export default function EditPersonalInfo(props) {
                             </div>
 
                         </form>
+                        <ChangePhoto reload={() => getData()} foto={userInfo.foto}/>
                     </div>
                 </div>
             </div>

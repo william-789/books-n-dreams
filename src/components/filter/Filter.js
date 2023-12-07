@@ -24,6 +24,8 @@ export default function Filter(props) {
                                   list={l.list}
                                   clear={l.clear}
                                   clearFilter={l.clearFilter}
+                                  page={l.page}
+                                  var={l.var}
                     />
                     <hr className={"separator"}/>
                 </div>)}

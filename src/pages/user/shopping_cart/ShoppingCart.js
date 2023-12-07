@@ -3,35 +3,22 @@ import './ShoppingCart.scss';
 import {Link} from "react-router-dom";
 import Footer from "../../../components/footer/Footer";
 import SubTitles from '../../../components/subtitle/subtitle';
-import Library from "../../../components/library/Library";
-import WrapList from "../../../components/bookList/wrapList"
-import axiosBooks, {baseImageLink} from "../../../util/axiosBooks";
-import ThirdButton from "../../../components/buttons/ThirdButton/ThirdButton";
-import Favorite from "../../../components/favorite/favorite";
-import UserLibrary from "../../../components/userLibrary/UserLibray";
-import SecondaryButton from "../../../components/buttons/SecondaryButton/SecondaryButton";
-import UserStatus from "../../../components/userStatus/UserStatus";
-import UserButtonStatus from "../../../components/userStatusButtons/userStatusButton";
+import axiosBooks from "../../../util/axiosBooks";
 import {useUser} from "../../../context/userContext";
-import Empty from "../../../components/shared/Empty/Empty";
 import UserItems from "../../../components/userItems/UserItems";
 import UserLine from "../../../components/userItems/UserLine";
+import UserBanner from "../../../components/shared/UserBanner";
 
 
 export default function ShoppingCart() {
     const { user, isLogged, openModal } = useUser();
     const [detalhes, setDetalhes] = useState();
-    const [wishlist, setWishlist] = useState([]);
-    const [bookstores, setBookstores] = useState([]);
-    const [aDecorrer, setADecorrer] = useState([]);
-    const [entregues, setEntregues] = useState([]);
-    const [canceladas, setCanceladas] = useState([]);
-    const [tabAtiva, setTabAtiva] = useState(0);
+    const [cart, setcart] = useState(null);
     const [carregando, setCarregando] = useState(true)
+    const [total, setTotal] = useState(0)
 
-    if(!isLogged) {openModal()} // REVIEW
+    const token = localStorage.getItem("token");
     const getData = async () => {
-        const token = localStorage.getItem("token");
         const config = {
             headers: {
                 'token-header': token
@@ -42,31 +29,10 @@ export default function ShoppingCart() {
             const userDetails = await axiosBooks.get(`/user/${user.id}`);
             setDetalhes(userDetails.data.user);
 
-            const wishlist = await axiosBooks.get('/user/wishlist', {
-                params: {
-                    page: 1,
-                    per_page: 4
-                },
+            const cartData = await axiosBooks.get('/item/cart', {
                 headers: config.headers
             });
-            setWishlist(wishlist.data.wishlist);
-
-            const favoriteStores = await axiosBooks.get('/user/favorite-stores', {
-                params: {
-                    page: 1,
-                    per_page: 3
-                },
-                headers: config.headers
-            });
-            setBookstores(favoriteStores.data.stores);
-
-            const userOrders = await axiosBooks.get('/user/orders-reader', {
-                headers: config.headers
-            });
-            console.log(userOrders.data.a_decorrer)
-            setADecorrer(userOrders.data.a_decorrer);
-            setEntregues(userOrders.data.entregues);
-            setCanceladas(userOrders.data.canceladas);
+            setcart(cartData.data);
 
             setCarregando(false);
         } catch (e) {
@@ -74,51 +40,105 @@ export default function ShoppingCart() {
         }
     };
 
+    const updateDbCart = async (quantity, id, store, opcao) => {
+        const pedido = {
+            quantity,
+            id,
+            store,
+            opcao
+        };
+        await axiosBooks.post('/item/add-to-cart/', pedido, {
+            headers: { "token-header": token },
+        } )
+    }
+    const handleIncrement = async (itemData) => {
+        const { id, unidades, storeId, opcao } = itemData
+        await updateDbCart(unidades+1, id, storeId, opcao)
+          .then(()=>{
+              const updatedCart = cart.map((item) =>
+                item.id === itemData.id ? { ...item, unidades: item.unidades + 1 } : item
+              );
+              setcart(updatedCart);
+          })
+          .catch(e=>{
+              console.log(e)
+          })
+
+    };
+
+    const handleDecrement = async (itemData) => {
+        const { id, unidades, storeId, opcao } = itemData
+        await updateDbCart(unidades-1, id, storeId, opcao)
+          .then(()=>{
+              const updatedCart = cart.map((item) =>
+                item.id === id && item.unidades > 0 ? { ...item, unidades: item.unidades - 1 } : item
+              );
+              setcart(updatedCart);
+          })
+          .catch(e=>{
+              console.log(e)
+          })
+    };
+
+    const handleRemove = async (itemData) => {
+        const { id, storeId, opcao } = itemData
+        await updateDbCart(0, id, storeId, opcao)
+          .then(()=>{
+              const updatedCart = cart.filter((item) =>
+                item.id !== id
+              );
+              setcart(updatedCart);
+          })
+          .catch(e=>{
+              console.log(e)
+          })
+    }
+
+    const updateTotal = () => {
+        const sum = cart.reduce((a,b)=>{
+            return a + (+b.preco * b.unidades)
+        }, 0);
+        setTotal(sum)
+    }
     useEffect(()=>{
         getData()
     },[])
 
-    {/* if(carregando) return null; */}
+    useEffect(()=>{
+        if(cart) {
+            updateTotal();
+        }
+    },[cart])
 
-    const bgImage = {
-        backgroundImage: `url(${null})`,
-    };
-
-    const profileImage = {
-        backgroundImage: `url(${null})`,
-    };
+    if(carregando) return null;
 
     return <div className={"shoppingCart content"}>
 
-        <div className={"shoppingCart-Info"}>
-            <div className={"shoppingCart-Banner"} style={bgImage}></div>
-            <div className={"wrapper-Info"}>
-                <div className={"imageText"}>
-                    <div className={"shoppingCart-Image"} style={profileImage}></div>
-                    <div className={"shoppingCart-Text"}>
-                        <h1>Nome Ut</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <UserBanner {...detalhes} />
         <div className="wrapper">
             <SubTitles text={"O meu carrinho"}/>
         </div>
 
 
         <div className="wrapper">
-            <UserItems/>
-            <UserLine/>
-
-            <UserItems/>
-            <UserLine/>
-
-            <UserItems/>
-            <UserLine/>
+            {
+                cart.map((i) => {
+                    return (
+                      <>
+                          <UserItems
+                            increment={() => handleIncrement(i)}
+                            decrement={() => handleDecrement(i)}
+                            remove={()=> handleRemove(i)}
+                            {...i}/>
+                          <UserLine/>
+                      </>
+                    )
+                })
+            }
 
            <div className={"total"}>
                <div className={"text"}>Total</div>
-               <div className={"price"}>55,88€</div>
+               <div className={"price"}>{total.toFixed(2)}€</div>
            </div>
 
             {/* BOTÃO */}
@@ -131,9 +151,6 @@ export default function ShoppingCart() {
         </div>
 
         <div className={"space"}></div>
-
-
-
 
         <Footer/>
 

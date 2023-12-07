@@ -14,6 +14,8 @@ export default function AuthorSearch(props) {
     const [nationalityList, setNationalityList] = useState(null)
     const [nationality, setNationality] = useState(null);
     const [order, setOrder] = useState(null);
+    const [finalPage, setFinalPage] = useState(1);
+
 
     const filterOptions = [
         {
@@ -28,6 +30,7 @@ export default function AuthorSearch(props) {
             }),
             clear: setNationality,
             clearFilter: null,
+            var: nationality,
             method: () => {
             }
         },
@@ -51,11 +54,16 @@ export default function AuthorSearch(props) {
                     nacionalidade: nationality
                 }
         })
-            .then(r => setFilteredAuthor(r.data.authors))
+            .then(r => {
+                setFilteredAuthor(r.data.authors)
+                setFinalPage(r.data.total_pages)
+            })
             .catch(e => console.log("Error", e))
 
         axiosBooks.get(`/author/nationalities/all`)
-            .then(r => setNationalityList(r.data.nationalities))
+            .then(r => {
+                setNationalityList(r.data.nationalities)
+            })
             .catch(e => console.log("Error", e))
     }, [page, filter, nationality, order])
 
@@ -82,7 +90,7 @@ export default function AuthorSearch(props) {
                         {filteredAuthor.length > 0 ? <AuthorList list={filteredAuthor}/> : <p className={"noResult"}>Pesquisa sem resultados</p>}
                     </div>
 
-                    {filteredAuthor.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={10}/> : <div/>}
+                    {filteredAuthor.length > 0 ? <Pagination setPage={setPage} page={page} totalPages={finalPage}/> : <div/>}
                 </div>
             </div>
         </div>

@@ -87,6 +87,7 @@ body, html {
 @import "components/merch/Merch";
 @import "components/merchList/MerchList";
 @import "components/userInfoEdit/UserInfoEdit";
+@import "components/changePhoto/changePhoto";
 
 @import "pages/navbar/NavBar";
 @import "pages/home/Home";
@@ -103,3 +104,4 @@ body, html {
 @import "pages/user/auth-modal/AuthModal";
 @import "components/shared/Empty/Empty";
 @import "pages/user/User/User";
+@import "components/shared/UserBanner";
