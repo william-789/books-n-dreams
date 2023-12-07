@@ -52,7 +52,7 @@ export default function Home(props) {
             </div>
 
             <div className={"wrapper-list-home"}>
-                <WrapList  list={livros.slice(0, 8)}/>
+                <WrapList  list={livros.slice(0, 8)} />
             </div>
 
 

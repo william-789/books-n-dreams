@@ -5,7 +5,8 @@ import "./wrapList.scss";
 export default function WrapList(props) {
     const list = props.list || [];
 
-    return (<div className={"WrapList"}>
+    return (
+        <div className={"WrapList"}>
             {list.map((item) => (
                 <BookPrice
                     key={props.id}
@@ -16,6 +17,7 @@ export default function WrapList(props) {
                     text={item.desde}
                     disponiveis={item.disponiveis}
                 />
+
             ))}
         </div>
     );

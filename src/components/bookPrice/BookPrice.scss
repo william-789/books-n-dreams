@@ -8,8 +8,13 @@
   width: 95%;
   margin-bottom: 2rem;
   margin-right: 0.6rem;
-  transform: scale(1);
-  transition: transform 0.08s ease-in-out;
+  transition: box-shadow 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 0 2px transparent;
+    opacity: 1;
+    transform: scale(1.02);
+  }
 
   .Link {
     height: 100%;
@@ -58,6 +63,14 @@
       width: 24vw;
       aspect-ratio: 1/0.2;
         font-size: 1.2vh;
+
+      transition: box-shadow 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0 0 2px transparent;
+        opacity: 1;
+        transform: scale(1.02);
+      }
     }
   }
 
@@ -87,9 +100,6 @@
     }
   }
 
-  &:hover {
-    transform: scale(1.02);
-  }
 }
 
 .BookPrice.esgotado {

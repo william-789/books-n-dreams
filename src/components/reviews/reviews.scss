@@ -5,12 +5,12 @@
   margin-bottom: 2rem;
 
   .Average {
+    width: 35%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $brown;
     color: #EBE6E4;
-    width: fit-content;
     aspect-ratio: 1/0.2;
     border-radius: 200px;
     padding: 1rem;
@@ -89,7 +89,7 @@
         outline: none;
         resize: none;
 
-        width: 65vw;
+        width: 88%;
         height: 5rem;
         color: $brown;
         margin-right: 1rem;
@@ -171,7 +171,7 @@
 
       .ReviewBox {
         > textarea {
-          width: 60%;
+          width: 65%;
         }
       }
       .button{

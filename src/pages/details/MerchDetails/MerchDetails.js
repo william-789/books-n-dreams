@@ -31,46 +31,45 @@ export default function MerchDetails(props) {
     const [allMerch, setAllMerch] = useState(null);
     const [utilizador, setUtilizador] = useState(null)
 
+    const handleMerchClick = (id) => {
+        const topoPaginaElement = document.getElementById('topoPagina');
+        if (topoPaginaElement) {
+            topoPaginaElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     const getData = async () => {
         try {
             let details = await axiosBooks.get(`/item/merch/${id}`).then(r => r.data.merch);
-            console.log("merch", details)
             setDetails(details);
 
             await Promise.all([
 
                 axiosBooks.get(`/item/available/${id}`).then(r => {
-                    //console.log(r.data.available)
                     setStores(r.data.available)
                 }),
 
                 axiosBooks.get(`/item/merch/all`).then(r => {
-                    // console.log(r.data.merch)
                     setAllMerch(r.data.merch)
                 }),
 
                 axiosBooks.get(`/item/merch/all`, {params: {genero: details.genero_id}}).then(r => {
-                    // console.log(r.data.merch)
                     setGenreMerch(r.data.merch)
                 }),
 
-                axiosBooks.get(`/item/merch/all`, {params: {serie: details.serie}}).then(r => {
-                    console.log(r.data.merch)
-                    setSerieMerch(r.data.merch)
-                }),
+                axiosBooks.get(`/item/merch/all`, { params: { serie: details.serie } }).then(r => {
+                        setSerieMerch(r.data.merch);
+                    }),
 
                 axiosBooks.get(`/book/all`, {params: {genero: details.genero_id}}).then(r => {
-                    // console.log(r.data.books)
                     setGenreBooks(r.data.books)
                 }),
 
                 axiosBooks.get(`/book/${details.item}`).then(r => {
-                    // console.log(r.data.books)
                     setBook(r.data.book)
                 }),
 
                 axiosBooks.get(`/user/${user.id}`).then((r) => {
-                    console.log(r.data.user);
                     setUtilizador(r.data.user);
                 }),
 
@@ -84,13 +83,17 @@ export default function MerchDetails(props) {
     };
 
     useEffect(() => {
-        getData();
-    }, []);
+        handleMerchClick(id);
+    }, [id]);
 
     useEffect(() => {
+        getData();
+    }, [id]);
+
+   useEffect(() => {
         const timeoutId = setTimeout(() => {
             getData();
-        }, 3000);
+        }, 500);
 
         return () => clearTimeout(timeoutId);
     }, [comments]);
@@ -99,6 +102,8 @@ export default function MerchDetails(props) {
     if (!(details && serieMerch && stores && genreMerch && genreBooks && comments)) return null;
 
     return <div className={"MerchDetail_content"}>
+
+        <div id="topoPagina" />
 
         <div className={"Header"}>
             <h1>Merch</h1>
@@ -130,31 +135,52 @@ export default function MerchDetails(props) {
                 ))}
             </div>
 
-            <Subtitle text={`Produtos relacionados`}/>
-            <MerchList list={genreMerch.slice(0, 4)}/>
+            <Subtitle text={`Produtos relacionados`} />
+            {genreMerch.length > 0 ? (
+                <>
+                    <MerchList list={genreMerch.slice(0, 4)} />
+                    {genreMerch.length > 4 && (
+                        <div className={"button"}>
+                            <Link to={"/search"}>
+                                <PrimaryButton text={"Ver mais"} />
+                            </Link>
+                        </div>
+                    )}
+                </>
+            ) : (
+                <Empty text={"Sem produtos relacionados"} />
+            )}
 
-            <div className={"button"}>
-                <Link to={"/search"}>
-                    {genreMerch.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
-                </Link>
-            </div>
+            <Subtitle text={`Livros relacionados`} />
+            {genreBooks.length > 0 ? (
+                <>
+                    <WrapList list={genreBooks.slice(0, 4)} key={details.id} />
+                    {genreBooks.length > 4 && (
+                        <div className={"button"}>
+                            <Link to={"/search"}>
+                                <PrimaryButton text={"Ver mais"} />
+                            </Link>
+                        </div>
+                    )}
+                </>
+            ) : (
+                <Empty text={"Sem livros relacionados"} />
+            )}
 
-            <Subtitle text={`Livros relacionados`}/>
-            <WrapList list={genreBooks.slice(0, 4)}
-                      key={details.id}/>
-            <div className={"button"}>
-                <Link to={"/search"}>
-                    <PrimaryButton text={"Ver mais"}/>
-                </Link>
-            </div>
+            <Subtitle text={"Nossas sugestões para ti"} />
+            {serieMerch.length > 10? (
+                <>
+                    <MerchList list={serieMerch.slice(0, 4)} details={details} />
+                    <div className={"button"}>
+                        <Link to={"/search"}>
+                            <PrimaryButton text={"Ver mais"} />
+                        </Link>
+                    </div>
+                </>
+            ) : (
+                <MerchList list={serieMerch} details={details} />
+            )}
 
-            <Subtitle text={"Nossas sugestões para ti"}/>
-                <MerchList list={serieMerch.slice(0, 4)} details={details} />
-
-
-            <Link to={"/search"}>
-                {serieMerch.length > 4 ? <PrimaryButton text={"Ver mais"}/> : <></>}
-            </Link>
 
             <Reviews
                 foto={user && user.foto ? user.foto : null}

@@ -2,13 +2,14 @@
 
 .Post {
   width: 100%;
-  aspect-ratio: 1/1.5;
+  aspect-ratio: 1/1.2;
   background-color: #eae5e3;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 1% 5%;
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -192,16 +193,17 @@
   margin-top: 15px;
 
   .Icon {
-    width: 10%;
+    width: 6%;
     aspect-ratio: 1/1;
     border-radius: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $backgroundColor;
+    margin-left: 4%;
 
     @media (max-width: 768px) {
-      width: 16%;
+      width: 14%;
       aspect-ratio: 1/1;
     }
 
@@ -210,11 +212,9 @@
       color: $brown;
 
       @media (max-width: 768px) {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
-
     }
-
   }
 
   .Rectangle {
@@ -239,7 +239,7 @@
 
 .LikeReply {
   display: flex;
-  margin-left: 12%;
+  margin-left: 13%;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -261,11 +261,11 @@
     font-size: 1rem;
     font-family: $headingFont;
     font-weight: 600;
-    margin: 0 440px;
+    margin: 0 80%;
     color: #705D56;
 
     @media (max-width: 768px) {
-      margin: 0 120px;
+      margin: 0 170px;
     }
   }
 }
@@ -274,16 +274,17 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 2%;
   background-color: $backgroundColor;
   padding: 2%;
   border-radius: 15px;
 
   .UserImage {
     margin-right: 1rem;
+    color: #705D56;
 
     .UserCircle {
-      height: 4vw;
+      height: 3vw;
       overflow: hidden;
       border-radius: 50%;
       aspect-ratio: 1/1;
@@ -294,7 +295,7 @@
     }
 
     .UserImage {
-      height: 4vw;
+      height: 3vw;
       object-fit: cover;
 
       @media (max-width: 768px) {
@@ -310,12 +311,16 @@
       width: 100%;
       padding: 1rem;
       border: none;
-      border-radius: 25px;
+      border-radius: 15px;
       box-sizing: border-box;
       margin-bottom: 10px;
       font-size: 1rem;
       color: #b7b5b5;
       font-family: $headingFont;
+
+      @media (max-width: 768px) {
+       border-radius: 15px;
+      }
 
     }
 
@@ -330,7 +335,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
+      margin-left: auto;
+margin-top: 1%;
       padding: 0.8rem;
       font-family: $headingFont;
       color: white;
@@ -345,7 +351,8 @@
       }
 
       @media (max-width: 768px) {
-        width: 50%
+        width: 50%;
+        margin-top: 0.3rem;
       }
 
     }
@@ -357,5 +364,9 @@
 
   @media (max-width: 768px) {
     height: 10vw;
+  }
+
+  @media (max-width: 768px) {
+    height: 20vw;
   }
 }

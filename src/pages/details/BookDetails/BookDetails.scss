@@ -102,6 +102,23 @@
   @media (max-width: 768px) {
   }
 
+  .success {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    color: white;
+    background-color: #72ab50;
+
+    button {
+      background-color: transparent;
+      color: white;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 

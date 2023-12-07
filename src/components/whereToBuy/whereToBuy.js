@@ -4,6 +4,7 @@ import axiosBooks, { baseImageLink } from "../../util/axiosBooks";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context/userContext";
 import { useError } from "../../context/errorContext";
+import SuccessModal from "../success/SuccessModal";
 
 export default function WhereToBuy(props) {
     const { user } = useUser();
@@ -12,6 +13,7 @@ export default function WhereToBuy(props) {
     const [isCheapest, setIsCheapest] = useState(false);
     const [libraryIsNear, setLibraryIsNear] = useState(false);
     const [utilizador, setUtilizador] = useState({});
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const handleAddItemToCart = async () => {
         try {
@@ -31,14 +33,12 @@ export default function WhereToBuy(props) {
 
             if (response.status === 200) {
                 console.log("Adicionado ao carrinho com sucesso");
+                setShowSuccessModal(true);
             } else {
                 showError(response.data.message || "Falha ao adicionar ao carrinho");
             }
-
-            console.log("Após enviar o pedido");
         } catch (error) {
             console.error("Erro ao adicionar ao carrinho:", error);
-
             showError("Erro ao adicionar ao carrinho");
         }
     };
@@ -83,13 +83,13 @@ export default function WhereToBuy(props) {
                 />
 
                 <div className={"indicators"}>
-                {isCheapest && (
-                    <div className="cheapestIndicator">Mais barato</div>
-                )}
+                    {isCheapest && (
+                        <div className="cheapestIndicator">Mais barato</div>
+                    )}
 
-                {props.userLocalidade && libraryIsNear && (
-                    <div className="libraryNearIndicator">Mais perto</div>
-                )}
+                    {props.userLocalidade && libraryIsNear && (
+                        <div className="libraryNearIndicator">Mais perto</div>
+                    )}
                 </div>
 
                 <div className="info">
@@ -103,6 +103,13 @@ export default function WhereToBuy(props) {
             <button className="Button" onClick={handleAddItemToCart}>
                 Adicionar ao carrinho
             </button>
+
+            {showSuccessModal && (
+                <SuccessModal
+                    message="Item adicionado ao carrinho com sucesso!"
+                    onClose={() => setShowSuccessModal(false)}
+                />
+            )}
         </div>
     );
 }
