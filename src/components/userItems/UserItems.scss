@@ -35,15 +35,11 @@ $libraryDetailsAPP: 0.9rem;
 
 
     .userItems-LibraryImage{
-      background-image: url("../../components/userItems/LivrariaBarata.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       width: 160px;
       height: 188px;
-
-
-
     }
 
     .userItems-LibraryText{
@@ -89,8 +85,6 @@ $libraryDetailsAPP: 0.9rem;
           align-items: center;
           justify-content: space-between;
           margin-top: 5rem;
-
-
           width: 100%;
 
           .plus{
@@ -131,11 +125,8 @@ $libraryDetailsAPP: 0.9rem;
           font-size: $paragraphSize;
           color: $brown;
         }
-
       }
-
     }
-
   }
 
 
