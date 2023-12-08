@@ -7,22 +7,21 @@ import {useUser} from "../../context/userContext";
 
 export default function NavBar(props) {
     const { user } = useUser();
+    const [quantity, setQuantity] = useState(null);
 
-    const[quantity, setQuantity]=useState(null)
+    const fetchCartQuantity = async () => {
+        try {
+            const response = await axiosBooks.get(`/user/cart/${user.id}`);
+            setQuantity(response.data.Unidades);
+        } catch (error) {
+            console.error('Error fetching cart quantity:', error);
+        }
+    };
 
     useEffect(() => {
-        const fetchCartQuantity = async () => {
-            try {
-                const response = await axiosBooks.get(`/user/cart/${user.id}`);
-                console.log(response.data.Unidades);
-                setQuantity(response.data.Unidades);
-            } catch (error) {
-                console.error('Error fetching cart quantity:', error);
-            }
-        };
-
         fetchCartQuantity();
     }, [user.id]);
+
 
     return <div className={"NavBar"}>
 

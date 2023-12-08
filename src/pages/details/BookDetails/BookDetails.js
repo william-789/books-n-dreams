@@ -41,7 +41,6 @@ export default function BookDetails(props) {
         try {
             let details = await axiosBooks.get(`/book/${id}`).then((r) => r.data.book);
             setDetails(details);
-            console.log(details)
 
             await Promise.all([
                 axiosBooks.get(`book/available/${id}`).then((r) => {
@@ -85,13 +84,13 @@ export default function BookDetails(props) {
         getData();
     }, [id]);
 
-   /* useEffect(() => {
+    useEffect(() => {
         const timeoutId = setTimeout(() => {
             getData();
-        }, 500);
+        }, 1000);
 
         return () => clearTimeout(timeoutId);
-    }, [comments]); */
+    }, [comments]);
 
     // remover && false depois de passar os dados corretos
     if (!(details && stores && author && authorBooks && genreBooks && comments))

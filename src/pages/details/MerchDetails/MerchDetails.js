@@ -93,7 +93,7 @@ export default function MerchDetails(props) {
    useEffect(() => {
         const timeoutId = setTimeout(() => {
             getData();
-        }, 500);
+        }, 1000);
 
         return () => clearTimeout(timeoutId);
     }, [comments]);

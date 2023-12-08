@@ -49,7 +49,6 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-
   // User
   const authUser = (token) => {
     // Decode the token
