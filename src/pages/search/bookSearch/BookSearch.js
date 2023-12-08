@@ -193,14 +193,14 @@ export default function BookSearch(props) {
                         </div>
                         : <div></div>}
 
-                    {suggestionAuthor ?
+                    {suggestionAuthor && suggestionAuthor.length > 0 ?
                         <div className={"suggestions"}>
                             <p>Porque procurou por {authorList.find((a) => a.id === author)?.nome}</p>
                             <WrapList list={suggestionAuthor}/>
                         </div>
                         : <div></div>}
 
-                    {suggestionBookstore ?
+                    {suggestionBookstore && suggestionBookstore.length > 0 ?
                         <div className={"suggestions"}>
                             <p>Porque procurou por {bookstoreList.find((b) => b.id === bookstore)?.nome}</p>
                             <WrapList list={suggestionBookstore}/>
