@@ -47,7 +47,7 @@ export default function AuthorSearch(props) {
         axiosBooks.get(`/author/all`, {
             params:
                 {
-                    per_page: 6,
+                    per_page: 12,
                     page: page,
                     nome: filter,
                     ordem: order,
