@@ -10,6 +10,7 @@ import UserButtonStatus from "../../../components/userStatusButtons/userStatusBu
 import {useUser} from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
 import UserBanner from "../../../components/shared/UserBanner";
+import Pagination from "../../../components/shared/pagination/Pagination";
 
 
 export default function User() {
@@ -23,10 +24,17 @@ export default function User() {
     const [tabAtiva, setTabAtiva] = useState(0);
     const [carregando, setCarregando] = useState(true)
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPageFav, setCurrentPageFav] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalPagesFav, setTotalPagesFav] = useState(1);
+
     // if(!isLogged()) {
     //     openModal()
     //     return;
     // } // REVIEW
+
+
     const getData = async () => {
         const token = localStorage.getItem("token");
         const config = {
@@ -42,12 +50,13 @@ export default function User() {
 
             const wishlist = await axiosBooks.get('/user/wishlist', {
                 params: {
-                    page: 1,
+                    page: currentPage,  // Adicione currentPage para a paginação
                     per_page: 4
                 },
                 headers: config.headers
             });
             setWishlist(wishlist.data.wishlist);
+            setTotalPages(wishlist.data.total_pages);
 
             const favoriteStores = await axiosBooks.get('/user/favorite-stores', {
                 params: {
@@ -87,10 +96,13 @@ export default function User() {
 
         <div className={"wrapper-list-profile"}>
             {wishlist.length > 0 ?
-              <WrapList list={wishlist}/> :
-              <Empty text={'Sem produtos na wishlist'} />
+                <WrapList list={wishlist}/> :
+                <Empty text={'Sem produtos na wishlist'} />
             }
         </div>
+
+        <Pagination page={currentPage} totalPages={totalPages} setPage={setCurrentPage}/>
+
 
         <div className="wrapper">
             <SubTitles text={"Lista de Favoritos"}/>
