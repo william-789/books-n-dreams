@@ -186,7 +186,7 @@ export default function BookSearch(props) {
                         }
                     </div>
 
-                    {suggestionGenre ?
+                    {suggestionGenre && suggestionGenre.length > 0 ?
                         <div className={"suggestions"}>
                             <p>Porque procurou por {genreList.find((g) => g.id === genre)?.nome}</p>
                             <WrapList list={suggestionGenre}/>
