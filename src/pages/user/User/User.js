@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../../../components/footer/Footer";
 import SubTitles from '../../../components/subtitle/subtitle';
 import WrapList from "../../../components/bookList/wrapList"
@@ -10,8 +10,6 @@ import UserButtonStatus from "../../../components/userStatusButtons/userStatusBu
 import {useUser} from "../../../context/userContext";
 import Empty from "../../../components/shared/Empty/Empty";
 import UserBanner from "../../../components/shared/UserBanner";
-import Pagination from "../../../components/shared/pagination/Pagination";
-
 
 export default function User() {
     const { user, token, getUser, isLogged, openModal } = useUser();
@@ -24,17 +22,6 @@ export default function User() {
     const [tabAtiva, setTabAtiva] = useState(0);
     const [carregando, setCarregando] = useState(true)
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [currentPageFav, setCurrentPageFav] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [totalPagesFav, setTotalPagesFav] = useState(1);
-
-    // if(!isLogged()) {
-    //     openModal()
-    //     return;
-    // } // REVIEW
-
-
     const getData = async () => {
         const token = localStorage.getItem("token");
         const config = {
@@ -42,7 +29,6 @@ export default function User() {
                 'token-header': token
             }
         };
-        // if(token) getUser(); !!!!!! 1.
 
         try {
             const userDetails = await axiosBooks.get(`/user/${user.id}`);
@@ -50,13 +36,12 @@ export default function User() {
 
             const wishlist = await axiosBooks.get('/user/wishlist', {
                 params: {
-                    page: currentPage,  // Adicione currentPage para a paginação
+                    page: 1,
                     per_page: 4
                 },
                 headers: config.headers
             });
             setWishlist(wishlist.data.wishlist);
-            setTotalPages(wishlist.data.total_pages);
 
             const favoriteStores = await axiosBooks.get('/user/favorite-stores', {
                 params: {
@@ -101,20 +86,18 @@ export default function User() {
             }
         </div>
 
-        <Pagination page={currentPage} totalPages={totalPages} setPage={setCurrentPage}/>
-
-
         <div className="wrapper">
             <SubTitles text={"Lista de Favoritos"}/>
         </div>
 
         <div className="wrapper">
-            {
+            {bookstores.length > 0 ? (
                 bookstores.map((b) =>
-                <UserLibrary {...b} />)
+                  <UserLibrary {...b} />)
+              ) : <Empty text={'Sem livrarias favoritadas'} />
             }
 
-            {(wishlist.length > 0 || bookstores.length > 0) && <Link to={"/search-bookshop"}>
+            {(wishlist.length > 0 || bookstores.length > 0) && <Link to={"/favorites"}>
                 <div className={"btn-box"}>
                     <button className={"button-ver-mais"}>Ver mais</button>
                 </div>
@@ -125,19 +108,19 @@ export default function User() {
             <Empty text={'Histórico de compras vazio'} />}
             { tabAtiva === 0 && (
                 aDecorrer.map((ad)=>
-                    <UserStatus />
+                    <UserStatus {...ad}/>
                 ))
             }
             {/*tab 1*/}
             { tabAtiva === 1 && (
-              entregues.map((ad)=>
-                  <UserStatus />
+              entregues.map((e)=>
+                  <UserStatus {...e}/>
               ))
             }
             {/*tab 2*/}
             { tabAtiva === 2 && (
-              canceladas.map((ad)=>
-                  <UserStatus />
+              canceladas.map((c)=>
+                  <UserStatus {...c}/>
               ))
             }
 

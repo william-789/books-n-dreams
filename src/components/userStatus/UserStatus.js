@@ -1,20 +1,22 @@
 import React from "react";
 import './UserStatus.scss'
-import Favorite from "../favorite/favorite";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function UserStatus(props) {
+    const dateString = props.data;
+    const date = new Date(dateString);
+    const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
     return (
         <div className={"userStatus"}>
 
             <div className={"userStatusText"}>
                 <div className={"texts"}>
-                    <div className={"title"}>02/10/2023 Entregue ao domicilio</div>
-                    <div className={"text"}>47,83€</div>
+                    <div className={"title"}>{formattedDate} {props.estado}</div>
+                    <div className={"text"}>{props.total}€</div>
                 </div>
 
-                <Link to={"/purchase-details"}>
+                <Link to={`/purchase-details/${props.codigo}`}>
                     <div className={"arrow-icon"}>
                     </div>
                 </Link>
