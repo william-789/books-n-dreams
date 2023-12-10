@@ -46,11 +46,31 @@
           }
         }
 
-        .noResult {
-          font-size: $paragraphSizeAPP;
-          font-family: $paragraphFont;
+        .noResults {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+
+          .information {
+            font-size: $paragraphSize;
+            font-family: $paragraphFont;
+            color: $brown;
+            margin: 5% 0;
+          }
+
+          .separator {
+            width: 100%;
+            border: 1px solid #dadada;
+
+          }
+        }
+      }
+
+      .suggestions {
+        margin-top: 20px;
+
+        p {
           color: $brown;
-          margin-top: 15px;
         }
       }
     }
