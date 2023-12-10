@@ -2,8 +2,6 @@ import "./App.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ErrorProvider } from "./context/errorContext";
 import { UserProvider } from "./context/userContext";
-import LogIn from "./pages/login_register/LogIn";
-import Register from "./pages/login_register/Register";
 import Home from "./pages/home/Home";
 import AuthorDetails from "./pages/details/AuthorDetails/AuthorDetails";
 import BookDetails from "./pages/details/BookDetails/BookDetails";
@@ -23,6 +21,7 @@ import EditPersonalInfo from "./pages/user/User/edit/editPersonal/EditPersonalIn
 import EditPaymentInfo from "./pages/user/User/edit/editPayment/EditPaymentInfo";
 import NavBar from "./pages/navbar/NavBar";
 import Community from "./pages/community/Community";
+import PrivateRoute from "./util/PrivateRoute";
 
 function App() {
   return <BrowserRouter>
@@ -31,8 +30,6 @@ function App() {
     <div className="App">
       <NavBar/>
       <Switch>
-        <Route path={"/logIn"} component={LogIn}/>
-        <Route path={"/register"} component={Register}/>
         <Route path={"/homePage"} component={Home}/>
         <Route path={"/author/:id"} component={AuthorDetails}/>
         <Route path={"/book/:id"} component={BookDetails}/>
@@ -43,14 +40,14 @@ function App() {
         <Route path={"/search-book"} component={BookSearch}/>
         <Route path={"/search-bookshop"} component={BookshopSearch}/>
         <Route path={"/search-merch"} component={MerchSearch}/>
-        <Route path={"/profile"} component={User}/>
-        <Route path={"/favorites"} component={Favorites}/>
-        <Route path={"/shopping-cart"} component={ShoppingCart}/>
-        <Route path={"/purchase-details"} component={PurchaseDetails}/>
-        <Route path={"/checkout"} component={Checkout}/>
-        <Route path={"/edit-personal"} component={EditPersonalInfo}/>
-        <Route path={"/edit-payment"} component={EditPaymentInfo}/>
-        <Route path={"/community/"} component={Community}/>
+        <PrivateRoute path={"/profile"} component={User}/>
+        <PrivateRoute path={"/favorites"} component={Favorites}/>
+        <PrivateRoute path={"/shopping-cart"} component={ShoppingCart}/>
+        <PrivateRoute path={"/purchase-details"} component={PurchaseDetails}/>
+        <PrivateRoute path={"/checkout"} component={Checkout}/>
+        <PrivateRoute path={"/edit-personal"} component={EditPersonalInfo}/>
+        <PrivateRoute path={"/edit-payment"} component={EditPaymentInfo}/>
+        <PrivateRoute path={"/community/"} component={Community}/>
         <Redirect to={"/homePage"}/>
       </Switch>
     </div>

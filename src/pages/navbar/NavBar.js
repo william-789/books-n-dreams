@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 import {useUser} from "../../context/userContext";
 
 export default function NavBar(props) {
-    const { user } = useUser();
+    const { isLogged, user, openModal } = useUser();
     const [quantity, setQuantity] = useState(null);
 
     const fetchCartQuantity = async () => {
@@ -17,6 +17,13 @@ export default function NavBar(props) {
             console.error('Error fetching cart quantity:', error);
         }
     };
+
+    const handleClick  = (event) => {
+        if(!isLogged()) {
+            event.preventDefault();
+            openModal();
+        }
+    }
 
     useEffect(() => {
         fetchCartQuantity();
@@ -33,7 +40,7 @@ export default function NavBar(props) {
 
             <div className={"menuItems"}>
 
-                <NavLink to={"/profile"}>
+                <NavLink to={"/profile"} onClick={handleClick}>
                     <div className={"round"} id={"user"}>
                         <FontAwesomeIcon icon={faUser} className={"menuItem"}/>
                     </div>
@@ -45,7 +52,7 @@ export default function NavBar(props) {
                     </div>
                 </NavLink>
 
-                <NavLink to={"/shopping-cart"}>
+                <NavLink to={"/shopping-cart"} onClick={handleClick}>
                     <div className={"round cart"} id={"cart"}>
                         <FontAwesomeIcon icon={faCartShopping} className={"menuItem"}/>
 
@@ -57,7 +64,7 @@ export default function NavBar(props) {
                     </div>
                 </NavLink>
 
-                <NavLink to={"/community"}>
+                <NavLink to={"/community"} onClick={handleClick}>
                     <div className={"round"} id={"community"}>
                         <FontAwesomeIcon icon={faUsers} className={"menuItem"}/>
                     </div>
