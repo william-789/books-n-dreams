@@ -2,8 +2,10 @@ import {Link} from "react-router-dom";
 import ThirdButton from "../buttons/ThirdButton/ThirdButton";
 import React from "react";
 import { baseImageLink } from "../../util/axiosBooks";
+import {useUser} from "../../context/userContext";
 
 export default function UserBanner ({ main, nome, capa, foto }) {
+  const { logout } = useUser()
 
   const bgImage = {
     backgroundImage: `url(${baseImageLink+capa})`,
@@ -26,7 +28,9 @@ export default function UserBanner ({ main, nome, capa, foto }) {
                 <Link to={"/edit-personal"}>
                   <ThirdButton text={"Editar Perfil"}/>
                 </Link>
-                <ThirdButton text={"Logout"}/>
+                <div onClick={()=>logout()}>
+                  <ThirdButton text={"Logout"}/>
+                </div>
               </div>
             </div>)}
 

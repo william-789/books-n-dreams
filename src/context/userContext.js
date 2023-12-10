@@ -1,7 +1,8 @@
-import { createContext, useState, useContext } from 'react';
+import {createContext, useState, useContext, useEffect} from 'react';
 import AuthModal from "../pages/user/auth-modal/AuthModal";
 import { jwtDecode } from "jwt-decode";
 import axiosBooks from "../util/axiosBooks";
+import {useHistory} from "react-router-dom";
 
 const UserContext = createContext({
   modalIsOpen: false,
@@ -11,12 +12,12 @@ const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(true); // starts false
+  const [modalIsOpen, setModalIsOpen] = useState(false); // starts false
   const [user, setUser] = useState({}); // starts as empty object
   const [wishlist, setWishlist] = useState({ merch: [], livro: [] }); // { merch: [], livro: [] }
   const [favStores, setFavStores] = useState([]);
-
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const history = useHistory();
 
   const isFavorite = (id) => {
     return favStores.includes(id);
@@ -57,6 +58,13 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem('token', token); // store token
   }
 
+  const logout = () => {
+    setUser({});
+    setToken(null);
+    localStorage.removeItem("token");
+    history.push('/homepage')
+  };
+
   const isLogged = () => {
     return !!user.id;
   }
@@ -69,6 +77,26 @@ export const UserProvider = ({ children }) => {
     setModalIsOpen(false);
   };
 
+  function isTokenExpired(token) {
+    const decodedToken = jwtDecode(token);
+    if (user.exp) {
+      const currentTime = Date.now() / 1000;
+      return decodedToken.exp < currentTime;
+    }
+    return true;
+  }
+
+  const getUser = () => {
+    const decodedToken = jwtDecode(token);
+    setUser({...decodedToken});
+  }
+
+  useEffect(() => {
+    if (token) {
+      isTokenExpired() ? logout() : getUser();
+    }
+  }, [token]);
+
   const contextValues = {
     modalIsOpen,
     openModal,
@@ -79,7 +107,10 @@ export const UserProvider = ({ children }) => {
     isFavorite,
     onWishlist,
     toggleFavStore,
-    toggleWishlist
+    toggleWishlist,
+    logout,
+    token,
+    getUser,
   };
 
   return (
