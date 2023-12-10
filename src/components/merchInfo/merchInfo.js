@@ -6,16 +6,12 @@ import { faAngleRight as arrow } from "@fortawesome/free-solid-svg-icons";
 import Subtitle from "../subtitle/subtitle";
 import SizeSelector from "../sizeSelector/sizeSelector";
 import ColorSelector from "../colorSelector/colorSelector";
-
 import "./merchInfo.scss";
-
 export default function MerchInfo(props) {
     const [selectedColor, setSelectedColor] = useState(null);
-
     const handleColorChange = (color) => {
         setSelectedColor(color);
     };
-
     const renderMerchImage = () => {
         if (props.nome === "Camisola Harry Potter") {
             switch (selectedColor) {
@@ -38,7 +34,10 @@ export default function MerchInfo(props) {
     return (
         <div className={"MerchInfo"}>
             <div className={"Foto"} style={{backgroundImage: `url(${renderMerchImage()})`}} />
-            <Favorite id={props.id} type={'merch'}/>
+
+            <div className={"favorite"}>
+                <Favorite id={props.id} type={'merch'}/>
+            </div>
 
             <div className={"Info"}>
                 <h4>

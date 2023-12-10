@@ -93,7 +93,7 @@ export default function MerchDetails(props) {
    useEffect(() => {
         const timeoutId = setTimeout(() => {
             getData();
-        }, 500);
+        }, 1000);
 
         return () => clearTimeout(timeoutId);
     }, [comments]);
@@ -111,6 +111,7 @@ export default function MerchDetails(props) {
 
         <div className={"Container"}>
             <MerchInfo
+                id={details.id}
                 foto={details.foto}
                 tipo={details.tipo}
                 genero={details.genero}
@@ -128,7 +129,7 @@ export default function MerchDetails(props) {
                         localidade={s.localidade}
                         distrito={s.distrito}
                         preco={s.preco}
-                        itemId={details.item}
+                        itemId={details.id}
                         allPrices={stores.map((store) => store.preco)}
                         userLocalidade={utilizador ? utilizador.localidade : null}
                     />

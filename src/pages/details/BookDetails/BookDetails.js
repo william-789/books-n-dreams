@@ -87,7 +87,7 @@ export default function BookDetails(props) {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             getData();
-        }, 500);
+        }, 1000);
 
         return () => clearTimeout(timeoutId);
     }, [comments]);
@@ -107,6 +107,7 @@ export default function BookDetails(props) {
 
             <div className={"Container"}>
                 <BookInfo
+                    id={details.item}
                     foto={details.foto}
                     tipo={details.tipo}
                     genero={details.genero}
