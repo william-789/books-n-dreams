@@ -6,17 +6,7 @@ import {useEffect, useState} from "react";
 import {useUser} from "../../context/userContext";
 
 export default function NavBar(props) {
-    const { isLogged, user, openModal } = useUser();
-    const [quantity, setQuantity] = useState(null);
-
-    const fetchCartQuantity = async () => {
-        try {
-            const response = await axiosBooks.get(`/user/cart/${user.id}`);
-            setQuantity(response.data.Unidades);
-        } catch (error) {
-            console.error('Error fetching cart quantity:', error);
-        }
-    };
+    const { isLogged, user, openModal, quantityCart } = useUser();
 
     const handleClick  = (event) => {
         if(!isLogged()) {
@@ -24,11 +14,6 @@ export default function NavBar(props) {
             openModal();
         }
     }
-
-    useEffect(() => {
-        fetchCartQuantity();
-    }, [user.id]);
-
 
     return <div className={"NavBar"}>
 
@@ -56,9 +41,9 @@ export default function NavBar(props) {
                     <div className={"round cart"} id={"cart"}>
                         <FontAwesomeIcon icon={faCartShopping} className={"menuItem"}/>
 
-                        {quantity > 0 && (
+                        {quantityCart > 0 && (
                             <div className={"quantity"}>
-                                <h1>{quantity}</h1>
+                                <h1>{quantityCart}</h1>
                             </div>
                         )}
                     </div>

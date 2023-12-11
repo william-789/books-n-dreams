@@ -11,7 +11,7 @@ import UserBanner from "../../../components/shared/UserBanner";
 
 
 export default function ShoppingCart() {
-    const { user, isLogged, openModal } = useUser();
+    const { user, isLogged, openModal, quantityCart, setQuantityCart } = useUser();
     const [detalhes, setDetalhes] = useState();
     const [cart, setcart] = useState(null);
     const [carregando, setCarregando] = useState(true)
@@ -59,6 +59,7 @@ export default function ShoppingCart() {
                 item.id === itemData.id ? { ...item, unidades: item.unidades + 1 } : item
               );
               setcart(updatedCart);
+              setQuantityCart(+quantityCart+1)
           })
           .catch(e=>{
               console.log(e)
@@ -74,6 +75,7 @@ export default function ShoppingCart() {
                 item.id === id && item.unidades > 0 ? { ...item, unidades: item.unidades - 1 } : item
               );
               setcart(updatedCart);
+              setQuantityCart(quantityCart-1)
           })
           .catch(e=>{
               console.log(e)
@@ -84,10 +86,12 @@ export default function ShoppingCart() {
         const { id, storeId, opcao } = itemData
         await updateDbCart(0, id, storeId, opcao)
           .then(()=>{
+              const [itemCart] = cart.filter((item)=>item.id === id);
               const updatedCart = cart.filter((item) =>
                 item.id !== id
               );
               setcart(updatedCart);
+              setQuantityCart(quantityCart-itemCart.unidades)
           })
           .catch(e=>{
               console.log(e)

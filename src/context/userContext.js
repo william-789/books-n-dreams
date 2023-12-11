@@ -17,7 +17,17 @@ export const UserProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState({ merch: [], livro: [] }); // { merch: [], livro: [] }
   const [favStores, setFavStores] = useState([]);
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [quantityCart, setQuantityCart] = useState(null);
   const history = useHistory();
+
+  const fetchCartQuantity = async () => {
+    try {
+      const response = await axiosBooks.get(`/user/cart/${user.id}`);
+      setQuantityCart(response.data.Unidades);
+    } catch (error) {
+      console.error('Error fetching cart quantity:', error);
+    }
+  };
 
   const isFavorite = (id) => {
     return favStores.includes(id);
@@ -122,7 +132,11 @@ export const UserProvider = ({ children }) => {
       // isTokenExpired() ? logout() : getUser();
       getUser();
     }
-  }, [token]);
+  }, [token])
+
+  useEffect(() => {
+    fetchCartQuantity();
+  }, [user.id]);
 
   const contextValues = {
     modalIsOpen,
@@ -140,6 +154,8 @@ export const UserProvider = ({ children }) => {
     getUser,
     getWishlist,
     getFav,
+    quantityCart,
+    setQuantityCart
   };
 
   return (
