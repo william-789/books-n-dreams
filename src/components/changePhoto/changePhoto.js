@@ -34,7 +34,7 @@ const ChangePhoto = (props) => {
 
     return (
         <form className={"ChangePhoto"}>
-            <img src={baseImageLink+props.foto+ `?timestamp=${new Date().getTime()}`} alt={'user picture'}/>
+            <img src={baseImageLink+props.foto+ `?timestamp=${new Date().getTime()}`} alt={''}/>
             <div>
                 <Subtitle text={'Alterar imagem'}/>
                 <InputFile
