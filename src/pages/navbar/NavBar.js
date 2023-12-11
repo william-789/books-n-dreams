@@ -1,12 +1,25 @@
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faMagnifyingGlass, faCartShopping, faUsers} from '@fortawesome/free-solid-svg-icons'
-import axiosBooks from "../../util/axiosBooks";
+import axiosBooks, {baseImageLink} from "../../util/axiosBooks";
 import {useEffect, useState} from "react";
 import {useUser} from "../../context/userContext";
 
 export default function NavBar(props) {
     const { isLogged, user, openModal, quantityCart } = useUser();
+    const [detalhes, setDetalhes] = useState(null);
+
+    const getUserDetails = async () => {
+        const userDetails = await axiosBooks.get(`/user/${user.id}`);
+        setDetalhes(userDetails.data.user);
+    }
+    useEffect(()=>{
+        if(isLogged()) {
+            getUserDetails();
+        } else {
+            setDetalhes(null)
+        }
+    },[user])
 
     const handleClick  = (event) => {
         if(!isLogged()) {
@@ -26,9 +39,12 @@ export default function NavBar(props) {
             <div className={"menuItems"}>
 
                 <NavLink to={"/profile"} onClick={handleClick}>
-                    <div className={"round"} id={"user"}>
+                    {(detalhes && detalhes.foto) ? <div className={"round withIMG"} id={"user"}>
+                        <img src={baseImageLink+detalhes.foto}/>
+                    </div> : <div className={"round"} id={"user"}>
                         <FontAwesomeIcon icon={faUser} className={"menuItem"}/>
-                    </div>
+                     </div>
+                    }
                 </NavLink>
 
                 <NavLink to={"/search"}>
