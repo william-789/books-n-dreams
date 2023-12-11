@@ -7,14 +7,17 @@ import axiosBooks from "../../../util/axiosBooks";
 
 function LoginForm() {
   const { control, handleSubmit, formState: { errors } } = useForm();
-  const { authUser ,closeModal } = useUser()
+  const { authUser ,closeModal, getWishlist, getFav } = useUser()
   const [error, setError] = useState('');
 
   const onSubmit = async (data) => {
     await axiosBooks.post('/user/login', data)
       .then(r=> {
+        const token = r.data.token
         authUser(r.data.token)
         setError('')
+        getWishlist(token)
+        getFav(token)
       })
       .then(()=> {
         closeModal()

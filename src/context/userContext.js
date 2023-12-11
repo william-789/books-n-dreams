@@ -24,7 +24,8 @@ export const UserProvider = ({ children }) => {
   }
 
   const onWishlist = (id, type) => { // types: 'merch', 'livro'
-    return wishlist[type].includes(id);
+
+    return wishlist[type].includes(+id);
   }
   const toggleFavStore = async (id) => {
     // toggle on DB
@@ -50,12 +51,37 @@ export const UserProvider = ({ children }) => {
     }
   }
 
+  const getWishlist = async (token) => {
+    const wishlist = await axiosBooks.get('/user/wishlist', {
+      params: {
+        onlyid: 1
+      },
+      headers: {
+        'token-header': token
+      }
+    });
+    setWishlist(wishlist.data);
+  }
+
+  const getFav = async (token) => {
+    const favoriteStores = await axiosBooks.get('/user/favorite-stores', {
+      params: {
+        onlyid: 1
+      },
+      headers: {
+        'token-header': token
+      }
+    });
+    setFavStores(favoriteStores.data.stores);
+  }
+
   // User
   const authUser = (token) => {
     // Decode the token
     const decodedToken = jwtDecode(token);
     setUser({...decodedToken});
     localStorage.setItem('token', token); // store token
+    setToken(token)
   }
 
   const logout = () => {
@@ -93,7 +119,8 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      isTokenExpired() ? logout() : getUser();
+      // isTokenExpired() ? logout() : getUser();
+      getUser();
     }
   }, [token]);
 
@@ -111,6 +138,8 @@ export const UserProvider = ({ children }) => {
     logout,
     token,
     getUser,
+    getWishlist,
+    getFav,
   };
 
   return (
